@@ -1,17 +1,20 @@
 # Maxine-Jenkins
 
 1) Download Jenkins
-	-mirrors.jenkins.io/war-stable/latest/jenkins.war
+
+	>mirrors.jenkins.io/war-stable/latest/jenkins.war
 
 2) Start Jenkins
-	-From jenkins.war directory: java -jar jenkins.war
 	
-	-Browse to http://localhost:8080 and follow the instructions to complete the installation
+	>From jenkins.war directory: java -jar jenkins.war
+	
+	>Browse to http://localhost:8080 and follow the instructions to complete the installation
 
 3) Multiple SCM plug-in installation
-	-to build and run Maxine on Jenkins we need to check out from both Maxine and Graal repositories, so we need Multiple SCM plugin!
 	
-	-go to Manage Jenkins/Manage Plug-ins/available tab/Multiple SCMs plugin - install and restart jenkins
+	>to build and run Maxine on Jenkins we need to check out from both Maxine and Graal repositories, so we need Multiple SCM plugin!
+	
+	>go to Manage Jenkins/Manage Plug-ins/available tab/Multiple SCMs plugin - install and restart jenkins
 
 4) Configure Maxine build and run in Jenkins
 	4.1-New freestyle project - name (MaxineBench)
