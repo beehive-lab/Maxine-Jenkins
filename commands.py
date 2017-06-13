@@ -156,14 +156,18 @@ def helloworld(args):
 
 csv_filename=""
 
+#a list to store values before extract the average
+time_list = []
+
 def dacapo_out_to_csv(args):
     """output handler for dacapo stdout redirection by mx.run() - acticloud team implementation"""
     if args:
+
+        global time_list
+
         bench_re = re.compile (r"===== DaCapo 9\.12 ([a-zA-Z0-9_]+) [P|F]A[S|I][S|L]ED in [0-9]+ msec =====")
         state_re = re.compile (r"===== DaCapo 9\.12 [a-zA-Z0-9_]+ ([P|F]A[S|I][S|L]ED) in [0-9]+ msec =====")
         time_re = re.compile(r"===== DaCapo 9\.12 [a-zA-Z0-9_]+ [P|F]A[S|I][S|L]ED in ([0-9]+) msec =====")
-        
-        myfile2 = open('/home/orion/Maxine/Regression_Results/Dacapo/'+csv_filename+'.csv','a+')
                 
         bench = bench_re.findall(args)
         state = state_re.findall(args)
@@ -172,17 +176,35 @@ def dacapo_out_to_csv(args):
         assert len(bench) == 1 or len(bench) == 0
                 
         if len(bench) == 1:
-            myfile2.write(bench[0]+';'+state[0]+';'+runtime[0]+'\n')
-            print '###############################'
-            print bench[0]+';'+state[0]+';'+runtime[0]
-            print '###############################'
+            #print bench[0]+';'+state[0]+';'+runtime[0]
+            time_list.append(int(runtime[0]))
+            
+            if len(time_list)==2:
+                #calculate average value
+                avg_runtime = str(reduce(lambda x, y: x + y, time_list) / len(time_list))
 
-        myfile2.close()
+                filepath = mx.get_env('WORKDIR')+'/Regression_Results/Dacapo/'+csv_filename+'.csv'
+                print 'Location '+filepath
+
+                #open, write, close file
+                myfile2 = open(filepath,'a+')
+                myfile2.write(bench[0]+';'+state[0]+';'+avg_runtime+'\n')
+                myfile2.close()
+                
+                #print '-------------MEAN----------------'
+                #print bench[0]+';'+state[0]+';'+avg_runtime
+                #print '---------------------------------'
+
+                #empty list
+                del time_list[:]
         
     
 def dacapo_acticloud(args):
     """runs all dacapos on the Maxine VM - acticloud team implementation"""
     global csv_filename     #TODO: can we pass it as an argument?
+    
+    by_avg = 2  #we get average values
+    
     dacapo_path = mx.get_env('DACAPOBACH')
     
     """
@@ -191,16 +213,17 @@ def dacapo_acticloud(args):
     """
 
     #all dacapos except batik
-    dacapo_benchmarks = ['avrora', 'eclipse', 'fop', 'h2', 'jython', 'luindex', 'lusearch', 'pmd', 'sunflow', 'tomcat', 'tradebeans', 'tradesoap', 'xalan']
+    dacapo_benchmarks = ['avrora', 'eclipse']#, 'fop', 'h2', 'jython', 'luindex', 'lusearch', 'pmd', 'sunflow', 'tomcat', 'tradebeans', 'tradesoap', 'xalan']
 
-    csv_filename = 'run_'+time.strftime("%Y%m%d_%H:%M:%S")        #TODO: csv file name and path
-    print 'Results are in: Maxine/Results/Dacapo/'+csv_filename+'.csv'
+    csv_filename = 'run_'+time.strftime("%d-%m-%Y_%H:%M")        #TODO: csv file name and path
+    #print 'Results are in: Maxine/Regression_Results/Dacapo/'+csv_filename+'.csv'
 
     for i in range(0,len(dacapo_benchmarks)):
-        print '###############################'
+        print '---------------------------------'
         print 'BENCHMARK:', dacapo_benchmarks[i]
-        print '###############################'
-        mx.run([join(_vmdir, 'maxvm'), '-jar', dacapo_path+'/dacapo-9.12-bach.jar', dacapo_benchmarks[i]], err=dacapo_out_to_csv)
+        print '---------------------------------'
+        for j in range(0,by_avg):
+            mx.run([join(_vmdir, 'maxvm'), '-jar', dacapo_path+'/dacapo-9.12-bach.jar', dacapo_benchmarks[i]], err=dacapo_out_to_csv)
 
 def taleporos(args):
     """run the taleporos program on the Maxine VM"""
