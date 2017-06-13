@@ -1,44 +1,51 @@
 # Maxine-Jenkins
 
-1) Download Jenkins
+1. Download Jenkins
+	
 	> mirrors.jenkins.io/war-stable/latest/jenkins.war
 
-2) Start Jenkins
-	From jenkins.war directory: `java -jar jenkins.war`
+2. Start Jenkins
 	
-	Browse to http://localhost:8080 and follow the instructions to complete the installation
+	* From jenkins.war directory: `java -jar jenkins.war`
+	
+	* Browse to http://localhost:8080 and follow the instructions to complete the installation
 
-3) Multiple SCM plug-in installation
+3. Multiple SCM plug-in installation
 	
-	to build and run Maxine on Jenkins we need to check out from both Maxine and Graal repositories, so we need Multiple SCM plugin!
+	> to build and run Maxine on Jenkins we need to check out from both Maxine and Graal repositories, so we need Multiple SCM plugin!
 	
-	go to Manage Jenkins/Manage Plug-ins/available tab/Multiple SCMs plugin - install and restart jenkins
+	* go to Manage Jenkins
+	* Manage Plug-ins
+	* available tab
+	* Multiple SCMs plugin
+	* install and restart jenkins
 
-4) Configure Maxine build and run in Jenkins
+4. Configure Maxine build and run in Jenkins
 	
-	4.1 New freestyle project - name (MaxineBench)
+	* New freestyle project - name > MaxineBench
 
-	4.2 Source Code Management options
+	* Source Code Management options (for Maxine source code)
 		
-		Multiple SCMs
-			add new SCM
-				git, put Maxine-VM repositiry url: https://github.com/beehive-lab/Maxine-VM.git
-		
-		Additional Behaviours 
-			check out to sub-directory 
-				Local subdirectory for repo -> maxine
+		1. Multiple SCMs
+		2. add new SCM
+		3. select git
+		4. put Maxine-VM repositiry url: https://github.com/beehive-lab/Maxine-VM.git
+		5. Additional Behaviours 
+		6. check out to sub-directory 
+		7. Local subdirectory for repo -> maxine
 	
-	4.3 Source Code Management options
+	* Source Code Management options (for Graal source code)
 		
-		Multiple SCMs
-			add new SCM
-				git, put Maxine-Graal repositiry url: https://github.com/beehive-lab/Maxine-Graal.git
-		
-		Additional Behaviours 
-			check out to sub-directory 
-				Local subdirectory for repo -> graal	
+		1. Multiple SCMs
+		2. add new SCM
+		3. select git
+		4. put Maxine-Graal repositiry url: https://github.com/beehive-lab/Maxine-Graal.git
+		5. Additional Behaviours 
+		6. check out to sub-directory 
+		7. Local subdirectory for repo -> graal	
 	
-	4.4 Build options
+	* Build options
+		
 		Execute Shell
 
 			sed -i -e 's/%as /%ms /g' $WORKSPACE/maxine/com.oracle.max.vm.native/tele/linux/linuxTask.c
@@ -58,26 +65,26 @@
 			#mx test -insitu -tests=dacapobach
 			#mx test -insitu -tests=specjvm98
 
-5) Maxine build and run benchmarks in Jenkins:
+5. Maxine build and run benchmarks in Jenkins:
 	
-	5.1 make a test build (runs helloworld)
+	* make a test build (runs helloworld)
 	
-	5.2 if all ok go to .jenkins/Workspace/MaxineBench and create the Benchmarks folder
+	* if all ok go to .jenkins/Workspace/MaxineBench and create the Benchmarks folder
 	
-	5.3 place inside the SPECjvm2008.zip and dacapo-9.12-bach.jar
+	* place inside the SPECjvm2008.zip and dacapo-9.12-bach.jar
 	
-	5.4 then configure the build : 	
-		comment  : 
+	* then configure the build : 	
+		1. comment  : 
 
-			mx helloworld
+			> mx helloworld
 
-		uncomment :	
+		2. uncomment :	
 
-			export BENCHDIR=$WORKSPACE/Benchmarks
-			export SPECJVM98_ZIP=$BENCHDIR/SPECjvm2008.jar
-			export DACAPOBACH_JAR=$BENCHDIR/dacapo-9.12-bach.jar
+			> export BENCHDIR=$WORKSPACE/Benchmarks
+			> export SPECJVM98_ZIP=$BENCHDIR/SPECjvm2008.jar
+			> export DACAPOBACH_JAR=$BENCHDIR/dacapo-9.12-bach.jar
 
-			mx test -insitu -tests=dacapobach
-		OR
-
-			mx test -insitu -tests=specjvm98
+		3. Dacapo or Specjvm
+			
+			> mx test -insitu -tests=dacapobach
+			> mx test -insitu -tests=specjvm98
