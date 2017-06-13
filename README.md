@@ -4,7 +4,8 @@
 	> mirrors.jenkins.io/war-stable/latest/jenkins.war
 
 2) Start Jenkins
-	From jenkins.war directory: 'java -jar jenkins.war'
+	From jenkins.war directory: `java -jar jenkins.war`
+	
 	Browse to http://localhost:8080 and follow the instructions to complete the installation
 
 3) Multiple SCM plug-in installation
