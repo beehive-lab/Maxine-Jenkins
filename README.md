@@ -1,15 +1,10 @@
 # Maxine-Jenkins
 
 1) Download Jenkins
-
-	mirrors.jenkins.io/war-stable/latest/jenkins.war
+	> mirrors.jenkins.io/war-stable/latest/jenkins.war
 
 2) Start Jenkins
-	
-	From jenkins.war directory: 
-	
-		java -jar jenkins.war
-	
+	From jenkins.war directory: 'java -jar jenkins.war'
 	Browse to http://localhost:8080 and follow the instructions to complete the installation
 
 3) Multiple SCM plug-in installation
@@ -71,16 +66,17 @@
 	5.3 place inside the SPECjvm2008.zip and dacapo-9.12-bach.jar
 	
 	5.4 then configure the build : 	
-		comment 	
-					
+		comment  : 
+
 			mx helloworld
-		uncomment	
-			
+
+		uncomment :	
+
 			export BENCHDIR=$WORKSPACE/Benchmarks
 			export SPECJVM98_ZIP=$BENCHDIR/SPECjvm2008.jar
 			export DACAPOBACH_JAR=$BENCHDIR/dacapo-9.12-bach.jar
-			
+
 			mx test -insitu -tests=dacapobach
 		OR
-			
+
 			mx test -insitu -tests=specjvm98
