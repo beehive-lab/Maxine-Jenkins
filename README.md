@@ -22,7 +22,7 @@
 
 4. Configure Maxine build and run in Jenkins
 	
-	* New freestyle project - name > MaxineBench
+	* New freestyle project -> name -> MaxineBench
 
 	* Source Code Management options (for Maxine source code)
 		
