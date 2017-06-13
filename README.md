@@ -17,9 +17,10 @@
 	>go to Manage Jenkins/Manage Plug-ins/available tab/Multiple SCMs plugin - install and restart jenkins
 
 4) Configure Maxine build and run in Jenkins
-	4.1-New freestyle project - name (MaxineBench)
+	
+	4.1) New freestyle project - name (MaxineBench)
 
-	4.2-Source Code Management options
+	4.2) Source Code Management options
 		-Multiple SCMs
 			-add new SCM
 				-git -> Maxine-VM repositiry url (git clone https://github.com/beehive-lab/Maxine-VM.git)
@@ -27,7 +28,7 @@
 			-check out to sub-directory 
 				-Local subdirectory for repo -> maxine
 	
-	4.3-Source Code Management options
+	4.3) Source Code Management options
 		-Multiple SCMs
 			-add new SCM
 				-git -> Maxine-Graal repositiry url (https://github.com/beehive-lab/Maxine-Graal.git)
@@ -35,7 +36,7 @@
 			-check out to sub-directory 
 				-Local subdirectory for repo -> graal
 	
-	4.4-Build options
+	4.4) Build options
 		-Execute Shell
 
 			sed -i -e 's/%as /%ms /g' $WORKSPACE/maxine/com.oracle.max.vm.native/tele/linux/linuxTask.c
@@ -57,13 +58,13 @@
 
 5) Maxine build and run benchmarks in Jenkins:
 	
-	5.1-make a test build (runs helloworld)
+	5.1) make a test build (runs helloworld)
 	
-	5.2-if all ok go to .jenkins/Workspace/MaxineBench and create the Benchmarks folder
+	5.2) if all ok go to .jenkins/Workspace/MaxineBench and create the Benchmarks folder
 	
-	5.3-place inside the SPECjvm2008.zip and dacapo-9.12-bach.jar
+	5.3) place inside the SPECjvm2008.zip and dacapo-9.12-bach.jar
 	
-	5.4-then configure the build : 	comment 	mx helloworld
+	5.4) then configure the build : 	comment 	mx helloworld
 									uncomment	export BENCHDIR=$WORKSPACE/Benchmarks
 												export SPECJVM98_ZIP=$BENCHDIR/SPECjvm2008.jar
 												export DACAPOBACH_JAR=$BENCHDIR/dacapo-9.12-bach.jar
