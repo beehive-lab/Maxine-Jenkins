@@ -81,10 +81,13 @@
 		2. uncomment :	
 
 			> export BENCHDIR=$WORKSPACE/Benchmarks
+			
 			> export SPECJVM98_ZIP=$BENCHDIR/SPECjvm2008.jar
+			
 			> export DACAPOBACH_JAR=$BENCHDIR/dacapo-9.12-bach.jar
 
 		3. Dacapo or Specjvm
 			
 			> mx test -insitu -tests=dacapobach
+			
 			> mx test -insitu -tests=specjvm98
