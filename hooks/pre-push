@@ -65,7 +65,7 @@ do
 					echo "*-* Image creation completed successfuly."
 					echo "*-* Gating process started"
 					echo "*-* Steps: helloworld, junit tests, dacapo:eclipse (x2), specjvm:compiler.compiler (x2)"
-					mx gating_iso			
+					mx gating			
 					if [ $? != 0 ] ; then
 						echo "*-* Gating process failed"
 						echo "*-* Push not accepted"
