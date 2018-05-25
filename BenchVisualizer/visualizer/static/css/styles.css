@@ -1,0 +1,9 @@
+.table-hover > tbody > tr {
+    cursor:pointer;
+}
+
+div.page_head {
+    background-color: #4d94ff;
+    margin-bottom: 30px;
+    padding: 15px;
+}

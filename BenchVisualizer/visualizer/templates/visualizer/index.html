@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+        <title>BenchVisualizer start page</title>
+    </head>
+    <body>
+
+        <div class="page_head">
+            <h1>BenchVisualizer</h1>
+        </div>
+
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Job Name</td>
+                    <td>Description</td>
+                    <td>Is Running</td>
+                    <td>Is enabled</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for obj in server_jobs %}
+                <tr onclick="window.location.assign('{% url 'visualizer:jobDetails' obj.name %}')">
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.description }}</td>
+                        <td>{{ obj.is_running }}</td>
+                        <td>{{ obj.is_enabled }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </body>
+</html>
