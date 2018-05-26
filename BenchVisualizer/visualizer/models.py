@@ -14,16 +14,16 @@ class Dacapo(models.Model):
 
 
 class Specjvm(models.Model):
-    startup = models.CharField(max_length=50, default="-1")
-    compiler = models.CharField(max_length=50, default="-1")
-    compress = models.CharField(max_length=50, default="-1")
-    crypto = models.CharField(max_length=50, default="-1")
-    derby = models.CharField(max_length=50, default="-1")
-    mpegaudio = models.CharField(max_length=50, default="-1")
-    scimark = models.CharField(max_length=50, default="-1")
-    serial = models.CharField(max_length=50, default="-1")
-    sunflow = models.CharField(max_length=50, default="-1")
-    xml = models.CharField(max_length=50, default="-1")
+    startup = models.CharField(max_length=50, default="0")
+    compiler = models.CharField(max_length=50, default="0")
+    compress = models.CharField(max_length=50, default="0")
+    crypto = models.CharField(max_length=50, default="0")
+    derby = models.CharField(max_length=50, default="0")
+    mpegaudio = models.CharField(max_length=50, default="0")
+    scimark = models.CharField(max_length=50, default="0")
+    serial = models.CharField(max_length=50, default="0")
+    sunflow = models.CharField(max_length=50, default="0")
+    xml = models.CharField(max_length=50, default="0")
     bench_date = models.DateTimeField('date of benchmark')
 
     def __str__(self):

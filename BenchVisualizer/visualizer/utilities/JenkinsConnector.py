@@ -1,4 +1,5 @@
 from jenkinsapi.jenkins import Jenkins
+from BenchMiner import BenchMiner
 
 class JenkinsConnector:
 
@@ -30,11 +31,14 @@ class JenkinsConnector:
 
         lb = job.get_last_build()
 
+        spec_miner = BenchMiner(lb.get_console())
+        result = spec_miner.mine_all_specjvms()
+
         job_details = {
             'job_running': str(job.is_running()),
             'is_good': str(lb.is_good()),
             'last_build_no': str(lb.buildno),
-            'last_build_console': lb.get_console()
+            'specjvm': result
         }
 
         return job_details

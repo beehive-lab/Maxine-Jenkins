@@ -1,1 +1,2 @@
 from JenkinsConnector import JenkinsConnector
+from BenchMiner import BenchMiner

@@ -7,13 +7,29 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="/static/js/jobDetails.js"></script>
         <title>Details for Job: {{job_name}}</title>
     </head>
 
-        <div class="page_head">
-            <h1>Details for Job: {{job_name}} -- Build {{job_details.last_build_no}}</h1>
-        </div>
     <body>
-        <p>{{job_details.last_build_console}}</p>
+        <div class="page_head">
+            <h1>Details for Job: {{job_name}} -- Latest Build {{job_details.last_build_no}}</h1>
+        </div>
+
+        <center>
+        <div id="tester" style="width:800px;height:250px;"></div>
+
+        <table class="table-bordered">
+            <thead>
+                <tr><td>Benchmark</td><td>Ops/sec</td></tr>
+            </thead>
+            <tbody>
+                {% for key,value in job_details.specjvm.items %}
+                    <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </center>
     </body>
 </html>
