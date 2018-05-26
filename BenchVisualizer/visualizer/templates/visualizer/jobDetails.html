@@ -18,18 +18,29 @@
         </div>
 
         <center>
-        <div id="tester" style="width:800px;height:250px;"></div>
-
-        <table class="table-bordered">
-            <thead>
-                <tr><td>Benchmark</td><td>Ops/sec</td></tr>
-            </thead>
+        <table>
             <tbody>
-                {% for key,value in job_details.specjvm.items %}
-                    <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
-                {% endfor %}
+                <tr>
+                    <td><div id="tester" style="width:800px;height:500px;"></div></td>
+                    <td>
+                        <table class="table-bordered">
+                            <thead>
+                                <tr><td>Benchmark</td><td>Ops/min</td></tr>
+                            </thead>
+                            <tbody>
+                                {% for key,value in job_details.specjvm.items %}
+                                    <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <a href="#" class="btn btn-info" role="button">Get raw data</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
+
+
+
         </center>
     </body>
 </html>

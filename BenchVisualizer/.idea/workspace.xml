@@ -15,7 +15,7 @@
         <entry file="file://$PROJECT_DIR$/visualizer/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -32,35 +32,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jobDetails.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="jobDetails.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state relative-caret-position="405">
+              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jobDetails.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jobDetails.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/visualizer/static/js/jobDetails.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JenkinsConnector.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -68,8 +56,8 @@
       <file leaf-file-name="BenchMiner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="35" column="21" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="21" />
+            <state relative-caret-position="495">
+              <caret line="42" column="16" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -98,8 +86,8 @@
         <option value="$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py" />
         <option value="$PROJECT_DIR$/visualizer/models.py" />
         <option value="$PROJECT_DIR$/visualizer/static/js/plotly-latest.min.js" />
-        <option value="$PROJECT_DIR$/visualizer/static/js/jobDetails.js" />
         <option value="$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html" />
+        <option value="$PROJECT_DIR$/visualizer/static/js/jobDetails.js" />
       </list>
     </option>
   </component>
@@ -130,14 +118,7 @@
               <item name="BenchVisualizer" type="b2602c69:ProjectViewProjectNode" />
               <item name="BenchVisualizer" type="462c0819:PsiDirectoryNode" />
               <item name="visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BenchVisualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BenchVisualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -206,6 +187,23 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="21" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -228,7 +226,7 @@
         <state relative-caret-position="345">
           <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -257,13 +255,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/static/js/plotly-latest.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41100">
-          <caret line="6" column="2734481" lean-forward="true" selection-start-line="6" selection-start-column="2734481" selection-end-line="6" selection-end-column="2734481" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/static/js/plotly-latest.min.js" />
     <entry file="file://$PROJECT_DIR$/visualizer/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -514,6 +506,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/static/js/plotly-latest.min.js" />
+    <entry file="file://$PROJECT_DIR$/visualizer/templates/visualizer/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="47" lean-forward="true" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -524,58 +541,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/static/js/plotly-latest.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="6" column="2731401" lean-forward="true" selection-start-line="6" selection-start-column="2731401" selection-end-line="6" selection-end-column="2731401" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/templates/visualizer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="47" lean-forward="true" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/static/js/jobDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
+        <state relative-caret-position="495">
+          <caret line="42" column="16" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+        <state relative-caret-position="405">
+          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/static/js/jobDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
