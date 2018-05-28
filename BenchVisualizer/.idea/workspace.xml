@@ -14,8 +14,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="434">
+              <caret line="79" column="41" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -23,23 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/visualizer/utilities/__init__.py">
+      <file leaf-file-name="RawDataMaker.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/visualizer/utilities/RawDataMaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BenchMiner.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="40" column="42" lean-forward="true" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -82,7 +70,6 @@
         <option value="$PROJECT_DIR$/visualizer/utilities/Jenkins_Connector.py" />
         <option value="$PROJECT_DIR$/visualizer/static/css/styles.css" />
         <option value="$PROJECT_DIR$/visualizer/templates/visualizer/index.html" />
-        <option value="$PROJECT_DIR$/visualizer/utilities/__init__.py" />
         <option value="$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py" />
         <option value="$PROJECT_DIR$/visualizer/models.py" />
         <option value="$PROJECT_DIR$/visualizer/static/js/plotly-latest.min.js" />
@@ -90,7 +77,9 @@
         <option value="$PROJECT_DIR$/visualizer/utilities/BenchMiner.py" />
         <option value="$PROJECT_DIR$/visualizer/static/js/jobDetails.js" />
         <option value="$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html" />
+        <option value="$PROJECT_DIR$/visualizer/utilities/__init__.py" />
         <option value="$PROJECT_DIR$/visualizer/views.py" />
+        <option value="$PROJECT_DIR$/visualizer/utilities/RawDataMaker.py" />
       </list>
     </option>
   </component>
@@ -216,13 +205,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -271,6 +253,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -324,6 +309,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -520,6 +508,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -561,30 +552,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/utilities/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="600">
           <caret line="40" column="42" lean-forward="true" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="434">
+          <caret line="79" column="41" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/utilities/__init__.py">
+    <entry file="file://$PROJECT_DIR$/visualizer/utilities/RawDataMaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>

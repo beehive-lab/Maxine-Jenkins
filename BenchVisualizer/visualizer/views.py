@@ -7,7 +7,7 @@ import requests
 from jenkinsapi.jenkins import Jenkins
 from django.template import loader
 from requests import ConnectionError
-from utilities import JenkinsConnector
+from utilities import JenkinsConnector, RawDataMaker
 
 
 # Create your views here.
@@ -75,6 +75,10 @@ def raw(request, job_name, bench_type):
                 'spec_sunflow': request.POST['spec_sunflow'],
                 'xml': request.POST['xml']
             }
+
+            rawmaker = RawDataMaker(benchs)
+            print rawmaker.get_raw_data()
+
         else:
             raise Http404("Cannot call this page directly")
 
