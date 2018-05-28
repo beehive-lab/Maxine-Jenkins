@@ -1,9 +1,10 @@
 $(document).ready(function() {
 
-    var bench_names = ["startup", "compiler", "compress", "crypto", "derby", "mpegaudio", "scimark", "serial", "sunflow", "xml"];
+    var bench_names = ["startup", "compiler", "compress", "crypto", "derby", "mpegaudio", "scimark", "serial", "spec_sunflow", "xml"];
 
     var specjvm_bench = []
 
+    //get all the benchmark values by their name
     for(i = 0; i < bench_names.length; i++){
         specjvm_bench.push($('#'+bench_names[i]).text());
     }

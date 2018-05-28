@@ -23,17 +23,21 @@
                 <tr>
                     <td><div id="tester" style="width:800px;height:500px;"></div></td>
                     <td>
-                        <table class="table-bordered">
-                            <thead>
-                                <tr><td>Benchmark</td><td>Ops/min</td></tr>
-                            </thead>
-                            <tbody>
-                                {% for key,value in job_details.specjvm.items %}
-                                    <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        <a href="#" class="btn btn-info" role="button">Get raw data</a>
+                        <form action="{% url 'visualizer:raw' job_name 'specjvm' %}" method="post">
+                            {% csrf_token %}
+                            <table class="table-bordered">
+                                <thead>
+                                    <tr><td>Benchmark</td><td>Ops/min</td></tr>
+                                </thead>
+                                <tbody>
+                                    {% for key,value in job_details.specjvm.items %}
+                                        <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
+                                        <input type="hidden" name="{{key}}" value="{{value}}"/>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn btn-info">Get raw data</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>

@@ -39,7 +39,7 @@ class BenchMiner:
             'mpegaudio': self.mine_specjvm('mpegaudio'),
             'scimark': self.mine_specjvm('scimark'),
             'serial': self.mine_specjvm('serial'),
-            'sunflow': self.mine_specjvm('sunflow'),
+            'spec_sunflow': self.mine_specjvm('sunflow'),
             'xml': self.mine_specjvm('xml')
         }
 

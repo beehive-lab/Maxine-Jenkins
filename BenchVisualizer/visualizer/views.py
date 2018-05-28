@@ -51,3 +51,31 @@ def jobDetails(request, job_name):
         return HttpResponse(template.render(context, request))
     except ConnectionError:
         raise Http404("Could not establish a connection to the Jenkins server")
+
+#the controller for the raw page
+
+def raw(request, job_name, bench_type):
+
+    '''
+    If one of the POST variables exists, all the others exist.
+    If there aren't any POST variables, the user has called the page directly.
+    '''
+    if bench_type == "specjvm":
+
+        if 'startup' in request.POST:
+            benchs = {
+                'startup': request.POST['startup'],
+                'compiler': request.POST['compiler'],
+                'compress': request.POST['compress'],
+                'crypto': request.POST['crypto'],
+                'derby': request.POST['derby'],
+                'mpegaudio': request.POST['mpegaudio'],
+                'scimark': request.POST['scimark'],
+                'serial': request.POST['serial'],
+                'spec_sunflow': request.POST['spec_sunflow'],
+                'xml': request.POST['xml']
+            }
+        else:
+            raise Http404("Cannot call this page directly")
+
+    return HttpResponse("Raw here")
