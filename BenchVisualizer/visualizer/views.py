@@ -77,7 +77,14 @@ def raw(request, job_name, bench_type):
             }
 
             rawmaker = RawDataMaker(benchs)
-            print rawmaker.get_raw_data()
+
+            template = loader.get_template('visualizer/raw.html')
+            context = {
+                'job_name': job_name,
+                'bench_type': bench_type,
+                'data': rawmaker.get_raw_data()
+            }
+            return HttpResponse(template.render(context, request))
 
         else:
             raise Http404("Cannot call this page directly")
