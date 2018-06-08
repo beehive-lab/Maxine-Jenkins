@@ -7,3 +7,11 @@ div.page_head {
     margin-bottom: 30px;
     padding: 15px;
 }
+
+.plot {
+    margin-bottom: 30px;
+}
+
+.separating_line {
+    border_top: 1 px
+}

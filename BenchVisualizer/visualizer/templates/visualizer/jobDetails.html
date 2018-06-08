@@ -22,7 +22,7 @@
             <tbody>
                 <!-- SPECJVM stats -->
                 <tr>
-                    <td><div id="tester" style="width:800px;height:500px;"></div></td>
+                    <td><div class="plot" id="tester" style="width:800px;height:500px;"></div></td>
                     <td>
                         <form action="{% url 'visualizer:raw' job_name 'specjvm' %}" method="post">
                             {% csrf_token %}
@@ -42,8 +42,8 @@
                     </td>
                 </tr>
                 <!-- DACAPO stats -->
-                <tr>
-                    <td><div id="testerD" style="width:800px;height:500px;"></div></td>
+                <tr class="separating_line">
+                    <td><div class="plot" id="testerD" style="width:800px;height:500px;"></div></td>
                     <td>
                         <form action="{% url 'visualizer:raw' job_name 'dacapo' %}" method="post">
                             {% csrf_token %}
