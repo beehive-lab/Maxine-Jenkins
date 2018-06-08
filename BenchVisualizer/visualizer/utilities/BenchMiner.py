@@ -10,19 +10,19 @@ class BenchMiner:
         self.console_dacapo = ""
 
         #contains specjvm_console
-        self.console_spec_jvm = ""
+        self.console_specjvm = ""
 
     def mine_specjvm(self, sub_bench):
 
         search_term = r".*mx.*vm.*-jar.*SPECjvm2008.jar.*" + sub_bench
 
-        search_result = re.search(search_term, self.console_inp)
+        search_result = re.search(search_term, self.console_specjvm)
 
         #if the sub-benchmark was not executed, return 0
         if search_result == None:
             return "0"
 
-        sub_console = self.console_inp[search_result.start():]
+        sub_console = self.console_specjvm[search_result.start():]
         search_term = r".*Noncompliant composite result: .*"
         search_result = re.search(search_term, sub_console)
 
@@ -36,6 +36,19 @@ class BenchMiner:
         return raw_benchmark
 
     def mine_all_specjvms(self):
+
+        #narrow the search by finding the execution of the first test
+        search_term = r".*mx.*vm.*-jar.*SPECjvm2008.jar.*"
+
+        search_result = re.search(search_term, self.console_inp)
+
+        if search_result == None:
+            return {
+                'startup': "0", 'compiler': "0", 'compress': "0", 'crypto': "0", 'derby': "0",
+                'mpegaudio': "0", 'scimark': "0", 'serial': "0", 'spec_sunflow': "0", 'xml': "0"
+            }
+
+        self.console_specjvm = self.console_inp[search_result.start():]
 
         return {
             'startup': self.mine_specjvm('startup'),
@@ -70,6 +83,13 @@ class BenchMiner:
         #firstly, we narrow the search for the dacapo results
         search_term = r".*mx.*vm.*-jar.*dacapo-9.12-bach.jar.*"
         search_result = re.search(search_term, self.console_inp)
+
+        if search_result == None:
+            return {
+                'avrora': "0", 'batik': "0", 'eclipse': "0", 'fop': "0", 'h2': "0", 'jython': "0", 'luindex': "0",
+                'lusearch': "0", 'pmd': "0", 'sunflow': "0", 'tomcat': "0", 'tradebeans': "0", 'tradesoap': "0", 'xalan': "0"
+            }
+
         self.console_dacapo = self.console_inp[search_result.start():]
 
         #avrora batik eclipse fop h2 jython luindex lusearch pmd sunflow tomcat tradebeans tradesoap xalan
