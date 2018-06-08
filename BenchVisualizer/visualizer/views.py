@@ -60,6 +60,7 @@ def raw(request, job_name, bench_type):
     If one of the POST variables exists, all the others exist.
     If there aren't any POST variables, the user has called the page directly.
     '''
+
     if bench_type == "specjvm":
 
         if 'startup' in request.POST:

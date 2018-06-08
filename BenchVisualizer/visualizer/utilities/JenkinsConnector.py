@@ -32,13 +32,19 @@ class JenkinsConnector:
         lb = job.get_last_build()
 
         spec_miner = BenchMiner(lb.get_console())
-        result = spec_miner.mine_all_specjvms()
+
+        #get all specjvm results
+        spec_result = spec_miner.mine_all_specjvms()
+
+        #get all dacapo tests
+        dacapo_result = spec_miner.mine_all_dacapos()
 
         job_details = {
             'job_running': str(job.is_running()),
             'is_good': str(lb.is_good()),
             'last_build_no': str(lb.buildno),
-            'specjvm': result
+            'specjvm': spec_result,
+            'dacapo': dacapo_result
         }
 
         return job_details
