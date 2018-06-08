@@ -6,8 +6,11 @@ class BenchMiner:
         #contains the whole console output of the pipeline
         self.console_inp = console
 
-        #contains dacapo results
+        #contains dacapo console
         self.console_dacapo = ""
+
+        #contains specjvm_console
+        self.console_spec_jvm = ""
 
     def mine_specjvm(self, sub_bench):
 
@@ -87,6 +90,3 @@ class BenchMiner:
             'tradesoap': self.mine_dacapo('tradesoap'),
             'xalan': self.mine_dacapo('xalan')
         }
-
-
-        return self.console_inp

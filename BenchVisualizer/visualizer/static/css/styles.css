@@ -13,5 +13,5 @@ div.page_head {
 }
 
 .separating_line {
-    border_top: 1 px
+    border_top: 5 px solid black;
 }
