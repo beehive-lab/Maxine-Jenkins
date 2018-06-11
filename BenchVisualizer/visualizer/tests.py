@@ -11,15 +11,13 @@ from utilities import BenchMiner
 class MinerTests(unittest.TestCase):
 
     def setUp(self):
-        self.f = open("static/test_files/console_whole", "r")
-        self.spec_miner = BenchMiner(self.f.read())
-
-    def tearDown(self):
-        self.f.close()
+        self.maxDiff = None
 
     def test_mine_all_specjvms_onemissing(self):
+        f = open("static/test_files/console_whole", "r")
+        spec_miner = BenchMiner(f.read())
 
-        spec_result = self.spec_miner.mine_all_specjvms()
+        spec_result = spec_miner.mine_all_specjvms()
 
         expected = {
             'startup': "8.62",
@@ -34,6 +32,29 @@ class MinerTests(unittest.TestCase):
             'xml': "21.96"
         }
 
+        f.close()
+        self.assertEquals(spec_result, expected)
+
+    def test_mine_all_specjvms_oneinterrupted(self):
+        f = open("static/test_files/console_one_specjvm_interrupt", "r")
+        spec_miner = BenchMiner(f.read())
+
+        spec_result = spec_miner.mine_all_specjvms()
+
+        expected = {
+            'startup': "8.62",
+            'compiler': "25.14",
+            'compress': "-1",
+            'crypto': "21.78",
+            'derby': "10.76",
+            'mpegaudio': "10.76",
+            'scimark': "0",
+            'serial': "6.94",
+            'spec_sunflow': "21.74",
+            'xml': "21.96"
+        }
+
+        f.close()
         self.assertEquals(spec_result, expected)
 
 

@@ -1,0 +1,1006 @@
+17:27:14 [test] Running in /home/vasilis/.jenkins/workspace/MaxinePipeline/maxine
+[Pipeline] [test] {
+[Pipeline] [crossisa] dir
+17:27:14 [crossisa] Running in /home/vasilis/.jenkins/workspace/MaxinePipeline/maxine
+[Pipeline] [crossisa] {
+[Pipeline] [test] }
+[Pipeline] [crossisa] }
+[Pipeline] [test] // dir
+[Pipeline] [crossisa] // dir
+[Pipeline] [test] }
+[Pipeline] [crossisa] }
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (javatester)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] dir
+17:27:15 Running in /home/vasilis/Desktop/SPECjvm2008
+[Pipeline] {
+[Pipeline] sh
+17:27:15 [SPECjvm2008] Running shell script
+17:27:15 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 startup
+17:27:18
+17:27:18 SPECjvm2008 Peak
+17:27:18   Properties file:   none
+17:27:18   Benchmarks:        startup.helloworld startup.compiler.compiler startup.compiler.sunflow startup.compress startup.crypto.aes startup.crypto.rsa startup.crypto.signverify startup.mpegaudio startup.scimark.fft startup.scimark.lu startup.scimark.monte_carlo startup.scimark.sor startup.scimark.sparse startup.serial startup.sunflow startup.xml.transform startup.xml.validation
+17:27:18
+17:27:18   WARNING: Run will not be compliant.
+17:27:18   Not a compliant sequence of benchmarks for publication.
+17:27:18   Property specjvm.iteration.time must be at least 240 seconds for publication.
+17:27:18
+17:27:18   Kit signature and checksum is validated.
+17:27:18   This can take several minutes.
+17:27:18   Use argument '-ikv' to skip this.
+17:29:12   ....................................passed.
+17:29:12
+17:29:12 --- --- --- --- --- --- --- --- ---
+17:29:12
+17:29:12   Benchmark:   check
+17:29:12   Run mode:    static run
+17:29:12   Test type:   functional
+17:29:12   Threads:     1
+17:29:12   Iterations:  1
+17:29:12   Run length:  1 operation
+17:29:12
+17:29:12 Iteration 1 (1 operation) begins: Thu May 24 17:29:12 BST 2018
+17:29:12 Iteration 1 (1 operation) ends:   Thu May 24 17:29:12 BST 2018
+17:29:12 Iteration 1 (1 operation) result: PASSED
+17:29:12
+17:29:12 Valid run!
+17:29:12
+17:29:12
+17:29:12 --- --- --- --- --- --- --- --- ---
+17:29:12
+17:29:12   Benchmark:   startup.helloworld
+17:29:12   Run mode:    static run
+17:29:12   Test type:   single
+17:29:12   Threads:     1
+17:29:12   Iterations:  1
+17:29:12   Run length:  1 operation
+17:29:12
+17:29:12 Iteration 1 (1 operation) begins: Thu May 24 17:29:12 BST 2018
+17:29:13 Iteration 1 (1 operation) ends:   Thu May 24 17:29:13 BST 2018
+17:29:13 Iteration 1 (1 operation) result: 101.35 ops/m
+17:29:13
+17:29:13 Valid run!
+17:29:13 Score on startup.helloworld: 101.35 ops/m
+17:29:13
+17:29:13
+17:29:13 --- --- --- --- --- --- --- --- ---
+17:29:13
+17:29:13   Benchmark:   startup.compiler.compiler
+17:29:13   Run mode:    static run
+17:29:13   Test type:   single
+17:29:13   Threads:     1
+17:29:13   Iterations:  1
+17:29:13   Run length:  1 operation
+17:29:13
+17:29:13 Iteration 1 (1 operation) begins: Thu May 24 17:29:13 BST 2018
+17:29:34 Iteration 1 (1 operation) ends:   Thu May 24 17:29:34 BST 2018
+17:29:34 Iteration 1 (1 operation) result: 2.80 ops/m
+17:29:34
+17:29:34 Valid run!
+17:29:34 Score on startup.compiler.compiler: 2.80 ops/m
+17:29:34
+17:29:34
+17:29:34 --- --- --- --- --- --- --- --- ---
+17:29:34
+17:29:34   Benchmark:   startup.compiler.sunflow
+17:29:34   Run mode:    static run
+17:29:34   Test type:   single
+17:29:34   Threads:     1
+17:29:34   Iterations:  1
+17:29:34   Run length:  1 operation
+17:29:34
+17:29:34 Iteration 1 (1 operation) begins: Thu May 24 17:29:34 BST 2018
+17:29:56 Iteration 1 (1 operation) ends:   Thu May 24 17:29:55 BST 2018
+17:29:56 Iteration 1 (1 operation) result: 2.85 ops/m
+17:29:56
+17:29:56 Valid run!
+17:29:56 Score on startup.compiler.sunflow: 2.85 ops/m
+17:29:56
+17:29:56
+17:29:56 --- --- --- --- --- --- --- --- ---
+17:29:56
+17:29:56   Benchmark:   startup.compress
+17:29:56   Run mode:    static run
+17:29:56   Test type:   single
+17:29:56   Threads:     1
+17:29:56   Iterations:  1
+17:29:56   Run length:  1 operation
+17:29:56
+17:29:56 Iteration 1 (1 operation) begins: Thu May 24 17:29:55 BST 2018
+17:30:00 Iteration 1 (1 operation) ends:   Thu May 24 17:29:59 BST 2018
+17:30:00 Iteration 1 (1 operation) result: 14.46 ops/m
+17:30:00
+17:30:00 Valid run!
+17:30:00 Score on startup.compress: 14.46 ops/m
+17:30:00
+17:30:00
+17:30:00 --- --- --- --- --- --- --- --- ---
+17:30:00
+17:30:00   Benchmark:   startup.crypto.aes
+17:30:00   Run mode:    static run
+17:30:00   Test type:   single
+17:30:00   Threads:     1
+17:30:00   Iterations:  1
+17:30:00   Run length:  1 operation
+17:30:00
+17:30:00 Iteration 1 (1 operation) begins: Thu May 24 17:29:59 BST 2018
+17:30:09 Iteration 1 (1 operation) ends:   Thu May 24 17:30:08 BST 2018
+17:30:09 Iteration 1 (1 operation) result: 6.83 ops/m
+17:30:09
+17:30:09 Valid run!
+17:30:09 Score on startup.crypto.aes: 6.83 ops/m
+17:30:09
+17:30:09
+17:30:09 --- --- --- --- --- --- --- --- ---
+17:30:09
+17:30:09   Benchmark:   startup.crypto.rsa
+17:30:09   Run mode:    static run
+17:30:09   Test type:   single
+17:30:09   Threads:     1
+17:30:09   Iterations:  1
+17:30:09   Run length:  1 operation
+17:30:09
+17:30:09 Iteration 1 (1 operation) begins: Thu May 24 17:30:08 BST 2018
+17:30:14 Iteration 1 (1 operation) ends:   Thu May 24 17:30:13 BST 2018
+17:30:14 Iteration 1 (1 operation) result: 11.74 ops/m
+17:30:14
+17:30:14 Valid run!
+17:30:14 Score on startup.crypto.rsa: 11.74 ops/m
+17:30:14
+17:30:14
+17:30:14 --- --- --- --- --- --- --- --- ---
+17:30:14
+17:30:14   Benchmark:   startup.crypto.signverify
+17:30:14   Run mode:    static run
+17:30:14   Test type:   single
+17:30:14   Threads:     1
+17:30:14   Iterations:  1
+17:30:14   Run length:  1 operation
+17:30:14
+17:30:14 Iteration 1 (1 operation) begins: Thu May 24 17:30:13 BST 2018
+17:30:19 Iteration 1 (1 operation) ends:   Thu May 24 17:30:18 BST 2018
+17:30:19 Iteration 1 (1 operation) result: 11.82 ops/m
+17:30:19
+17:30:19 Valid run!
+17:30:19 Score on startup.crypto.signverify: 11.82 ops/m
+17:30:19
+17:30:19
+17:30:19 --- --- --- --- --- --- --- --- ---
+17:30:19
+17:30:19   Benchmark:   startup.mpegaudio
+17:30:19   Run mode:    static run
+17:30:19   Test type:   single
+17:30:19   Threads:     1
+17:30:19   Iterations:  1
+17:30:19   Run length:  1 operation
+17:30:19
+17:30:19 Iteration 1 (1 operation) begins: Thu May 24 17:30:18 BST 2018
+17:30:31 Iteration 1 (1 operation) ends:   Thu May 24 17:30:29 BST 2018
+17:30:31 Iteration 1 (1 operation) result: 5.70 ops/m
+17:30:31
+17:30:31 Valid run!
+17:30:31 Score on startup.mpegaudio: 5.70 ops/m
+17:30:31
+17:30:31
+17:30:31 --- --- --- --- --- --- --- --- ---
+17:30:31
+17:30:31   Benchmark:   startup.scimark.fft
+17:30:31   Run mode:    static run
+17:30:31   Test type:   single
+17:30:31   Threads:     1
+17:30:31   Iterations:  1
+17:30:31   Run length:  1 operation
+17:30:31
+17:30:31 Iteration 1 (1 operation) begins: Thu May 24 17:30:29 BST 2018
+17:30:33 Iteration 1 (1 operation) ends:   Thu May 24 17:30:33 BST 2018
+17:30:33 Iteration 1 (1 operation) result: 15.87 ops/m
+17:30:33
+17:30:33 Valid run!
+17:30:33 Score on startup.scimark.fft: 15.87 ops/m
+17:30:33
+17:30:33
+17:30:33 --- --- --- --- --- --- --- --- ---
+17:30:33
+17:30:33   Benchmark:   startup.scimark.lu
+17:30:33   Run mode:    static run
+17:30:33   Test type:   single
+17:30:33   Threads:     1
+17:30:33   Iterations:  1
+17:30:33   Run length:  1 operation
+17:30:33
+17:30:33 Iteration 1 (1 operation) begins: Thu May 24 17:30:33 BST 2018
+17:30:36 Iteration 1 (1 operation) ends:   Thu May 24 17:30:35 BST 2018
+17:30:36 Iteration 1 (1 operation) result: 22.58 ops/m
+17:30:36
+17:30:36 Valid run!
+17:30:36 Score on startup.scimark.lu: 22.58 ops/m
+17:30:36
+17:30:36
+17:30:36 --- --- --- --- --- --- --- --- ---
+17:30:36
+17:30:36   Benchmark:   startup.scimark.monte_carlo
+17:30:36   Run mode:    static run
+17:30:36   Test type:   single
+17:30:36   Threads:     1
+17:30:36   Iterations:  1
+17:30:36   Run length:  1 operation
+17:30:36
+17:30:36 Iteration 1 (1 operation) begins: Thu May 24 17:30:35 BST 2018
+17:30:42 Iteration 1 (1 operation) ends:   Thu May 24 17:30:42 BST 2018
+17:30:42 Iteration 1 (1 operation) result: 8.50 ops/m
+17:30:42
+17:30:42 Valid run!
+17:30:42 Score on startup.scimark.monte_carlo: 8.50 ops/m
+17:30:42
+17:30:42
+17:30:42 --- --- --- --- --- --- --- --- ---
+17:30:42
+17:30:42   Benchmark:   startup.scimark.sor
+17:30:42   Run mode:    static run
+17:30:42   Test type:   single
+17:30:42   Threads:     1
+17:30:42   Iterations:  1
+17:30:42   Run length:  1 operation
+17:30:42
+17:30:42 Iteration 1 (1 operation) begins: Thu May 24 17:30:42 BST 2018
+17:30:49 Iteration 1 (1 operation) ends:   Thu May 24 17:30:48 BST 2018
+17:30:49 Iteration 1 (1 operation) result: 10.52 ops/m
+17:30:49
+17:30:49 Valid run!
+17:30:49 Score on startup.scimark.sor: 10.52 ops/m
+17:30:49
+17:30:49
+17:30:49 --- --- --- --- --- --- --- --- ---
+17:30:49
+17:30:49   Benchmark:   startup.scimark.sparse
+17:30:49   Run mode:    static run
+17:30:49   Test type:   single
+17:30:49   Threads:     1
+17:30:49   Iterations:  1
+17:30:49   Run length:  1 operation
+17:30:49
+17:30:49 Iteration 1 (1 operation) begins: Thu May 24 17:30:48 BST 2018
+17:30:54 Iteration 1 (1 operation) ends:   Thu May 24 17:30:53 BST 2018
+17:30:54 Iteration 1 (1 operation) result: 11.27 ops/m
+17:30:54
+17:30:54 Valid run!
+17:30:54 Score on startup.scimark.sparse: 11.27 ops/m
+17:30:54
+17:30:54
+17:30:54 --- --- --- --- --- --- --- --- ---
+17:30:54
+17:30:54   Benchmark:   startup.serial
+17:30:54   Run mode:    static run
+17:30:54   Test type:   single
+17:30:54   Threads:     1
+17:30:54   Iterations:  1
+17:30:54   Run length:  1 operation
+17:30:54
+17:30:54 Iteration 1 (1 operation) begins: Thu May 24 17:30:53 BST 2018
+17:31:02 Iteration 1 (1 operation) ends:   Thu May 24 17:31:02 BST 2018
+17:31:02 Iteration 1 (1 operation) result: 7.00 ops/m
+17:31:02
+17:31:02 Valid run!
+17:31:02 Score on startup.serial: 7.00 ops/m
+17:31:02
+17:31:02
+17:31:02 --- --- --- --- --- --- --- --- ---
+17:31:02
+17:31:02   Benchmark:   startup.sunflow
+17:31:02   Run mode:    static run
+17:31:02   Test type:   single
+17:31:02   Threads:     1
+17:31:02   Iterations:  1
+17:31:02   Run length:  1 operation
+17:31:02
+17:31:02 Iteration 1 (1 operation) begins: Thu May 24 17:31:02 BST 2018
+17:31:09 Iteration 1 (1 operation) ends:   Thu May 24 17:31:08 BST 2018
+17:31:09 Iteration 1 (1 operation) result: 10.61 ops/m
+17:31:09
+17:31:09 Valid run!
+17:31:09 Score on startup.sunflow: 10.61 ops/m
+17:31:09
+17:31:09
+17:31:09 --- --- --- --- --- --- --- --- ---
+17:31:09
+17:31:09   Benchmark:   startup.xml.transform
+17:31:09   Run mode:    static run
+17:31:09   Test type:   single
+17:31:09   Threads:     1
+17:31:09   Iterations:  1
+17:31:09   Run length:  1 operation
+17:31:09
+17:31:09 Iteration 1 (1 operation) begins: Thu May 24 17:31:08 BST 2018
+17:32:16 Iteration 1 (1 operation) ends:   Thu May 24 17:32:13 BST 2018
+17:32:16 Iteration 1 (1 operation) result: 0.92 ops/m
+17:32:16
+17:32:16 Valid run!
+17:32:16 Score on startup.xml.transform: 0.92 ops/m
+17:32:16
+17:32:16
+17:32:16 --- --- --- --- --- --- --- --- ---
+17:32:16
+17:32:16   Benchmark:   startup.xml.validation
+17:32:16   Run mode:    static run
+17:32:16   Test type:   single
+17:32:16   Threads:     1
+17:32:16   Iterations:  1
+17:32:16   Run length:  1 operation
+17:32:16
+17:32:16 Iteration 1 (1 operation) begins: Thu May 24 17:32:13 BST 2018
+17:32:26 Iteration 1 (1 operation) ends:   Thu May 24 17:32:24 BST 2018
+17:32:26 Iteration 1 (1 operation) result: 5.15 ops/m
+17:32:26
+17:32:26 Valid run!
+17:32:26 Score on startup.xml.validation: 5.15 ops/m
+17:32:26
+17:32:26 Results are stored in:
+17:32:26 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.026/SPECjvm2008.026.raw
+17:32:26 Generating reports in:
+17:32:26 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.026
+17:32:41
+17:32:41 Noncompliant composite result: 8.62 ops/m
+17:34:17 + true
+[Pipeline] sh
+17:34:17 [SPECjvm2008] Running shell script
+17:34:17 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 compiler
+17:34:20
+17:34:20 SPECjvm2008 Peak
+17:34:20   Properties file:   none
+17:34:20   Benchmarks:        compiler.compiler compiler.sunflow
+17:34:20
+17:34:20   WARNING: Run will not be compliant.
+17:34:20   Not a compliant sequence of benchmarks for publication.
+17:34:20   Property specjvm.iteration.time must be at least 240 seconds for publication.
+17:34:20
+17:34:20   Kit signature and checksum is validated.
+17:34:20   This can take several minutes.
+17:34:20   Use argument '-ikv' to skip this.
+17:35:56   ....................................passed.
+17:35:56
+17:35:56 --- --- --- --- --- --- --- --- ---
+17:35:56
+17:35:56   Benchmark:   check
+17:35:56   Run mode:    static run
+17:35:56   Test type:   functional
+17:35:56   Threads:     1
+17:35:56   Iterations:  1
+17:35:56   Run length:  1 operation
+17:35:56
+17:35:56 Iteration 1 (1 operation) begins: Thu May 24 17:35:55 BST 2018
+17:35:56 Iteration 1 (1 operation) ends:   Thu May 24 17:35:56 BST 2018
+17:35:56 Iteration 1 (1 operation) result: PASSED
+17:35:56
+17:35:56 Valid run!
+17:35:56
+17:35:56
+17:35:56 --- --- --- --- --- --- --- --- ---
+17:35:56
+17:35:56   Benchmark:   compiler.compiler
+17:35:56   Run mode:    timed run
+17:35:56   Test type:   multi
+17:35:56   Threads:     2
+17:35:56   Warmup:      5s
+17:35:56   Iterations:  1
+17:35:56   Run length:  5s
+17:36:14
+17:36:14 Warmup (5s) begins: Thu May 24 17:36:11 BST 2018
+17:36:24 Warmup (5s) ends:   Thu May 24 17:36:22 BST 2018
+17:36:24 Warmup (5s) result: 27.07 ops/m
+17:36:24
+17:36:24 Iteration 1 (5s) begins: Thu May 24 17:36:22 BST 2018
+17:36:32 Iteration 1 (5s) ends:   Thu May 24 17:36:31 BST 2018
+17:36:32 Iteration 1 (5s) result: 37.30 ops/m
+17:36:32
+17:36:32 Valid run!
+17:36:32 Score on compiler.compiler: 37.30 ops/m
+17:36:32
+17:36:32
+17:36:32 --- --- --- --- --- --- --- --- ---
+17:36:32
+17:36:32   Benchmark:   compiler.sunflow
+17:36:32   Run mode:    timed run
+17:36:32   Test type:   multi
+17:36:32   Threads:     2
+17:36:32   Warmup:      5s
+17:36:32   Iterations:  1
+17:36:32   Run length:  5s
+17:36:34 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:34 Note: Recompile with -Xlint:unchecked for details.
+17:36:34
+17:36:34 Warmup (5s) begins: Thu May 24 17:36:33 BST 2018
+17:36:35 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:35 Note: Recompile with -Xlint:unchecked for details.
+17:36:35 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:35 Note: Recompile with -Xlint:unchecked for details.
+17:36:36 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:36 Note: Recompile with -Xlint:unchecked for details.
+17:36:37 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:37 Note: Recompile with -Xlint:unchecked for details.
+17:36:37 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:37 Note: Recompile with -Xlint:unchecked for details.
+17:36:38 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:38 Note: Recompile with -Xlint:unchecked for details.
+17:36:38 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:38 Note: Recompile with -Xlint:unchecked for details.
+17:36:39 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:39 Note: Recompile with -Xlint:unchecked for details.
+17:36:39 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:39 Note: Recompile with -Xlint:unchecked for details.
+17:36:39 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:39 Note: Recompile with -Xlint:unchecked for details.
+17:36:41 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:41 Note: Recompile with -Xlint:unchecked for details.
+17:36:41 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:41 Note: Recompile with -Xlint:unchecked for details.
+17:36:42 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:42 Note: Recompile with -Xlint:unchecked for details.
+17:36:43 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:43 Note: Recompile with -Xlint:unchecked for details.
+17:36:44 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:44 Note: Recompile with -Xlint:unchecked for details.
+17:36:45 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:45 Note: Recompile with -Xlint:unchecked for details.
+17:36:45 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:45 Note: Recompile with -Xlint:unchecked for details.
+17:36:47 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:47 Note: Recompile with -Xlint:unchecked for details.
+17:36:47 Warmup (5s) ends:   Thu May 24 17:36:46 BST 2018
+17:36:47 Warmup (5s) result: 16.46 ops/m
+17:36:47
+17:36:47 Iteration 1 (5s) begins: Thu May 24 17:36:46 BST 2018
+17:36:47 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:47 Note: Recompile with -Xlint:unchecked for details.
+17:36:47 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:47 Note: Recompile with -Xlint:unchecked for details.
+17:36:48 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:48 Note: Recompile with -Xlint:unchecked for details.
+17:36:48 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:48 Note: Recompile with -Xlint:unchecked for details.
+17:36:50 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:50 Note: Recompile with -Xlint:unchecked for details.
+17:36:50 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:50 Note: Recompile with -Xlint:unchecked for details.
+17:36:51 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:51 Note: Recompile with -Xlint:unchecked for details.
+17:36:51 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:51 Note: Recompile with -Xlint:unchecked for details.
+17:36:52 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:52 Note: Recompile with -Xlint:unchecked for details.
+17:36:52 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:52 Note: Recompile with -Xlint:unchecked for details.
+17:36:54 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:54 Note: Recompile with -Xlint:unchecked for details.
+17:36:54 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:54 Note: Recompile with -Xlint:unchecked for details.
+17:36:55 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:55 Note: Recompile with -Xlint:unchecked for details.
+17:36:56 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:56 Note: Recompile with -Xlint:unchecked for details.
+17:36:57 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:57 Note: Recompile with -Xlint:unchecked for details.
+17:36:58 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:58 Note: Recompile with -Xlint:unchecked for details.
+17:36:59 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:36:59 Note: Recompile with -Xlint:unchecked for details.
+17:37:01 Note: /var/tmp/SPECjvm2008/compiler.sunflow/sunflow/src/org/sunflow/system/RenderGlobalsPanel.java uses unchecked or unsafe operations.
+17:37:01 Note: Recompile with -Xlint:unchecked for details.
+17:37:01 Iteration 1 (5s) ends:   Thu May 24 17:37:00 BST 2018
+17:37:01 Iteration 1 (5s) result: 16.95 ops/m
+17:37:01
+17:37:01 Valid run!
+17:37:01 Score on compiler.sunflow: 16.95 ops/m
+17:37:01
+17:37:01 Results are stored in:
+17:37:01 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.027/SPECjvm2008.027.raw
+17:37:01 Generating reports in:
+17:37:01 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.027
+17:37:11
+17:37:11 Noncompliant composite result: 25.14 ops/m
+17:41:32 + true
+[Pipeline] sh
+17:41:32 [SPECjvm2008] Running shell script
+17:41:32 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 compress
+17:41:34
+17:41:34 SPECjvm2008 Peak
+17:41:34   Properties file:   none
+17:41:34   Benchmarks:        compress
+17:41:34
+17:41:34   WARNING: Run will not be compliant.
+17:41:34   Not a compliant sequence of benchmarks for publication.
+17:41:34   Property specjvm.iteration.time must be at least 240 seconds for publication.
+17:41:34
+17:41:34   Kit signature and checksum is validated.
+17:41:34   This can take several minutes.
+17:41:34   Use argument '-ikv' to skip this.
+17:43:14   ....................................passed.
+17:43:14
+17:43:14 --- --- --- --- --- --- --- --- ---
+17:43:14
+17:43:14   Benchmark:   check
+17:43:14   Run mode:    static run
+17:43:14   Test type:   functional
+17:43:14   Threads:     1
+17:43:14   Iterations:  1
+17:43:14   Run length:  1 operation
+17:43:14
+17:43:14 Iteration 1 (1 operation) begins: Thu May 24 17:43:14 BST 2018
+17:43:14 Iteration 1 (1 operation) ends:   Thu May 24 17:43:14 BST 2018
+17:43:14 Iteration 1 (1 operation) result: PASSED
+17:43:14
+17:43:14 Valid run!
+17:43:14
+17:43:14
+17:43:14 --- --- --- --- --- --- --- --- ---
+17:43:14
+17:43:14   Benchmark:   compress
+17:43:14   Run mode:    timed run
+17:43:14   Test type:   multi
+17:43:14   Threads:     2
+17:43:14   Warmup:      5s
+17:43:14   Iterations:  1
+17:43:14   Run length:  5s
+17:43:14
+17:43:14 Warmup (5s) begins: Thu May 24 17:43:14 BST 2018
+17:43:32 Warmup (5s) ends:   Thu May 24 17:43:30 BST 2018
+17:43:32 Warmup (5s) result: 24.38 ops/m
+17:43:32
+17:43:32 Iteration 1 (5s) begins: Thu May 24 17:43:30 BST 2018
+17:43:42 Iteration 1 (5s) ends:   Thu May 24 17:43:41 BST 2018
+17:43:42 Iteration 1 (5s) result: 21.00 ops/m
+17:43:42
+17:43:42 Valid run!
+17:43:42 Score on compress: 21.00 ops/m
+17:43:42
+17:43:42 Results are stored in:
+17:43:42 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.028/SPECjvm2008.028.raw
+17:43:42 Generating reports in:
+17:43:42 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.028
+17:43:52
+17:43:52 !!!!! Something went wrong here and the subtest was interrupted !!!!!
+17:48:43 + true
+[Pipeline] sh
+17:48:43 [SPECjvm2008] Running shell script
+17:48:44 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 crypto
+17:48:47
+17:48:47 SPECjvm2008 Peak
+17:48:47   Properties file:   none
+17:48:47   Benchmarks:        crypto.aes crypto.rsa crypto.signverify
+17:48:47
+17:48:47   WARNING: Run will not be compliant.
+17:48:47   Not a compliant sequence of benchmarks for publication.
+17:48:47   Property specjvm.iteration.time must be at least 240 seconds for publication.
+17:48:47
+17:48:47   Kit signature and checksum is validated.
+17:48:47   This can take several minutes.
+17:48:47   Use argument '-ikv' to skip this.
+17:50:28   ....................................passed.
+17:50:28
+17:50:28 --- --- --- --- --- --- --- --- ---
+17:50:28
+17:50:28   Benchmark:   check
+17:50:28   Run mode:    static run
+17:50:28   Test type:   functional
+17:50:28   Threads:     1
+17:50:28   Iterations:  1
+17:50:28   Run length:  1 operation
+17:50:28
+17:50:28 Iteration 1 (1 operation) begins: Thu May 24 17:50:27 BST 2018
+17:50:28 Iteration 1 (1 operation) ends:   Thu May 24 17:50:28 BST 2018
+17:50:28 Iteration 1 (1 operation) result: PASSED
+17:50:28
+17:50:28 Valid run!
+17:50:28
+17:50:28
+17:50:28 --- --- --- --- --- --- --- --- ---
+17:50:28
+17:50:28   Benchmark:   crypto.aes
+17:50:28   Run mode:    timed run
+17:50:28   Test type:   multi
+17:50:28   Threads:     2
+17:50:28   Warmup:      5s
+17:50:28   Iterations:  1
+17:50:28   Run length:  5s
+17:50:28
+17:50:28 Warmup (5s) begins: Thu May 24 17:50:28 BST 2018
+17:51:07 Warmup (5s) ends:   Thu May 24 17:51:02 BST 2018
+17:51:07 Warmup (5s) result: 7.20 ops/m
+17:51:07
+17:51:07 Iteration 1 (5s) begins: Thu May 24 17:51:02 BST 2018
+17:51:39 Iteration 1 (5s) ends:   Thu May 24 17:51:34 BST 2018
+17:51:39 Iteration 1 (5s) result: 7.31 ops/m
+17:51:39
+17:51:39 Valid run!
+17:51:39 Score on crypto.aes: 7.31 ops/m
+17:51:39
+17:51:39
+17:51:39 --- --- --- --- --- --- --- --- ---
+17:51:39
+17:51:39   Benchmark:   crypto.rsa
+17:51:39   Run mode:    timed run
+17:51:39   Test type:   multi
+17:51:39   Threads:     2
+17:51:39   Warmup:      5s
+17:51:39   Iterations:  1
+17:51:39   Run length:  5s
+17:51:39
+17:51:39 Warmup (5s) begins: Thu May 24 17:51:34 BST 2018
+17:51:44 Warmup (5s) ends:   Thu May 24 17:51:43 BST 2018
+17:51:44 Warmup (5s) result: 23.68 ops/m
+17:51:44
+17:51:44 Iteration 1 (5s) begins: Thu May 24 17:51:43 BST 2018
+17:51:56 Iteration 1 (5s) ends:   Thu May 24 17:51:55 BST 2018
+17:51:56 Iteration 1 (5s) result: 28.86 ops/m
+17:51:56
+17:51:56 Valid run!
+17:51:56 Score on crypto.rsa: 28.86 ops/m
+17:51:56
+17:51:56
+17:51:56 --- --- --- --- --- --- --- --- ---
+17:51:56
+17:51:56   Benchmark:   crypto.signverify
+17:51:56   Run mode:    timed run
+17:51:56   Test type:   multi
+17:51:56   Threads:     2
+17:51:56   Warmup:      5s
+17:51:56   Iterations:  1
+17:51:56   Run length:  5s
+17:51:56
+17:51:56 Warmup (5s) begins: Thu May 24 17:51:56 BST 2018
+17:52:06 Warmup (5s) ends:   Thu May 24 17:52:05 BST 2018
+17:52:06 Warmup (5s) result: 33.23 ops/m
+17:52:06
+17:52:06 Iteration 1 (5s) begins: Thu May 24 17:52:05 BST 2018
+17:52:21 Iteration 1 (5s) ends:   Thu May 24 17:52:18 BST 2018
+17:52:21 Iteration 1 (5s) result: 48.95 ops/m
+17:52:21
+17:52:21 Valid run!
+17:52:21 Score on crypto.signverify: 48.95 ops/m
+17:52:21
+17:52:21 Results are stored in:
+17:52:21 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.029/SPECjvm2008.029.raw
+17:52:21 Generating reports in:
+17:52:21 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.029
+17:52:30
+17:52:30 Noncompliant composite result: 21.78 ops/m
+17:55:52 + true
+[Pipeline] sh
+17:55:52 [SPECjvm2008] Running shell script
+17:55:52 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 derby
+17:55:56
+17:55:56 SPECjvm2008 Peak
+17:55:56   Properties file:   none
+17:55:56   Benchmarks:        derby
+17:55:56
+17:55:56   WARNING: Run will not be compliant.
+17:55:56   Not a compliant sequence of benchmarks for publication.
+17:55:56   Property specjvm.iteration.time must be at least 240 seconds for publication.
+17:55:56
+17:55:56   Kit signature and checksum is validated.
+17:55:56   This can take several minutes.
+17:55:56   Use argument '-ikv' to skip this.
+17:57:51   ....................................passed.
+17:57:51
+17:57:51 --- --- --- --- --- --- --- --- ---
+17:57:51
+17:57:51   Benchmark:   check
+17:57:51   Run mode:    static run
+17:57:51   Test type:   functional
+17:57:51   Threads:     1
+17:57:51   Iterations:  1
+17:57:51   Run length:  1 operation
+17:57:51
+17:57:51 Iteration 1 (1 operation) begins: Thu May 24 17:57:51 BST 2018
+17:57:52 Iteration 1 (1 operation) ends:   Thu May 24 17:57:51 BST 2018
+17:57:52 Iteration 1 (1 operation) result: PASSED
+17:57:52
+17:57:52 Valid run!
+17:57:52
+17:57:52
+17:57:52 --- --- --- --- --- --- --- --- ---
+17:57:52
+17:57:52   Benchmark:   derby
+17:57:52   Run mode:    timed run
+17:57:52   Test type:   multi
+17:57:52   Threads:     2
+17:57:52   Warmup:      5s
+17:57:52   Iterations:  1
+17:57:52   Run length:  5s
+18:02:58 + true
+[Pipeline] sh
+18:02:58 [SPECjvm2008] Running shell script
+18:02:59 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 mpegaudio
+18:03:07
+18:03:07 SPECjvm2008 Peak
+18:03:07   Properties file:   none
+18:03:07   Benchmarks:        mpegaudio
+18:03:07
+18:03:07   WARNING: Run will not be compliant.
+18:03:07   Not a compliant sequence of benchmarks for publication.
+18:03:07   Property specjvm.iteration.time must be at least 240 seconds for publication.
+18:03:07
+18:03:07   Kit signature and checksum is validated.
+18:03:07   This can take several minutes.
+18:03:07   Use argument '-ikv' to skip this.
+18:04:40   ....................................passed.
+18:04:40
+18:04:40 --- --- --- --- --- --- --- --- ---
+18:04:40
+18:04:40   Benchmark:   check
+18:04:40   Run mode:    static run
+18:04:40   Test type:   functional
+18:04:40   Threads:     1
+18:04:40   Iterations:  1
+
+18:04:40   Run length:  1 operation
+18:04:40
+18:04:40 Iteration 1 (1 operation) begins: Thu May 24 18:04:40 BST 2018
+18:04:41 Iteration 1 (1 operation) ends:   Thu May 24 18:04:40 BST 2018
+18:04:41 Iteration 1 (1 operation) result: PASSED
+18:04:41
+18:04:41 Valid run!
+18:04:41
+18:04:41
+18:04:41 --- --- --- --- --- --- --- --- ---
+18:04:41
+18:04:41   Benchmark:   mpegaudio
+18:04:41   Run mode:    timed run
+18:04:41   Test type:   multi
+18:04:41   Threads:     2
+18:04:41   Warmup:      5s
+18:04:41   Iterations:  1
+18:04:41   Run length:  5s
+18:04:41
+18:04:41 Warmup (5s) begins: Thu May 24 18:04:40 BST 2018
+18:05:02 Warmup (5s) ends:   Thu May 24 18:05:00 BST 2018
+18:05:02 Warmup (5s) result: 10.15 ops/m
+18:05:02
+18:05:02 Iteration 1 (5s) begins: Thu May 24 18:05:00 BST 2018
+18:05:24 Iteration 1 (5s) ends:   Thu May 24 18:05:20 BST 2018
+18:05:24 Iteration 1 (5s) result: 10.76 ops/m
+18:05:24
+18:05:24 Valid run!
+18:05:24 Score on mpegaudio: 10.76 ops/m
+18:05:24
+18:05:24 Results are stored in:
+18:05:24 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.031/SPECjvm2008.031.raw
+18:05:24 Generating reports in:
+18:05:24 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.031
+18:05:31
+18:05:31 Noncompliant composite result: 10.76 ops/m
+18:10:07 + true
+[Pipeline] sh
+18:10:07 [SPECjvm2008] Running shell script
+18:10:08 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 serial
+18:10:16
+18:10:16 SPECjvm2008 Peak
+18:10:16   Properties file:   none
+18:10:16   Benchmarks:        serial
+18:10:16
+18:10:16   WARNING: Run will not be compliant.
+18:10:16   Not a compliant sequence of benchmarks for publication.
+18:10:16   Property specjvm.iteration.time must be at least 240 seconds for publication.
+18:10:16
+18:10:16   Kit signature and checksum is validated.
+18:10:16   This can take several minutes.
+18:10:16   Use argument '-ikv' to skip this.
+18:12:07   ....................................passed.
+18:12:07
+18:12:07 --- --- --- --- --- --- --- --- ---
+18:12:07
+18:12:07   Benchmark:   check
+18:12:07   Run mode:    static run
+18:12:07   Test type:   functional
+18:12:07   Threads:     1
+18:12:07   Iterations:  1
+18:12:07   Run length:  1 operation
+18:12:07
+18:12:07 Iteration 1 (1 operation) begins: Thu May 24 18:12:07 BST 2018
+18:12:08 Iteration 1 (1 operation) ends:   Thu May 24 18:12:08 BST 2018
+18:12:08 Iteration 1 (1 operation) result: PASSED
+18:12:08
+18:12:08 Valid run!
+18:12:08
+18:12:08
+18:12:08 --- --- --- --- --- --- --- --- ---
+18:12:08
+18:12:08   Benchmark:   serial
+18:12:08   Run mode:    timed run
+18:12:08   Test type:   multi
+18:12:08   Threads:     2
+18:12:08   Warmup:      5s
+18:12:08   Iterations:  1
+18:12:08   Run length:  5s
+18:12:08
+18:12:08 Warmup (5s) begins: Thu May 24 18:12:08 BST 2018
+18:12:40 Warmup (5s) ends:   Thu May 24 18:12:39 BST 2018
+18:12:40 Warmup (5s) result: 7.36 ops/m
+18:12:40
+18:12:40 Iteration 1 (5s) begins: Thu May 24 18:12:39 BST 2018
+18:13:12 Iteration 1 (5s) ends:   Thu May 24 18:13:08 BST 2018
+18:13:12 Iteration 1 (5s) result: 6.94 ops/m
+18:13:12
+18:13:12 Valid run!
+18:13:12 Score on serial: 6.94 ops/m
+18:13:12
+18:13:12 Results are stored in:
+18:13:12 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.032/SPECjvm2008.032.raw
+18:13:12 Generating reports in:
+18:13:12 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.032
+18:13:24
+18:13:24 Noncompliant composite result: 6.94 ops/m
+18:17:15 + true
+[Pipeline] sh
+18:17:15 [SPECjvm2008] Running shell script
+18:17:16 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 sunflow
+18:17:24
+18:17:24 SPECjvm2008 Peak
+18:17:24   Properties file:   none
+18:17:24   Benchmarks:        sunflow
+18:17:24
+18:17:24   WARNING: Run will not be compliant.
+18:17:24   Not a compliant sequence of benchmarks for publication.
+18:17:24   Property specjvm.iteration.time must be at least 240 seconds for publication.
+18:17:24
+18:17:24   Kit signature and checksum is validated.
+18:17:24   This can take several minutes.
+18:17:24   Use argument '-ikv' to skip this.
+18:19:08   ....................................passed.
+18:19:08
+18:19:08 --- --- --- --- --- --- --- --- ---
+18:19:08
+18:19:08   Benchmark:   check
+18:19:08   Run mode:    static run
+18:19:08   Test type:   functional
+18:19:08   Threads:     1
+18:19:08   Iterations:  1
+18:19:08   Run length:  1 operation
+18:19:09
+18:19:09 Iteration 1 (1 operation) begins: Thu May 24 18:19:08 BST 2018
+18:19:09 Iteration 1 (1 operation) ends:   Thu May 24 18:19:09 BST 2018
+18:19:09 Iteration 1 (1 operation) result: PASSED
+18:19:09
+18:19:09 Valid run!
+18:19:09
+18:19:09
+18:19:09 --- --- --- --- --- --- --- --- ---
+18:19:09
+18:19:09   Benchmark:   sunflow
+18:19:09   Run mode:    timed run
+18:19:09   Test type:   multi
+18:19:09   Threads:     2
+18:19:09   Warmup:      5s
+18:19:09   Iterations:  1
+18:19:09   Run length:  5s
+18:19:11
+18:19:11 Warmup (5s) begins: Thu May 24 18:19:11 BST 2018
+18:19:21 Warmup (5s) ends:   Thu May 24 18:19:20 BST 2018
+18:19:21 Warmup (5s) result: 18.24 ops/m
+18:19:21
+18:19:21 Iteration 1 (5s) begins: Thu May 24 18:19:20 BST 2018
+18:19:33 Iteration 1 (5s) ends:   Thu May 24 18:19:31 BST 2018
+18:19:33 Iteration 1 (5s) result: 21.74 ops/m
+18:19:33
+18:19:33 Valid run!
+18:19:33 Score on sunflow: 21.74 ops/m
+18:19:33
+18:19:33 Results are stored in:
+18:19:33 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.033/SPECjvm2008.033.raw
+18:19:33 Generating reports in:
+18:19:33 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.033
+18:19:45
+18:19:45 Noncompliant composite result: 21.74 ops/m
+18:24:21 + true
+[Pipeline] sh
+18:24:22 [SPECjvm2008] Running shell script
+18:24:22 + timeout --preserve-status -s SIGINT 7m /home/vasilis/.jenkins/workspace/MaxinePipeline/graal/mxtool/mx --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 xml
+18:24:30
+18:24:30 SPECjvm2008 Peak
+18:24:30   Properties file:   none
+18:24:30   Benchmarks:        xml.transform xml.validation
+18:24:30
+18:24:30   WARNING: Run will not be compliant.
+18:24:30   Not a compliant sequence of benchmarks for publication.
+18:24:30   Property specjvm.iteration.time must be at least 240 seconds for publication.
+18:24:30
+18:24:30   Kit signature and checksum is validated.
+18:24:30   This can take several minutes.
+18:24:30   Use argument '-ikv' to skip this.
+18:26:15   ....................................passed.
+18:26:15
+18:26:15 --- --- --- --- --- --- --- --- ---
+18:26:15
+18:26:15   Benchmark:   check
+18:26:15   Run mode:    static run
+18:26:15   Test type:   functional
+18:26:15   Threads:     1
+18:26:15   Iterations:  1
+18:26:15   Run length:  1 operation
+18:26:15
+18:26:15 Iteration 1 (1 operation) begins: Thu May 24 18:26:15 BST 2018
+18:26:16 Iteration 1 (1 operation) ends:   Thu May 24 18:26:16 BST 2018
+18:26:16 Iteration 1 (1 operation) result: PASSED
+18:26:16
+18:26:16 Valid run!
+18:26:16
+18:26:16
+18:26:16 --- --- --- --- --- --- --- --- ---
+18:26:16
+18:26:16   Benchmark:   xml.transform
+18:26:16   Run mode:    timed run
+18:26:16   Test type:   multi
+18:26:16   Threads:     2
+18:26:16   Warmup:      5s
+18:26:16   Iterations:  1
+18:26:16   Run length:  5s
+18:27:52
+18:27:52 Warmup (5s) begins: Thu May 24 18:27:39 BST 2018
+18:27:55 Warmup (5s) ends:   Thu May 24 18:27:55 BST 2018
+18:27:55 Warmup (5s) result: 14.43 ops/m
+18:27:55
+18:27:55 Iteration 1 (5s) begins: Thu May 24 18:27:55 BST 2018
+18:28:10 Iteration 1 (5s) ends:   Thu May 24 18:28:10 BST 2018
+18:28:10 Iteration 1 (5s) result: 13.45 ops/m
+18:28:10
+18:28:10 Valid run!
+18:28:10 Score on xml.transform: 13.45 ops/m
+18:28:10
+18:28:10
+18:28:10 --- --- --- --- --- --- --- --- ---
+18:28:10
+18:28:10   Benchmark:   xml.validation
+18:28:10   Run mode:    timed run
+18:28:10   Test type:   multi
+18:28:10   Threads:     2
+18:28:10   Warmup:      5s
+18:28:10   Iterations:  1
+18:28:10   Run length:  5s
+18:28:12
+18:28:12 Warmup (5s) begins: Thu May 24 18:28:12 BST 2018
+18:28:22 Warmup (5s) ends:   Thu May 24 18:28:22 BST 2018
+18:28:22 Warmup (5s) result: 30.97 ops/m
+18:28:22
+18:28:22 Iteration 1 (5s) begins: Thu May 24 18:28:22 BST 2018
+18:28:34 Iteration 1 (5s) ends:   Thu May 24 18:28:33 BST 2018
+18:28:34 Iteration 1 (5s) result: 35.85 ops/m
+18:28:34
+18:28:34 Valid run!
+18:28:34 Score on xml.validation: 35.85 ops/m
+18:28:34
+18:28:34 Results are stored in:
+18:28:34 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.034/SPECjvm2008.034.raw
+18:28:34 Generating reports in:
+18:28:34 /home/vasilis/Desktop/SPECjvm2008/results/SPECjvm2008.034
+18:28:56
+18:28:56 Noncompliant composite result: 21.96 ops/m
+18:31:32 + true
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
