@@ -23,8 +23,14 @@ class BenchMiner:
             return "0"
 
         sub_console = self.console_specjvm[search_result.start():]
-        search_term = r".*Noncompliant composite result: .*"
+        #"+ true" comes after the interrupt signal
+        search_term = r".*\+ true.*"
         search_result = re.search(search_term, sub_console)
+        sub_bench_output = sub_console[0:search_result.end()]
+
+        #look for the composite result inside the output of the sub benchmark
+        search_term = r".*Noncompliant composite result: .*"
+        search_result = re.search(search_term, sub_bench_output)
 
         #if the benchark was interrupted (no result printed), return -1
         if search_result == None:

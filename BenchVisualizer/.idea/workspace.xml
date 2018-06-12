@@ -23,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BenchMiner.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BenchMiner.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="450">
+              <caret line="30" column="77" selection-start-line="30" selection-start-column="77" selection-end-line="30" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -35,7 +35,7 @@
       <file leaf-file-name="JenkinsConnector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
+            <state relative-caret-position="599">
               <caret line="40" selection-start-line="40" selection-end-line="40" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
@@ -47,17 +47,26 @@
       <file leaf-file-name="console_one_specjvm_interrupt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_one_specjvm_interrupt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="569" column="61" lean-forward="true" selection-start-line="569" selection-start-column="61" selection-end-line="569" selection-end-column="61" />
+            <state relative-caret-position="-157">
+              <caret line="678" column="175" selection-start-line="678" selection-start-column="170" selection-end-line="678" selection-end-column="175" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="console_whole" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_whole">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-292">
+              <caret line="678" column="175" selection-start-line="678" selection-start-column="170" selection-end-line="678" selection-end-column="175" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
+            <state relative-caret-position="225">
+              <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -74,6 +83,13 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>+ true</find>
+      <find>!!</find>
+      <find>derby</find>
+    </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -93,9 +109,9 @@
         <option value="$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html" />
         <option value="$PROJECT_DIR$/visualizer/static/css/styles.css" />
         <option value="$PROJECT_DIR$/visualizer/static/test_files/console_whole" />
-        <option value="$PROJECT_DIR$/visualizer/utilities/BenchMiner.py" />
         <option value="$PROJECT_DIR$/visualizer/static/test_files/console_one_specjvm_interrupt" />
         <option value="$PROJECT_DIR$/visualizer/tests.py" />
+        <option value="$PROJECT_DIR$/visualizer/utilities/BenchMiner.py" />
       </list>
     </option>
   </component>
@@ -536,23 +552,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_whole">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="406" column="8" selection-start-line="406" selection-start-column="8" selection-end-line="406" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
+        <state relative-caret-position="599">
           <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
@@ -562,18 +564,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_one_specjvm_interrupt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="569" column="61" lean-forward="true" selection-start-line="569" selection-start-column="61" selection-end-line="569" selection-end-column="61" />
+        <state relative-caret-position="-157">
+          <caret line="678" column="175" selection-start-line="678" selection-start-column="170" selection-end-line="678" selection-end-column="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_whole">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-292">
+          <caret line="678" column="175" selection-start-line="678" selection-start-column="170" selection-end-line="678" selection-end-column="175" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
+        <state relative-caret-position="225">
+          <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="77" selection-start-line="30" selection-start-column="77" selection-end-line="30" selection-end-column="77" />
         </state>
       </provider>
     </entry>
