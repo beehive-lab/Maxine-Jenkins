@@ -109,3 +109,15 @@ def registerJobs(request):
 
     except ConnectionError:
         raise Http404("Could not establish a connection to the Jenkins server")
+
+#Job register status controller
+
+def registerStatus(request):
+
+    if 'jobs' in request.POST:
+        jobs = request.POST.getlist('jobs')
+        return HttpResponse(str(jobs))
+    else:
+        raise Http404("Cannot call this page directly")
+
+

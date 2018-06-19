@@ -15,7 +15,7 @@
             <h1>BenchVisualizer: Register Jobs</h1>
         </div>
 
-        <form action="" method="post">
+        <form action="{% url 'visualizer:registerStatus'%}" method="post">
             {% csrf_token %}
             <table class="table">
                 <thead>
