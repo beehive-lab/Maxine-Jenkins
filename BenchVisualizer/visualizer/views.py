@@ -91,3 +91,21 @@ def raw(request, job_name, bench_type):
             raise Http404("Cannot call this page directly")
 
     return HttpResponse("Raw here")
+
+#Job register controller
+
+def registerJobs(request):
+
+    try:
+        jenkins_conn = JenkinsConnector()
+
+        server_jobs = jenkins_conn.get_jobs_summary()
+        context = {
+            'server_jobs': server_jobs,
+        }
+        template = loader.get_template('visualizer/registerJobs.html')
+
+        return HttpResponse(template.render(context, request))
+
+    except ConnectionError:
+        raise Http404("Could not establish a connection to the Jenkins server")

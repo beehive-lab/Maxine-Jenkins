@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+        <title>BenchVisualizer start page</title>
+    </head>
+    <body>
+
+        <div class="page_head">
+            <h1>BenchVisualizer: Register Jobs</h1>
+        </div>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Job Name</td>
+                        <td>Description</td>
+                        <td>Is Running</td>
+                        <td>Is enabled</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for obj in server_jobs %}
+                    <tr>
+                            <td><input type="checkbox" name="jobs" value="{{ obj.name }}"> {{ obj.name }}</td>
+                            <td>{{ obj.description }}</td>
+                            <td>{{ obj.is_running }}</td>
+                            <td>{{ obj.is_enabled }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-info">Register selected Jobs</button>
+        </form>
+
+    </body>
+</html>
