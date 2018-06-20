@@ -5,15 +5,41 @@ from django.db import models
 
 # Create your models here.
 
-class Dacapo(models.Model):
-    bench1 = models.CharField(max_length=50)
-    bench_date = models.DateTimeField('date of benchmark')
+class Job(models.Model):
+    name = models.CharField(max_length=50, default="n/a")
+    description = models.CharField(max_length=50, default="n/a")
+    is_running = models.CharField(max_length=5, default="n/a")
+    is_enabled = models.CharField(max_length=5, default="n/a")
 
     def __str__(self):
-        return self.bench1
+        return self.name
+
+class Dacapo(models.Model):
+    # avrora batik eclipse fop h2 jython luindex lusearch pmd sunflow tomcat tradebeans tradesoap xalan
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, default=1)
+    build_no = models.CharField(max_length=3, default="0")
+    avrora = models.CharField(max_length=50, default="0")
+    batik = models.CharField(max_length=50, default="0")
+    eclipse = models.CharField(max_length=50, default="0")
+    fop = models.CharField(max_length=50, default="0")
+    h2 = models.CharField(max_length=50, default="0")
+    jython = models.CharField(max_length=50, default="0")
+    luindex = models.CharField(max_length=50, default="0")
+    lusearch = models.CharField(max_length=50, default="0")
+    pmd = models.CharField(max_length=50, default="0")
+    sunflow = models.CharField(max_length=50, default="0")
+    tomcat = models.CharField(max_length=50, default="0")
+    tradebeans = models.CharField(max_length=50, default="0")
+    tradesoap = models.CharField(max_length=50, default="0")
+    xalan = models.CharField(max_length=50, default="0")
+
+    def __str__(self):
+        return str(self.job) + self.build_no
 
 
 class Specjvm(models.Model):
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, default=1)
+    build_no = models.CharField(max_length=3, default="0")
     startup = models.CharField(max_length=50, default="0")
     compiler = models.CharField(max_length=50, default="0")
     compress = models.CharField(max_length=50, default="0")
@@ -24,7 +50,6 @@ class Specjvm(models.Model):
     serial = models.CharField(max_length=50, default="0")
     sunflow = models.CharField(max_length=50, default="0")
     xml = models.CharField(max_length=50, default="0")
-    bench_date = models.DateTimeField('date of benchmark')
 
     def __str__(self):
-        return self.startup
+        return str(self.job) + self.build_no
