@@ -115,24 +115,42 @@ def registerJobs(request):
 def registerStatus(request):
 
     if 'jobs' in request.POST:
-        jobs = request.POST.getlist('jobs')
+
+        job_names = request.POST.getlist('jobs')
         db = DatabaseManager()
-        job1 = {
-            'name': jobs[0],
-            'description': "first job",
-            'is_running': "True",
-            'is_enabled': "True"
-        }
-        job2 = {
-            'name': jobs[1],
-            'description': "second job",
-            'is_running': "False",
-            'is_enabled': "False"
-        }
-        jobs = [job1, job2]
-        result = db.refresh_database(jobs)
+        try:
+            jenkins_conn = JenkinsConnector()
+
+            '''
+            jobs array will contain information about all the registered/selected jobs.
+            '''
+            jobs = []
+
+            for job_name in job_names:
+                job_dtl = jenkins_conn.get_job_details(job_name)
+                #for each one of the job's builds, get the benchmarks
+                builds = []
+                for i in range(int(job_dtl["first_build_no"]), int(job_dtl["last_build_no"])+1, 1):
+                    print "Job: " + job_name + " ----> scanning build " + str(i)
+                    build = jenkins_conn.get_build_benchmarks(job_name, i)
+                    builds.append(build)
+                '''
+                For each job, some basic details are stored ('details' part), 
+                along with benchmark information for every build ('builds' part)
+                '''
+                job = {
+                    'details': job_dtl,
+                    'builds': builds
+                }
+                jobs.append(job)
+
+            result = db.refresh_database(jobs)
+        except ConnectionError:
+            raise Http404("Could not establish a connection to the Jenkins server")
+
         return HttpResponse(result)
+
     else:
-        raise Http404("Cannot call this page directly")
+        raise Http404("You cannot call this page directly. If this is not the case, at least one job most be selected")
 
 

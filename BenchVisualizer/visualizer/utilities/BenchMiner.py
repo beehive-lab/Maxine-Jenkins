@@ -26,6 +26,12 @@ class BenchMiner:
         #"+ true" comes after the interrupt signal
         search_term = r".*\+ true.*"
         search_result = re.search(search_term, sub_console)
+        '''
+        All the specjvm commands should ALWAYS be followed by a 'true' command.
+        For the sake of coverage, in the non - likely event that 'true is not found' treat the benchmark as missing.
+        '''
+        if search_result == None:
+            return "0"
         sub_bench_output = sub_console[0:search_result.end()]
 
         #look for the composite result inside the output of the sub benchmark
