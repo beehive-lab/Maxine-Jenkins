@@ -7,7 +7,7 @@ import requests
 from jenkinsapi.jenkins import Jenkins
 from django.template import loader
 from requests import ConnectionError
-from utilities import JenkinsConnector, RawDataMaker
+from utilities import JenkinsConnector, RawDataMaker, DatabaseManager
 
 
 # Create your views here.
@@ -116,7 +116,22 @@ def registerStatus(request):
 
     if 'jobs' in request.POST:
         jobs = request.POST.getlist('jobs')
-        return HttpResponse(str(jobs))
+        db = DatabaseManager()
+        job1 = {
+            'name': jobs[0],
+            'description': "first job",
+            'is_running': "True",
+            'is_enabled': "True"
+        }
+        job2 = {
+            'name': jobs[1],
+            'description': "second job",
+            'is_running': "False",
+            'is_enabled': "False"
+        }
+        jobs = [job1, job2]
+        result = db.refresh_database(jobs)
+        return HttpResponse(result)
     else:
         raise Http404("Cannot call this page directly")
 

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 #from django.test import TestCase
 import unittest
-from utilities import BenchMiner
+from utilities import BenchMiner, DatabaseManager
 
 # Create your tests here.
 
@@ -56,6 +56,33 @@ class MinerTests(unittest.TestCase):
 
         f.close()
         self.assertEquals(spec_result, expected)
+
+
+class DatabaseManagerTests(unittest.TestCase):
+
+    def test_refresh(self):
+
+        '''
+        TODO: database tests should be handled differently
+        '''
+
+        db = DatabaseManager()
+        job1 = {
+            'name': "Job1",
+            'description': "first job",
+            'is_running': "True",
+            'is_enabled': "True"
+        }
+        job2 = {
+            'name': "Job2",
+            'description': "second job",
+            'is_running': "False",
+            'is_enabled': "False"
+        }
+        jobs = [job1, job2]
+        result = db.refresh_database(jobs)
+        expected = "ok"
+        self.assertEquals(result, expected)
 
 
 
