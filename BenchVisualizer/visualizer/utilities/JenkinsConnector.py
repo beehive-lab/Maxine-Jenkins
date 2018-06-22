@@ -10,18 +10,21 @@ class JenkinsConnector:
         server_jobs = []
 
         print str(self.server.get_jobs_list())
+        jenkins_job_names = self.server.get_jobs_list()
 
-        for job_name, job_instance in self.server.get_jobs():
-            name = job_instance.name
-            description = job_instance.get_description()
-            is_running = str(job_instance.is_running())
-            is_enabled = str(job_instance.is_enabled())
+        for job_name in jenkins_job_names:
 
-            server_jobs.append({
-                'name': name,
-                'description': description,
-                'is_running': is_running,
-                'is_enabled': is_enabled})
+            '''
+            Avoid duplicate Job entries on the server, like for example:
+            'Job1' and 'http:/0.0.0.0:8080/Job1'
+            '''
+            if not job_name.startswith('http:/'):
+                job_details = self.get_job_details(job_name)
+                server_jobs.append(job_details)
+
+        #if no jobs are found on the jenkins server...
+        if server_jobs == []:
+            raise ValueError("No jobs found on the Jenkins server!")
 
         return server_jobs
 

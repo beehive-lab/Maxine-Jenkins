@@ -109,6 +109,8 @@ def registerJobs(request):
 
     except ConnectionError:
         raise Http404("Could not establish a connection to the Jenkins server")
+    except ValueError:
+        raise Http404("Could not find any jobs on the Jenkins server")
 
 #Job register status controller
 
