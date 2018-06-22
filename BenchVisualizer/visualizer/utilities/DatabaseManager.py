@@ -8,6 +8,72 @@ class DatabaseManager:
 
         return "ok"
 
+    def get_job(self, job_name):
+        stored_job = Job.objects.get(name=job_name)
+
+        job ={
+            'name': stored_job.name,
+            'description': stored_job.description,
+            'is_running': stored_job.is_running,
+            'is_enabled': stored_job.is_enabled,
+        }
+
+        return job
+
+    def get_benchmarks(self, job_name, build_number):
+        stored_job = Job.objects.get(name=job_name)
+        stored_dacapo = stored_job.dacapo_set.get(build_no=build_number)
+        stored_specjvm = stored_job.specjvm_set.get(build_no=build_number)
+
+        dacapo = {
+            'build_no': stored_dacapo.build_no,
+            'avrora': stored_dacapo.avrora,
+            'batik': stored_dacapo.batik,
+            'eclipse': stored_dacapo.eclipse,
+            'fop': stored_dacapo.fop,
+            'h2': stored_dacapo.h2,
+            'jython': stored_dacapo.jython,
+            'luindex': stored_dacapo.luindex,
+            'lusearch': stored_dacapo.lusearch,
+            'pmd': stored_dacapo.pmd,
+            'sunflow': stored_dacapo.sunflow,
+            'tomcat': stored_dacapo.tomcat,
+            'tradebeans': stored_dacapo.tradebeans,
+            'tradesoap': stored_dacapo.tradesoap,
+            'xalan': stored_dacapo.xalan
+        }
+
+        specjvm = {
+            'build_no': stored_specjvm.build_no,
+            'startup': stored_specjvm.startup,
+            'compiler': stored_specjvm.compiler,
+            'compress': stored_specjvm.compress,
+            'crypto': stored_specjvm.crypto,
+            'derby': stored_specjvm.derby,
+            'mpegaudio': stored_specjvm.mpegaudio,
+            'scimark': stored_specjvm.scimark,
+            'serial': stored_specjvm.serial,
+            'spec_sunflow': stored_specjvm.sunflow,
+            'xml': stored_specjvm.xml
+        }
+
+        bench = {
+            'build_no': build_number,
+            'dacapo': dacapo,
+            'specjvm': specjvm
+        }
+
+        return bench
+
+    def get_last_two_benchmarks(self, job_name):
+
+        stored_job = Job.objects.get(name=job_name)
+        recent_builds = stored_job.dacapo_set.all().order_by('-build_no')
+
+        print str(recent_builds)
+
+        return recent_builds
+
     def store_job(self, job):
 
         #firstly, store the new job in the Job table

@@ -37,20 +37,24 @@ def index(request):
 
 def jobDetails(request, job_name):
 
-    try:
-        jenkins_conn = JenkinsConnector()
+    db = DatabaseManager()
 
-        job_details = jenkins_conn.get_job_details(job_name)
+    #TODO: scan POST variables for specific build numbers
+    if 'build_no1' in request.POST:
+        print "do stuff related to specific build comparison"
+    else:
+        print "take and compare last two builds"
+        job_details = db.get_job(job_name)
+        res = db.get_last_two_benchmarks(job_name)
+        #benchmarks = db.get_benchmarks(job_name, 44)
 
-        context = {
-            'job_name': job_name,
-            'job_details': job_details
-        }
-        template = loader.get_template('visualizer/jobDetails.html')
-
-        return HttpResponse(template.render(context, request))
-    except ConnectionError:
-        raise Http404("Could not establish a connection to the Jenkins server")
+    context = {
+        'job_name': job_name,
+        'job_details': job_details
+    }
+    template = loader.get_template('visualizer/jobDetails.html')
+    return HttpResponse("ok")
+    return HttpResponse(template.render(context, request))
 
 #the controller for the raw page
 
