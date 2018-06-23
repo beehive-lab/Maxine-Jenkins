@@ -17,7 +17,7 @@ class Job(models.Model):
 class Dacapo(models.Model):
     # avrora batik eclipse fop h2 jython luindex lusearch pmd sunflow tomcat tradebeans tradesoap xalan
     job = models.ForeignKey(Job, on_delete=models.CASCADE, default=1)
-    build_no = models.CharField(max_length=3, default="0")
+    build_no = models.IntegerField(default=0)
     avrora = models.CharField(max_length=50, default="0")
     batik = models.CharField(max_length=50, default="0")
     eclipse = models.CharField(max_length=50, default="0")
@@ -34,12 +34,12 @@ class Dacapo(models.Model):
     xalan = models.CharField(max_length=50, default="0")
 
     def __str__(self):
-        return str(self.job) + self.build_no
+        return str(self.job) + str(self.build_no)
 
 
 class Specjvm(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE, default=1)
-    build_no = models.CharField(max_length=3, default="0")
+    build_no = models.IntegerField(default=0)
     startup = models.CharField(max_length=50, default="0")
     compiler = models.CharField(max_length=50, default="0")
     compress = models.CharField(max_length=50, default="0")
@@ -52,4 +52,4 @@ class Specjvm(models.Model):
     xml = models.CharField(max_length=50, default="0")
 
     def __str__(self):
-        return str(self.job) + self.build_no
+        return str(self.job) + str(self.build_no)

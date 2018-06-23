@@ -38,19 +38,22 @@ def index(request):
 def jobDetails(request, job_name):
 
     db = DatabaseManager()
+    job_details = db.get_job(job_name)
 
     #TODO: scan POST variables for specific build numbers
     if 'build_no1' in request.POST:
         print "do stuff related to specific build comparison"
+        benchmarks = db.get_two_selected_benchmarks(job_name, request.POST['build_no1'], request.POST['build_no2'])
     else:
         print "take and compare last two builds"
-        job_details = db.get_job(job_name)
-        res = db.get_last_two_benchmarks(job_name)
-        #benchmarks = db.get_benchmarks(job_name, 44)
+        #benchmarks = db.get_last_two_benchmarks(job_name)
+        benchmarks = db.get_two_selected_benchmarks(job_name, 60, 42)
+        print str(benchmarks)
 
     context = {
         'job_name': job_name,
-        'job_details': job_details
+        'job_details': job_details,
+        'benchmarks': benchmarks
     }
     template = loader.get_template('visualizer/jobDetails.html')
     return HttpResponse("ok")

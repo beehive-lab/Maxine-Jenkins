@@ -1,4 +1,5 @@
 from visualizer.models import Job, Specjvm, Dacapo
+from django.http import Http404
 
 class DatabaseManager:
 
@@ -20,10 +21,13 @@ class DatabaseManager:
 
         return job
 
-    def get_benchmarks(self, job_name, build_number):
-        stored_job = Job.objects.get(name=job_name)
-        stored_dacapo = stored_job.dacapo_set.get(build_no=build_number)
-        stored_specjvm = stored_job.specjvm_set.get(build_no=build_number)
+    def get_benchmarks(self, stored_job, build_number):
+        #stored_job = Job.objects.get(name=job_name)
+        try:
+            stored_dacapo = stored_job.dacapo_set.get(build_no=build_number)
+            stored_specjvm = stored_job.specjvm_set.get(build_no=build_number)
+        except Dacapo.DoesNotExist:
+            raise Http404("Build <" + str(build_number) + "> of Job <" + stored_job.name + "> does not exist!")
 
         dacapo = {
             'build_no': stored_dacapo.build_no,
@@ -68,16 +72,37 @@ class DatabaseManager:
     def get_last_two_benchmarks(self, job_name):
 
         stored_job = Job.objects.get(name=job_name)
+
+        '''
+        The build numbers can be fetched from either the dacapo or the specjvm table (after desc sort on build_no).
+        Here dacapo table is used. 
+        The simplest workaround would be to take only the last_build_no from the Job and get 
+        (last_build_no - 1), but this wouldn't work if build numbers are not consecutive
+        '''
         recent_builds = stored_job.dacapo_set.all().order_by('-build_no')
 
-        print str(recent_builds)
+        bench1 = self.get_benchmarks(stored_job, recent_builds[0].build_no)
+        bench2 = self.get_benchmarks(stored_job, recent_builds[1].build_no)
 
-        return recent_builds
+        return [bench1, bench2]
+
+    def get_two_selected_benchmarks(self, job_name, build_no1, build_no2):
+
+        stored_job = Job.objects.get(name=job_name)
+
+        bench1 = self.get_benchmarks(stored_job, build_no1)
+        bench2 = self.get_benchmarks(stored_job, build_no2)
+
+        return [bench1, bench2]
 
     def store_job(self, job):
 
         #firstly, store the new job in the Job table
-        stored_job = Job(name=job["name"], description=job["description"], is_running=job["is_running"], is_enabled=job["is_enabled"])
+        stored_job = Job(
+            name=job["name"],
+            description=job["description"],
+            is_running=job["is_running"],
+            is_enabled=job["is_enabled"])
         stored_job.save()
 
         '''

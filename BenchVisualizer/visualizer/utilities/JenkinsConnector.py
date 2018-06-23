@@ -71,7 +71,7 @@ class JenkinsConnector:
         dacapo_result = spec_miner.mine_all_dacapos()
 
         build_details = {
-            'build_no': str(build_no),
+            'build_no': build_no,
             'is_good': str(build.is_good()),
             'specjvm': spec_result,
             'dacapo': dacapo_result
