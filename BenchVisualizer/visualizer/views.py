@@ -42,13 +42,12 @@ def jobDetails(request, job_name):
 
     #TODO: scan POST variables for specific build numbers
     if 'build_no1' in request.POST:
-        print "do stuff related to specific build comparison"
+        # "do stuff related to specific build comparison"
         benchmarks = db.get_two_selected_benchmarks(job_name, request.POST['build_no1'], request.POST['build_no2'])
     else:
-        print "take and compare last two builds"
-        #benchmarks = db.get_last_two_benchmarks(job_name)
-        benchmarks = db.get_two_selected_benchmarks(job_name, 60, 42)
-        print str(benchmarks)
+        # "take and compare last two builds"
+        benchmarks = db.get_last_two_benchmarks(job_name)
+        # benchmarks = db.get_two_selected_benchmarks(job_name, 60, 42)
 
     context = {
         'job_name': job_name,
@@ -56,7 +55,6 @@ def jobDetails(request, job_name):
         'benchmarks': benchmarks
     }
     template = loader.get_template('visualizer/jobDetails.html')
-    return HttpResponse("ok")
     return HttpResponse(template.render(context, request))
 
 #the controller for the raw page

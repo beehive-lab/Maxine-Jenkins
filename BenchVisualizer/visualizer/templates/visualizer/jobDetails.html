@@ -14,11 +14,51 @@
 
     <body>
         <div class="page_head">
-            <h1>Details for Job: {{job_name}} -- Latest Build {{job_details.last_build_no}}</h1>
+            <h1>Details for Job: {{job_name}} -- Builds {{benchmarks.0.build_no}}, {{benchmarks.1.build_no}}</h1>
+            <button id="ModalBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BuildModal">Select Builds</button>
+        </div>
+
+        <!-- Specific build selection window -->
+        <div id="BuildModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Specific Build selection</h4>
+              </div>
+                <form action="{% url 'visualizer:jobDetails' job_name %}" method="post">
+                  {% csrf_token %}
+                  <div class="modal-body">
+                    <p>Please specify two builds to compare.</p>
+
+                          <table>
+                              <tbody>
+                                <tr>
+                                    <td>Build 1</td>
+                                    <td><input type="number" name="build_no1" min="1" required/></td>
+                                </tr>
+                                <tr>
+                                    <td>Build 2</td>
+                                    <td><input type="number" name="build_no2" min="1" required/></td>
+                                </tr>
+                              </tbody>
+                          </table>
+
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" class="btn btn-info">Submit</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </form>
+            </div>
+
+          </div>
         </div>
 
         <center>
-        <table>
+        <table style="width: 100%">
             <tbody>
                 <!-- SPECJVM stats -->
                 <tr>
@@ -26,17 +66,34 @@
                     <td>
                         <form action="{% url 'visualizer:raw' job_name 'specjvm' %}" method="post">
                             {% csrf_token %}
-                            <table class="table-bordered">
-                                <thead>
-                                    <tr><td>Benchmark</td><td>Ops/min</td></tr>
-                                </thead>
-                                <tbody>
-                                    {% for key,value in job_details.specjvm.items %}
-                                        <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
-                                        <input type="hidden" name="{{key}}" value="{{value}}"/>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                            <div class = "benchmark-holder">
+                                <table class="table-bordered">
+                                    <thead>
+                                        <tr><td>Benchmark</td><td>Ops/min</td></tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,value in benchmarks.0.specjvm.items %}
+                                            {% if key != "build_no" %}
+                                                <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
+                                                <input type="hidden" name="{{key}}" value="{{value}}"/>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <table class="table-bordered">
+                                    <thead>
+                                        <tr><td>Benchmark</td><td>Ops/min</td></tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,value in benchmarks.1.specjvm.items %}
+                                            {% if key != "build_no" %}
+                                                <tr><td>{{key}}</td><td id="{{key}}1">{{value}}</td></tr>
+                                                <input type="hidden" name="{{key}}1" value="{{value}}"/>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                             <button type="submit" class="btn btn-info">Get raw data</button>
                         </form>
                     </td>
@@ -47,17 +104,34 @@
                     <td>
                         <form action="{% url 'visualizer:raw' job_name 'dacapo' %}" method="post">
                             {% csrf_token %}
-                            <table class="table-bordered">
-                                <thead>
-                                    <tr><td>Benchmark</td><td>Milliseconds</td></tr>
-                                </thead>
-                                <tbody>
-                                    {% for key,value in job_details.dacapo.items %}
-                                        <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
-                                        <input type="hidden" name="{{key}}" value="{{value}}"/>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                            <div class = "benchmark-holder">
+                                <table class="table-bordered">
+                                    <thead>
+                                        <tr><td>Benchmark</td><td>Milliseconds</td></tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,value in benchmarks.0.dacapo.items %}
+                                            {% if key != "build_no" %}
+                                                <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
+                                                <input type="hidden" name="{{key}}" value="{{value}}"/>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <table class="table-bordered">
+                                    <thead>
+                                        <tr><td>Benchmark</td><td>Milliseconds</td></tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,value in benchmarks.1.dacapo.items %}
+                                            {% if key != "build_no" %}
+                                                <tr><td>{{key}}</td><td id="{{key}}1">{{value}}</td></tr>
+                                                <input type="hidden" name="{{key}}1" value="{{value}}"/>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                             <button type="submit" class="btn btn-info">Get raw data</button>
                         </form>
                     </td>

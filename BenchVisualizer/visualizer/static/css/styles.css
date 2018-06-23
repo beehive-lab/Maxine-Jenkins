@@ -2,10 +2,21 @@
     cursor:pointer;
 }
 
+.table-bordered {
+    margin: 5px;
+}
+
+div.benchmark-holder {
+    display:flex;
+    flex-direction: row;
+}
+
 div.page_head {
     background-color: #4d94ff;
     margin-bottom: 30px;
     padding: 15px;
+    display:flex;
+    flex-direction: row;
 }
 
 .plot {
@@ -14,4 +25,9 @@ div.page_head {
 
 .separating_line {
     border_top: 5 px solid black;
+}
+
+#ModalBtn {
+    margin-left:auto;
+    margin-right:0;
 }
