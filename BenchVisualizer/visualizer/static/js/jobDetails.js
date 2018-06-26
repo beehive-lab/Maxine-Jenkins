@@ -10,10 +10,12 @@ $(document).ready(function() {
     var bench_names = ["startup", "compiler", "compress", "crypto", "derby", "mpegaudio", "scimark", "serial", "spec_sunflow", "xml"];
 
     var specjvm_bench = []
+    var specjvm_bench1 = []
 
     //get all the benchmark values by their name
     for(i = 0; i < bench_names.length; i++){
         specjvm_bench.push($('#'+bench_names[i]).text());
+        specjvm_bench1.push($('#'+bench_names[i]+'1').text());
     }
 
     var trace1 = {
@@ -24,7 +26,7 @@ $(document).ready(function() {
     };
     var trace2 = {
       x: bench_names,
-      y: [1, 0.5, 3, 2, 5, 4, 7, 6, 8, 9],
+      y: specjvm_bench1,
       name: 'Previous good build',
       type: 'bar'
     };
@@ -59,22 +61,24 @@ $(document).ready(function() {
 
     var bench_names = ["avrora", "batik", "eclipse", "fop", "h2", "jython", "luindex", "lusearch", "pmd", "sunflow", "tomcat", "tradebeans", "tradesoap", "xalan"];
 
-    var specjvm_bench = []
+    var dacapo_bench = []
+    var dacapo_bench1 = []
 
     //get all the benchmark values by their name
     for(i = 0; i < bench_names.length; i++){
-        specjvm_bench.push($('#'+bench_names[i]).text());
+        dacapo_bench.push($('#'+bench_names[i]).text());
+        dacapo_bench1.push($('#'+bench_names[i]+'1').text());
     }
 
     var trace1 = {
       x: bench_names,
-      y: specjvm_bench,
+      y: dacapo_bench,
       name: 'Latest build',
       type: 'bar'
     };
     var trace2 = {
       x: bench_names,
-      y: [10000, 5000, 30000, 20000, 50000, 40000, 70000, 60000, 80000, 90000, 11000, 12000, 13000, 14000],
+      y: dacapo_bench1,
       name: 'Previous good build',
       type: 'bar'
     };

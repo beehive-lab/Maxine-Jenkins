@@ -62,6 +62,13 @@ class JenkinsConnector:
         job = self.server.get_job(jobname)
         build = job.get_build(build_no)
 
+        '''
+        Jenkinsapi's get_revision() throws exception for this pipeline.
+        Bypass Jenkinsapi's get_revision() to get the attribute 'git revision'
+        directly from the build object.
+        '''
+        revision = getattr(build, '_get_git_rev', lambda: None)()
+        
         spec_miner = BenchMiner(build.get_console())
 
         # get all specjvm results
@@ -73,6 +80,7 @@ class JenkinsConnector:
         build_details = {
             'build_no': build_no,
             'is_good': str(build.is_good()),
+            'revision': revision,
             'specjvm': spec_result,
             'dacapo': dacapo_result
         }

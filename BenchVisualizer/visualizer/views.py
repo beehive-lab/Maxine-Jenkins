@@ -47,7 +47,6 @@ def jobDetails(request, job_name):
     else:
         # "take and compare last two builds"
         benchmarks = db.get_last_two_benchmarks(job_name)
-        # benchmarks = db.get_two_selected_benchmarks(job_name, 60, 42)
 
     context = {
         'job_name': job_name,
