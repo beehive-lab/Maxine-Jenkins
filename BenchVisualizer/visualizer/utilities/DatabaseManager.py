@@ -31,6 +31,7 @@ class DatabaseManager:
 
         dacapo = {
             'build_no': stored_dacapo.build_no,
+            'revision': stored_dacapo.revision,
             'details': stored_dacapo.details,
             'avrora': stored_dacapo.avrora,
             'batik': stored_dacapo.batik,
@@ -50,6 +51,7 @@ class DatabaseManager:
 
         specjvm = {
             'build_no': stored_specjvm.build_no,
+            'revision': stored_specjvm.revision,
             'details': stored_specjvm.details,
             'startup': stored_specjvm.startup,
             'compiler': stored_specjvm.compiler,
@@ -121,6 +123,7 @@ class DatabaseManager:
 
         job.dacapo_set.create(
             build_no=bench['build_no'],
+            revision=bench['revision'],
             details=details,
             avrora=dacapo['avrora'],
             batik=dacapo['batik'],
@@ -135,11 +138,12 @@ class DatabaseManager:
             tomcat=dacapo['tomcat'],
             tradebeans=dacapo['tradebeans'],
             tradesoap=dacapo['tradesoap'],
-            xalan=dacapo['xalan'],
+            xalan=dacapo['xalan']
         )
 
         job.specjvm_set.create(
             build_no=bench['build_no'],
+            revision=bench['revision'],
             details=details,
             startup=specjvm['startup'],
             compiler=specjvm['compiler'],

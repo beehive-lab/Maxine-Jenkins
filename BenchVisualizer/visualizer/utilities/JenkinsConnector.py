@@ -86,3 +86,10 @@ class JenkinsConnector:
         }
 
         return build_details
+
+    def is_build_good(self, jobname, build_no):
+
+        job = self.server.get_job(jobname)
+        build = job.get_build(build_no)
+
+        return str(build.is_good())
