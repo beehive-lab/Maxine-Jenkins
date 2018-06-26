@@ -21,16 +21,17 @@ class DatabaseManager:
 
         return job
 
-    def get_benchmarks(self, stored_job, build_number):
-        #stored_job = Job.objects.get(name=job_name)
+    def get_benchmarks(self, stored_job, build_number, details="default"):
+
         try:
-            stored_dacapo = stored_job.dacapo_set.get(build_no=build_number)
-            stored_specjvm = stored_job.specjvm_set.get(build_no=build_number)
+            stored_dacapo = stored_job.dacapo_set.get(build_no=build_number, details=details)
+            stored_specjvm = stored_job.specjvm_set.get(build_no=build_number, details=details)
         except Dacapo.DoesNotExist:
             raise Http404("Build <" + str(build_number) + "> of Job <" + stored_job.name + "> does not exist!")
 
         dacapo = {
             'build_no': stored_dacapo.build_no,
+            'details': stored_dacapo.details,
             'avrora': stored_dacapo.avrora,
             'batik': stored_dacapo.batik,
             'eclipse': stored_dacapo.eclipse,
@@ -49,6 +50,7 @@ class DatabaseManager:
 
         specjvm = {
             'build_no': stored_specjvm.build_no,
+            'details': stored_specjvm.details,
             'startup': stored_specjvm.startup,
             'compiler': stored_specjvm.compiler,
             'compress': stored_specjvm.compress,
@@ -112,13 +114,14 @@ class DatabaseManager:
         stored_job = Job.objects.get(name=job["name"])
         return stored_job
 
-    def store_benchmarks(self, job, bench):
+    def store_benchmarks(self, job, bench, details="default"):
 
         dacapo = bench['dacapo']
         specjvm = bench['specjvm']
 
         job.dacapo_set.create(
             build_no=bench['build_no'],
+            details=details,
             avrora=dacapo['avrora'],
             batik=dacapo['batik'],
             eclipse=dacapo['eclipse'],
@@ -137,6 +140,7 @@ class DatabaseManager:
 
         job.specjvm_set.create(
             build_no=bench['build_no'],
+            details=details,
             startup=specjvm['startup'],
             compiler=specjvm['compiler'],
             compress=specjvm['compress'],

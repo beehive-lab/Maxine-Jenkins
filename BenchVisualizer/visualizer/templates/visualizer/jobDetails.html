@@ -73,7 +73,7 @@
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.0.specjvm.items %}
-                                            {% if key != "build_no" %}
+                                            {% if key != "build_no" and key != "details" %}
                                                 <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}" value="{{value}}"/>
                                             {% endif %}
@@ -86,7 +86,7 @@
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.1.specjvm.items %}
-                                            {% if key != "build_no" %}
+                                            {% if key != "build_no" and key != "details" %}
                                                 <tr><td>{{key}}</td><td id="{{key}}1">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}1" value="{{value}}"/>
                                             {% endif %}
@@ -111,7 +111,7 @@
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.0.dacapo.items %}
-                                            {% if key != "build_no" %}
+                                            {% if key != "build_no" and key != "details" %}
                                                 <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}" value="{{value}}"/>
                                             {% endif %}
@@ -124,7 +124,7 @@
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.1.dacapo.items %}
-                                            {% if key != "build_no" %}
+                                            {% if key != "build_no" and key != "details" %}
                                                 <tr><td>{{key}}</td><td id="{{key}}1">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}1" value="{{value}}"/>
                                             {% endif %}
