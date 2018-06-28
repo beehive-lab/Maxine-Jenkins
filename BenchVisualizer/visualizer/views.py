@@ -41,9 +41,9 @@ def jobDetails(request, job_name):
     job_details = db.get_job(job_name)
 
     #TODO: scan POST variables for specific build numbers
-    if 'build_no1' in request.POST:
+    if 'build_rev1' in request.POST:
         # "do stuff related to specific build comparison"
-        benchmarks = db.get_two_selected_benchmarks(job_name, request.POST['build_no1'], request.POST['build_no2'])
+        benchmarks = db.get_two_selected_benchmarks(job_name, request.POST['build_rev1'], request.POST['build_rev2'])
     else:
         # "take and compare last two builds"
         benchmarks = db.get_last_two_benchmarks(job_name)

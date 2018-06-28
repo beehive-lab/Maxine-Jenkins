@@ -37,11 +37,11 @@
                               <tbody>
                                 <tr>
                                     <td>Build 1</td>
-                                    <td><input type="number" name="build_no1" min="1" required/></td>
+                                    <td><input type="text" name="build_rev1" required/></td>
                                 </tr>
                                 <tr>
                                     <td>Build 2</td>
-                                    <td><input type="number" name="build_no2" min="1" required/></td>
+                                    <td><input type="text" name="build_rev2" required/></td>
                                 </tr>
                               </tbody>
                           </table>
@@ -56,8 +56,27 @@
 
           </div>
         </div>
-
         <center>
+            <div>
+                <table class="table-bordered">
+                    <thead>
+                    <tr><td>Build number</td><td>Git Revision</td></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="build1">{{benchmarks.0.specjvm.build_no}}</td>
+                            <td>{{benchmarks.0.specjvm.revision}}</td>
+                        </tr>
+                        <tr>
+                            <td id="build2">{{benchmarks.1.specjvm.build_no}}</td>
+                            <td>{{benchmarks.1.specjvm.revision}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </center>
+
+        <!--<center>-->
         <table style="width: 100%">
             <tbody>
                 <!-- SPECJVM stats -->
@@ -69,11 +88,11 @@
                             <div class = "benchmark-holder">
                                 <table class="table-bordered">
                                     <thead>
-                                        <tr><td>Benchmark</td><td>Ops/min</td></tr>
+                                        <tr><td>Benchmark</td><td>Ops/min (No.{{benchmarks.0.specjvm.build_no}})</td></tr>
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.0.specjvm.items %}
-                                            {% if key != "build_no" and key != "details" %}
+                                            {% if key != "build_no" and key != "details" and key != "revision" %}
                                                 <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}" value="{{value}}"/>
                                             {% endif %}
@@ -82,12 +101,12 @@
                                 </table>
                                 <table class="table-bordered">
                                     <thead>
-                                        <tr><td>Benchmark</td><td>Ops/min</td></tr>
+                                        <tr><td>Ops/min (No.{{benchmarks.1.specjvm.build_no}})</td></tr>
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.1.specjvm.items %}
-                                            {% if key != "build_no" and key != "details" %}
-                                                <tr><td>{{key}}</td><td id="{{key}}1">{{value}}</td></tr>
+                                            {% if key != "build_no" and key != "details" and key != "revision" %}
+                                                <tr><td id="{{key}}1">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}1" value="{{value}}"/>
                                             {% endif %}
                                         {% endfor %}
@@ -99,7 +118,7 @@
                     </td>
                 </tr>
                 <!-- DACAPO stats -->
-                <tr class="separating_line">
+                <tr>
                     <td><div class="plot" id="testerD" style="width:800px;height:500px;"></div></td>
                     <td>
                         <form action="{% url 'visualizer:raw' job_name 'dacapo' %}" method="post">
@@ -107,11 +126,11 @@
                             <div class = "benchmark-holder">
                                 <table class="table-bordered">
                                     <thead>
-                                        <tr><td>Benchmark</td><td>Milliseconds</td></tr>
+                                        <tr><td>Benchmark</td><td>Msec (No.{{benchmarks.0.dacapo.build_no}})</td></tr>
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.0.dacapo.items %}
-                                            {% if key != "build_no" and key != "details" %}
+                                            {% if key != "build_no" and key != "details" and key != "revision" %}
                                                 <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}" value="{{value}}"/>
                                             {% endif %}
@@ -120,12 +139,12 @@
                                 </table>
                                 <table class="table-bordered">
                                     <thead>
-                                        <tr><td>Benchmark</td><td>Milliseconds</td></tr>
+                                        <tr><td>Msec (No.{{benchmarks.1.dacapo.build_no}})</td></tr>
                                     </thead>
                                     <tbody>
                                         {% for key,value in benchmarks.1.dacapo.items %}
-                                            {% if key != "build_no" and key != "details" %}
-                                                <tr><td>{{key}}</td><td id="{{key}}1">{{value}}</td></tr>
+                                            {% if key != "build_no" and key != "details" and key != "revision" %}
+                                                <tr><td id="{{key}}1">{{value}}</td></tr>
                                                 <input type="hidden" name="{{key}}1" value="{{value}}"/>
                                             {% endif %}
                                         {% endfor %}
@@ -141,6 +160,6 @@
 
 
 
-        </center>
+        <!--</center>-->
     </body>
 </html>

@@ -12,6 +12,9 @@ $(document).ready(function() {
     var specjvm_bench = []
     var specjvm_bench1 = []
 
+    var build_no1 = $('#build1').text()
+    var build_no2 = $('#build2').text()
+
     //get all the benchmark values by their name
     for(i = 0; i < bench_names.length; i++){
         specjvm_bench.push($('#'+bench_names[i]).text());
@@ -21,13 +24,13 @@ $(document).ready(function() {
     var trace1 = {
       x: bench_names,
       y: specjvm_bench,
-      name: 'Latest build',
+      name: 'Build '+build_no1,
       type: 'bar'
     };
     var trace2 = {
       x: bench_names,
       y: specjvm_bench1,
-      name: 'Previous good build',
+      name: 'Build '+build_no2,
       type: 'bar'
     };
 
@@ -64,6 +67,9 @@ $(document).ready(function() {
     var dacapo_bench = []
     var dacapo_bench1 = []
 
+    var build_no1 = $('#build1').text()
+    var build_no2 = $('#build2').text()
+
     //get all the benchmark values by their name
     for(i = 0; i < bench_names.length; i++){
         dacapo_bench.push($('#'+bench_names[i]).text());
@@ -73,13 +79,13 @@ $(document).ready(function() {
     var trace1 = {
       x: bench_names,
       y: dacapo_bench,
-      name: 'Latest build',
+      name: 'Build '+build_no1,
       type: 'bar'
     };
     var trace2 = {
       x: bench_names,
       y: dacapo_bench1,
-      name: 'Previous good build',
+      name: 'Build '+build_no2,
       type: 'bar'
     };
 

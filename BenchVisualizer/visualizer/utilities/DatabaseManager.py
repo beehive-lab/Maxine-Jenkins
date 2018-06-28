@@ -21,13 +21,13 @@ class DatabaseManager:
 
         return job
 
-    def get_benchmarks(self, stored_job, build_number, details="default"):
+    def get_benchmarks(self, stored_job, build_rev, details="default"):
 
         try:
-            stored_dacapo = stored_job.dacapo_set.get(build_no=build_number, details=details)
-            stored_specjvm = stored_job.specjvm_set.get(build_no=build_number, details=details)
+            stored_dacapo = stored_job.dacapo_set.get(revision=build_rev, details=details)
+            stored_specjvm = stored_job.specjvm_set.get(revision=build_rev, details=details)
         except Dacapo.DoesNotExist:
-            raise Http404("Build <" + str(build_number) + "> of Job <" + stored_job.name + "> does not exist!")
+            raise Http404("Build for revision <" + str(build_rev) + "> of Job <" + stored_job.name + "> does not exist!")
 
         dacapo = {
             'build_no': stored_dacapo.build_no,
@@ -66,7 +66,7 @@ class DatabaseManager:
         }
 
         bench = {
-            'build_no': build_number,
+            'build_no': stored_dacapo.build_no,
             'dacapo': dacapo,
             'specjvm': specjvm
         }
@@ -85,17 +85,17 @@ class DatabaseManager:
         '''
         recent_builds = stored_job.dacapo_set.all().order_by('-build_no')
 
-        bench1 = self.get_benchmarks(stored_job, recent_builds[0].build_no)
-        bench2 = self.get_benchmarks(stored_job, recent_builds[1].build_no)
+        bench1 = self.get_benchmarks(stored_job, recent_builds[0].revision)
+        bench2 = self.get_benchmarks(stored_job, recent_builds[1].revision)
 
         return [bench1, bench2]
 
-    def get_two_selected_benchmarks(self, job_name, build_no1, build_no2):
+    def get_two_selected_benchmarks(self, job_name, build_rev1, build_rev2):
 
         stored_job = Job.objects.get(name=job_name)
 
-        bench1 = self.get_benchmarks(stored_job, build_no1)
-        bench2 = self.get_benchmarks(stored_job, build_no2)
+        bench1 = self.get_benchmarks(stored_job, build_rev1)
+        bench2 = self.get_benchmarks(stored_job, build_rev2)
 
         return [bench1, bench2]
 
