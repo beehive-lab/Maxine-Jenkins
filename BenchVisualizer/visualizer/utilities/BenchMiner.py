@@ -78,12 +78,21 @@ class BenchMiner:
 
     def mine_dacapo(self, sub_bench):
 
-        search_term = r"===== DaCapo 9.12 " + sub_bench + r" PASSED in [0-9]+ msec ====="
+        search_term = r".*mx.*vm.*-jar.*dacapo-9.12-bach.jar.*" + sub_bench
         search_result = re.search(search_term, self.console_dacapo)
 
-        #subtest missing or failed
+        #subtest missing
         if search_result == None:
             return "0"
+
+        sub_console = self.console_dacapo[search_result.start():]
+
+        search_term = r"===== DaCapo 9.12 " + sub_bench + r" PASSED in [0-9]+ msec ====="
+        search_result = re.search(search_term, sub_console)
+
+        #subtest failed
+        if search_result == None:
+            return "-1"
 
         # the raw benchmark value is second word from the end, in the result line
         raw_benchmark = search_result.group().split(" ")[-3]

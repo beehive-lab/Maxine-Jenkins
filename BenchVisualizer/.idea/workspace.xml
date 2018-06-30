@@ -26,8 +26,17 @@
       <file leaf-file-name="BenchMiner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1800">
-              <caret line="120" column="18" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="18" />
+            <state relative-caret-position="-136">
+              <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="console_dacapos" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_dacapos">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3883">
+              <caret line="809" column="72" selection-start-line="809" selection-start-column="72" selection-end-line="809" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -35,7 +44,7 @@
       <file leaf-file-name="tests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/visualizer/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
+            <state relative-caret-position="89">
               <caret line="59" column="47" lean-forward="true" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
@@ -133,9 +142,9 @@
         <option value="$PROJECT_DIR$/visualizer/models.py" />
         <option value="$PROJECT_DIR$/visualizer/views.py" />
         <option value="$PROJECT_DIR$/visualizer/templates/visualizer/index.html" />
-        <option value="$PROJECT_DIR$/visualizer/utilities/BenchMiner.py" />
         <option value="$PROJECT_DIR$/visualizer/static/test_files/console_whole1" />
         <option value="$PROJECT_DIR$/visualizer/tests.py" />
+        <option value="$PROJECT_DIR$/visualizer/utilities/BenchMiner.py" />
       </list>
     </option>
   </component>
@@ -161,6 +170,19 @@
               <item name="BenchVisualizer" type="b2602c69:ProjectViewProjectNode" />
               <item name="BenchVisualizer" type="462c0819:PsiDirectoryNode" />
               <item name="visualizer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BenchVisualizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BenchVisualizer" type="462c0819:PsiDirectoryNode" />
+              <item name="visualizer" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BenchVisualizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BenchVisualizer" type="462c0819:PsiDirectoryNode" />
+              <item name="visualizer" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="test_files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BenchVisualizer" type="b2602c69:ProjectViewProjectNode" />
@@ -619,20 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_dacapos">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="889" column="13" selection-start-line="889" selection-start-column="13" selection-end-line="889" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="120" column="18" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/utilities/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -643,9 +651,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_dacapos">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3883">
+          <caret line="809" column="72" selection-start-line="809" selection-start-column="72" selection-end-line="809" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
+        <state relative-caret-position="89">
           <caret line="59" column="47" lean-forward="true" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
