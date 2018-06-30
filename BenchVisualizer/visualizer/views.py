@@ -40,7 +40,6 @@ def jobDetails(request, job_name):
     db = DatabaseManager()
     job_details = db.get_job(job_name)
 
-    #TODO: scan POST variables for specific build numbers
     if 'build_rev1' in request.POST:
         # "do stuff related to specific build comparison"
         benchmarks = db.get_two_selected_benchmarks(job_name, request.POST['build_rev1'], request.POST['build_rev2'])

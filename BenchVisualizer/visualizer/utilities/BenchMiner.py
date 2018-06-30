@@ -104,8 +104,6 @@ class BenchMiner:
 
         self.console_dacapo = self.console_inp[search_result.start():]
 
-        #avrora batik eclipse fop h2 jython luindex lusearch pmd sunflow tomcat tradebeans tradesoap xalan
-
         return {
             'avrora': self.mine_dacapo('avrora'),
             'batik': self.mine_dacapo('batik'),

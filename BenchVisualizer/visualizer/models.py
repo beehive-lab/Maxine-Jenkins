@@ -35,6 +35,9 @@ class Dacapo(models.Model):
     tradesoap = models.CharField(max_length=50, default="0")
     xalan = models.CharField(max_length=50, default="0")
 
+    class Meta:
+        unique_together = ('revision', 'details')
+
     def __str__(self):
         return str(self.job) + str(self.build_no)
 
@@ -54,6 +57,9 @@ class Specjvm(models.Model):
     serial = models.CharField(max_length=50, default="0")
     sunflow = models.CharField(max_length=50, default="0")
     xml = models.CharField(max_length=50, default="0")
+
+    class Meta:
+        unique_together = ('revision', 'details')
 
     def __str__(self):
         return str(self.job) + str(self.build_no)
