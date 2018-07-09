@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.db.utils import IntegrityError
+from django.http import Http404
 from visualizer.models import Job
 from visualizer.utilities import DatabaseManager, JenkinsConnector, BenchMiner
 from requests import ConnectionError
@@ -34,6 +35,13 @@ class Command(BaseCommand):
             help="The Tag/Details of the executed build"
         )
 
+        parser.add_argument(
+            '--overwrite',
+            action="store_true",
+            default=False,
+            help="Specify this flag to overwrite benchmarks of the specified revision/tag, if they exist in the DB"
+        )
+
     def handle(self, *args, **options):
 
         job_name = options['job_name']
@@ -46,6 +54,13 @@ class Command(BaseCommand):
             exit()
 
         if options['get_jenkins_latest']:
+
+            '''
+            If --get_jenkins_latest is specified, the benchmarks are fetched from the output of the latest Jenkins build.
+            Considering that this tool is integrated inside the pipeline, it will fetch the benchmarks from the
+            "current" build
+            '''
+
             self.stdout.write(self.style.WARNING('Getting Jenkins latest build benchmarks...'))
             try:
                 jenkins_conn = JenkinsConnector()
@@ -61,9 +76,32 @@ class Command(BaseCommand):
             exit()
 
         if options['revision'] != "no_revision_specified":
+
+            '''
+            If a revision is specified through the CLI, the 'manual' insertion of benchmarks in the database starts.
+            The command fetches the revision and the tag fields (default tag is "default") from the CLI and searches
+            if a record exists in the DB. If it exists, it checks if the --overwrite option is present to update the data.
+            Otherwise it exits with an error message
+            '''
+
+            # CLI input length checking
+            if len(options['revision']) > 40:
+                self.stdout.write(
+                    self.style.ERROR('The revision specified is over 40 characters long'))
+                exit()
+
+            if len(options['tag']) > 50:
+                self.stdout.write(
+                    self.style.ERROR('The TAG specified is over 40 characters long'))
+                exit()
+
             self.stdout.write(self.style.WARNING('Inserting benchmarks for a specific revision...'))
             # Running the pipeline via python
+
+            # copy the env vars from the system
             env = dict(os.environ)
+
+            # set maxine vars  - the env vars can be also be set from the BASH
             env['WORKSPACE'] = '/home/vasilis/.jenkins/workspace/MaxinePipeline'
             env['DACAPO'] = "/home/vasilis/Desktop/SPECjvm2008"
             env['SPECJVM2008'] = "/home/vasilis/Desktop/SPECjvm2008"
@@ -75,7 +113,6 @@ class Command(BaseCommand):
             env['JAVA_HOME'] = "/usr/lib/jvm/java-7-openjdk-amd64"
 
             dacapo_benchs = [
-                "avrora", "eclipse", "fop"
             ]
 
             '''
@@ -84,7 +121,6 @@ class Command(BaseCommand):
             '''
 
             specjvm_benchs = [
-                "startup"
             ]
 
             outp = ""
@@ -115,7 +151,7 @@ class Command(BaseCommand):
 
             self.stdout.write(self.style.SUCCESS('Specjvm Benchmarks Complete!'))
 
-            print "======OUTPUT IS=======:\n" + outp
+            # print "======OUTPUT IS=======:\n" + outp
             miner = BenchMiner(outp)
             dacapo_res = miner.mine_all_dacapos()
             specjvm_res = miner.mine_all_specjvms()
@@ -134,10 +170,26 @@ class Command(BaseCommand):
                 'dacapo': dacapo_res
             }
             db = DatabaseManager()
-            db.store_benchmarks(stored_job, all_benchs, options['tag'])
+            try:
+                db.get_benchmarks(stored_job, options['revision'], options['tag'])
+            # if a record does not exist, create a new one and exit successfully
+            except Http404:
+                db.store_benchmarks(stored_job, all_benchs, options['tag'])
+                self.stdout.write(self.style.SUCCESS('Complete.'))
+                exit()
+
+            # if a record with the specified revision/tag exists in the database
+            self.stdout.write(self.style.WARNING('Found an existing set of benchmarks for this tag/revision'))
+            if options['overwrite']:
+                self.stdout.write(self.style.WARNING('Overwriting...'))
+                db.update_benchmarks(stored_job, options['revision'], all_benchs, options['tag'])
+            else:
+                self.stdout.write(self.style.ERROR('Specify --overwrite option if you want to update the data'))
+                exit()
 
         else:
             self.stdout.write(self.style.ERROR('You must specify a GIT revision or the --get_jenkins latest option'))
+            exit()
 
 
         self.stdout.write(self.style.SUCCESS('Complete.'))

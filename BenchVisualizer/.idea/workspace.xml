@@ -14,8 +14,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            <state relative-caret-position="225">
+              <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -23,7 +23,7 @@
       <file leaf-file-name="BenchMiner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="824">
+            <state relative-caret-position="1005">
               <caret line="67" column="21" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="21" />
             </state>
           </provider>
@@ -32,7 +32,7 @@
       <file leaf-file-name="jobDetails.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/static/js/jobDetails.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1305">
+            <state relative-caret-position="609">
               <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
             </state>
           </provider>
@@ -41,7 +41,8 @@
       <file leaf-file-name="DatabaseManager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/utilities/DatabaseManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1620">
+            <state relative-caret-position="3030">
+              <caret line="202" column="27" lean-forward="true" selection-start-line="202" selection-start-column="27" selection-end-line="202" selection-end-column="27" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -52,8 +53,8 @@
       <file leaf-file-name="JenkinsConnector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="74" selection-end-column="9" />
+            <state relative-caret-position="810">
+              <caret line="55" column="71" lean-forward="true" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -61,11 +62,20 @@
       <file leaf-file-name="addBenchToJob.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/visualizer/management/commands/addBenchToJob.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
+            <state relative-caret-position="345">
+              <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/visualizer/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="834">
+              <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -100,7 +110,6 @@
         <option value="$PROJECT_DIR$/visualizer/urls.py" />
         <option value="$PROJECT_DIR$/visualizer/templates/visualizer/registerJobs.html" />
         <option value="$PROJECT_DIR$/visualizer/utilities/__init__.py" />
-        <option value="$PROJECT_DIR$/visualizer/utilities/DatabaseManager.py" />
         <option value="$PROJECT_DIR$/visualizer/static/css/styles.css" />
         <option value="$PROJECT_DIR$/visualizer/templates/visualizer/jobDetails.html" />
         <option value="$PROJECT_DIR$/visualizer/static/js/jobDetails.js" />
@@ -112,6 +121,7 @@
         <option value="$PROJECT_DIR$/visualizer/utilities/BenchMiner.py" />
         <option value="$PROJECT_DIR$/visualizer/management/commands/addBenchmark.py" />
         <option value="$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py" />
+        <option value="$PROJECT_DIR$/visualizer/utilities/DatabaseManager.py" />
         <option value="$PROJECT_DIR$/visualizer/management/commands/addBenchToJob.py" />
       </list>
     </option>
@@ -127,6 +137,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,7 +186,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -532,34 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/static/js/jobDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="74" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/static/test_files/console_dacapos">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
@@ -574,24 +556,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/utilities/BenchMiner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
+        <state relative-caret-position="1005">
           <caret line="67" column="21" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/static/js/jobDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="834">
+          <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/utilities/DatabaseManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1620">
+        <state relative-caret-position="3030">
+          <caret line="202" column="27" lean-forward="true" selection-start-line="202" selection-start-column="27" selection-end-line="202" selection-end-column="27" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/visualizer/utilities/JenkinsConnector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="55" column="71" lean-forward="true" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/visualizer/management/commands/addBenchToJob.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="135" column="34" lean-forward="true" selection-start-line="135" selection-start-column="34" selection-end-line="135" selection-end-column="34" />
+        <state relative-caret-position="345">
+          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>

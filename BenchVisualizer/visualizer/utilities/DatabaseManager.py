@@ -159,6 +159,65 @@ class DatabaseManager:
 
         return "ok"
 
+    def update_benchmarks(self, stored_job, build_rev, bench, details="default"):
+        '''
+        Update the benchmarks for a stored job in the DataBase
+
+        :param stored_build: A reference to the stored build in the DB
+        :param bench: The dict with the benchmarks
+        :param details: The TAG of the build
+        :return: "ok" if the operation is completed, Integrity exception otherwise
+        '''
+
+        try:
+            stored_dacapo = stored_job.dacapo_set.get(revision=build_rev, details=details)
+            stored_specjvm = stored_job.specjvm_set.get(revision=build_rev, details=details)
+        except Dacapo.DoesNotExist:
+            raise Http404("Build for revision <" + str(build_rev) + "> of Job <" + stored_job.name + "> does not exist!")
+
+        dacapo = bench['dacapo']
+        specjvm = bench['specjvm']
+
+        stored_dacapo.build_no = bench['build_no']
+        # revision = bench['revision']
+        # details = details
+        stored_dacapo.avrora = dacapo['avrora']
+        stored_dacapo.batik = dacapo['batik']
+        stored_dacapo.eclipse = dacapo['eclipse']
+        stored_dacapo.fop = dacapo['fop']
+        stored_dacapo.h2 = dacapo['h2']
+        stored_dacapo.jython = dacapo['jython']
+        stored_dacapo.luindex = dacapo['luindex']
+        stored_dacapo.lusearch = dacapo['lusearch']
+        stored_dacapo.pmd = dacapo['pmd']
+        stored_dacapo.sunflow = dacapo['sunflow']
+        stored_dacapo.tomcat = dacapo['tomcat']
+        stored_dacapo.tradebeans = dacapo['tradebeans']
+        stored_dacapo.tradesoap = dacapo['tradesoap']
+        stored_dacapo.xalan = dacapo['xalan']
+
+        stored_dacapo.save()
+
+        stored_specjvm.build_no = bench['build_no']
+        # revision = bench['revision']
+        # details = details
+        stored_specjvm.startup = specjvm['startup']
+        stored_specjvm.compiler = specjvm['compiler']
+        stored_specjvm.compress = specjvm['compress']
+        stored_specjvm.crypto = specjvm['crypto']
+        stored_specjvm.derby = specjvm['derby']
+        stored_specjvm.mpegaudio = specjvm['mpegaudio']
+        stored_specjvm.scimark = specjvm['scimark']
+        stored_specjvm.serial = specjvm['serial']
+        stored_specjvm.sunflow = specjvm['spec_sunflow']
+        stored_specjvm.xml = specjvm['xml']
+
+        stored_specjvm.save()
+
+        return "ok"
+
+
+
     def refresh_database(self, jobs):
         self.clear_database()
 
