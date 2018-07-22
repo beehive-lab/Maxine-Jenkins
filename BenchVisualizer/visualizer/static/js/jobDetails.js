@@ -7,6 +7,22 @@ $(document).ready(function() {
     dacapo_data = gather_data(["avrora", "batik", "eclipse", "fop", "h2", "jython", "luindex", "lusearch", "pmd", "sunflow", "tomcat", "tradebeans", "tradesoap", "xalan"]);
     draw_dacapo(dacapo_data);
 
+    //add-remove button handlers
+    $(".add_build").click(function(){
+        var new_row = '<tr>'+
+                                    '<td>Revision 1: </td>'+
+                                    '<td><input type="text" name="build_rev" required/></td>'+
+                                    '<td>TAG 1: </td>'+
+                                    '<td><input type="text" name="build_tag" value="default" required/></td>'+
+                                    '<td><button type="button" class="btn delete_build">Delete</button></td>'+
+                       '</tr>'
+        $("#revision_input_table").append(new_row);
+    })
+
+    $(document).on("click", ".delete_build", function(){
+        $(this).parents("tr").remove();
+    })
+
  });
 
 function gather_data(bench_names){
