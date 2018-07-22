@@ -22,7 +22,7 @@ class JenkinsConnector:
                 job_details = self.get_job_details(job_name)
                 server_jobs.append(job_details)
 
-        #if no jobs are found on the jenkins server...
+        # if no jobs are found on the jenkins server...
         if server_jobs == []:
             raise ValueError("No jobs found on the Jenkins server!")
 

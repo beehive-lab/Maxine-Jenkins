@@ -21,6 +21,17 @@ class DatabaseManager:
 
         return job
 
+    def get_jobs(self):
+        job_names = Job.objects.values_list('name', flat=True)
+
+        jobs = []
+
+        for job_name in job_names:
+            jobs.append(self.get_job(job_name))
+
+        return jobs
+
+
     def get_benchmarks(self, stored_job, build_rev, details="default"):
 
         try:

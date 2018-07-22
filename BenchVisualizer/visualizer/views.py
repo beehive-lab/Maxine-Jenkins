@@ -15,25 +15,21 @@ from utilities import JenkinsConnector, RawDataMaker, DatabaseManager
 from django.http import HttpResponse
 from django.http import Http404
 
-#the controller for the Index page
+# the controller for the Index page
 
 def index(request):
 
-    try:
-        jenkins_conn = JenkinsConnector()
+    db = DatabaseManager()
+    server_jobs = db.get_jobs()
 
-        server_jobs = jenkins_conn.get_jobs_summary()
-        context = {
-            'server_jobs': server_jobs,
-        }
-        template = loader.get_template('visualizer/index.html')
+    context = {
+        'server_jobs': server_jobs,
+    }
+    template = loader.get_template('visualizer/index.html')
 
-        return HttpResponse(template.render(context, request))
+    return HttpResponse(template.render(context, request))
 
-    except ConnectionError:
-        raise Http404("Could not establish a connection to the Jenkins server")
-
-#the controller for the Job details
+# the controller for the Job details
 
 def jobDetails(request, job_name):
 
@@ -55,7 +51,7 @@ def jobDetails(request, job_name):
     template = loader.get_template('visualizer/jobDetails.html')
     return HttpResponse(template.render(context, request))
 
-#the controller for the raw page
+# the controller for the raw page
 
 def raw(request, job_name, bench_type):
 
@@ -95,7 +91,7 @@ def raw(request, job_name, bench_type):
 
     return HttpResponse("Raw here")
 
-#Job register controller
+# Job register controller
 
 def registerJobs(request):
 
@@ -115,7 +111,7 @@ def registerJobs(request):
     except ValueError:
         raise Http404("Could not find any jobs on the Jenkins server")
 
-#Job register status controller
+# Job register status controller
 
 def registerStatus(request):
 
