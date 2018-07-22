@@ -101,14 +101,16 @@ class DatabaseManager:
 
         return [bench1, bench2]
 
-    def get_two_selected_benchmarks(self, job_name, build_rev1, build_rev2):
+    def get_selected_benchmarks(self, job_name, revisions, tags):
 
         stored_job = Job.objects.get(name=job_name)
 
-        bench1 = self.get_benchmarks(stored_job, build_rev1)
-        bench2 = self.get_benchmarks(stored_job, build_rev2)
+        benchmarks = []
 
-        return [bench1, bench2]
+        for revision, tag in zip(revisions, tags):
+            benchmarks.append(self.get_benchmarks(stored_job, revision, tag))
+
+        return benchmarks
 
     def store_job(self, job):
 

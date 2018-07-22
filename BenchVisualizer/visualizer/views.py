@@ -36,9 +36,13 @@ def jobDetails(request, job_name):
     db = DatabaseManager()
     job_details = db.get_job(job_name)
 
-    if 'build_rev1' in request.POST:
+    if 'build_rev' in request.POST:
         # "do stuff related to specific build comparison"
-        benchmarks = db.get_two_selected_benchmarks(job_name, request.POST['build_rev1'], request.POST['build_rev2'])
+
+        revisions = request.POST.getlist('build_rev')
+        tags = request.POST.getlist('build_tag')
+
+        benchmarks = db.get_selected_benchmarks(job_name, revisions, tags)
     else:
         # "take and compare last two builds"
         benchmarks = db.get_last_two_benchmarks(job_name)
