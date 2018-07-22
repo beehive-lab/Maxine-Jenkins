@@ -60,21 +60,23 @@
 
           </div>
         </div>
+        <!-- END MODAL-->
+
         <center>
+            <!-- get the number of benchmarks to compare from the controller -->
+            <input type="hidden" id="no_bench" value="{{no_bench}}"/>
             <div>
                 <table class="table-bordered">
                     <thead>
                     <tr><td>Build number</td><td>Git Revision</td></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td id="build1">{{benchmarks.0.specjvm.build_no}}</td>
-                            <td>{{benchmarks.0.specjvm.revision}}</td>
-                        </tr>
-                        <tr>
-                            <td id="build2">{{benchmarks.1.specjvm.build_no}}</td>
-                            <td>{{benchmarks.1.specjvm.revision}}</td>
-                        </tr>
+                        {% for benchmark in benchmarks %}
+                            <tr>
+                                <td id="build{{forloop.counter}}">{{benchmark.specjvm.build_no}}</td>
+                                <td>{{benchmark.specjvm.revision}}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -90,32 +92,23 @@
                         <form action="{% url 'visualizer:raw' job_name 'specjvm' %}" method="post">
                             {% csrf_token %}
                             <div class = "benchmark-holder">
-                                <table class="table-bordered">
-                                    <thead>
-                                        <tr><td>Benchmark</td><td>Ops/min (No.{{benchmarks.0.specjvm.build_no}})</td></tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for key,value in benchmarks.0.specjvm.items %}
-                                            {% if key != "build_no" and key != "details" and key != "revision" %}
-                                                <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
-                                                <input type="hidden" name="{{key}}" value="{{value}}"/>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                <table class="table-bordered">
-                                    <thead>
-                                        <tr><td>Ops/min (No.{{benchmarks.1.specjvm.build_no}})</td></tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for key,value in benchmarks.1.specjvm.items %}
-                                            {% if key != "build_no" and key != "details" and key != "revision" %}
-                                                <tr><td id="{{key}}1">{{value}}</td></tr>
-                                                <input type="hidden" name="{{key}}1" value="{{value}}"/>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                                {% for benchmark in benchmarks %}
+                                    {% with forloop.counter as i %}
+                                        <table class="table-bordered">
+                                            <thead>
+                                                <tr><td>Benchmark</td><td>Ops/min (No.{{benchmark.specjvm.build_no}})</td></tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for key,value in benchmark.specjvm.items %}
+                                                    {% if key != "build_no" and key != "details" and key != "revision" %}
+                                                        <tr><td>{{key}}</td><td id="{{key}}{{i}}">{{value}}</td></tr>
+                                                        <input type="hidden" name="{{key}}{{i}}" value="{{value}}"/>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% endwith %}
+                                {% endfor %}
                             </div>
                             <button type="submit" class="btn btn-info">Get raw data</button>
                         </form>
@@ -128,32 +121,23 @@
                         <form action="{% url 'visualizer:raw' job_name 'dacapo' %}" method="post">
                             {% csrf_token %}
                             <div class = "benchmark-holder">
-                                <table class="table-bordered">
-                                    <thead>
-                                        <tr><td>Benchmark</td><td>Msec (No.{{benchmarks.0.dacapo.build_no}})</td></tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for key,value in benchmarks.0.dacapo.items %}
-                                            {% if key != "build_no" and key != "details" and key != "revision" %}
-                                                <tr><td>{{key}}</td><td id="{{key}}">{{value}}</td></tr>
-                                                <input type="hidden" name="{{key}}" value="{{value}}"/>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                <table class="table-bordered">
-                                    <thead>
-                                        <tr><td>Msec (No.{{benchmarks.1.dacapo.build_no}})</td></tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for key,value in benchmarks.1.dacapo.items %}
-                                            {% if key != "build_no" and key != "details" and key != "revision" %}
-                                                <tr><td id="{{key}}1">{{value}}</td></tr>
-                                                <input type="hidden" name="{{key}}1" value="{{value}}"/>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                                {% for benchmark in benchmarks %}
+                                    {% with forloop.counter as i %}
+                                        <table class="table-bordered">
+                                            <thead>
+                                                <tr><td>Benchmark</td><td>Ops/min (No.{{benchmark.dacapo.build_no}})</td></tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for key,value in benchmark.dacapo.items %}
+                                                    {% if key != "build_no" and key != "details" and key != "revision" %}
+                                                        <tr><td>{{key}}</td><td id="{{key}}{{i}}">{{value}}</td></tr>
+                                                        <input type="hidden" name="{{key}}{{i}}" value="{{value}}"/>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% endwith %}
+                                {% endfor %}
                             </div>
                             <button type="submit" class="btn btn-info">Get raw data</button>
                         </form>

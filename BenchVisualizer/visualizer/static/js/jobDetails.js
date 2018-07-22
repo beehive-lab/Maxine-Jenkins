@@ -1,40 +1,47 @@
 $(document).ready(function() {
+    //when the page loads, do the following...
 
-    draw_specjvm();
-    draw_dacapo();
+    specjvm_data = gather_data(["startup", "compiler", "compress", "crypto", "derby", "mpegaudio", "scimark", "serial", "spec_sunflow", "xml"]);
+    draw_specjvm(specjvm_data);
+
+    dacapo_data = gather_data(["avrora", "batik", "eclipse", "fop", "h2", "jython", "luindex", "lusearch", "pmd", "sunflow", "tomcat", "tradebeans", "tradesoap", "xalan"]);
+    draw_dacapo(dacapo_data);
 
  });
 
- function draw_specjvm(){
+function gather_data(bench_names){
 
-    var bench_names = ["startup", "compiler", "compress", "crypto", "derby", "mpegaudio", "scimark", "serial", "spec_sunflow", "xml"];
+    var num_bench = $('#no_bench').val();
 
-    var specjvm_bench = []
-    var specjvm_bench1 = []
+    var data = [];
 
-    var build_no1 = $('#build1').text()
-    var build_no2 = $('#build2').text()
+    for(b = 1; b <= num_bench; b++){
 
-    //get all the benchmark values by their name
-    for(i = 0; i < bench_names.length; i++){
-        specjvm_bench.push($('#'+bench_names[i]).text());
-        specjvm_bench1.push($('#'+bench_names[i]+'1').text());
+        var build_no = $('#build'+b).text();
+
+        var specjvm_bench = [];
+
+        for(i = 0; i < bench_names.length; i++){
+            specjvm_bench.push($('#'+bench_names[i]+b).text());
+        }
+
+        var trace = {
+              x: bench_names,
+              y: specjvm_bench,
+              name: 'Build '+build_no,
+              type: 'bar'
+        };
+
+        data.push(trace);
+
     }
 
-    var trace1 = {
-      x: bench_names,
-      y: specjvm_bench,
-      name: 'Build '+build_no1,
-      type: 'bar'
-    };
-    var trace2 = {
-      x: bench_names,
-      y: specjvm_bench1,
-      name: 'Build '+build_no2,
-      type: 'bar'
-    };
+    return data;
 
-    var data = [trace1, trace2];
+}
+
+ function draw_specjvm(data){
+
     var layout = {
       title: 'SPECjvm benchmarks',
       xaxis: {
@@ -60,36 +67,8 @@ $(document).ready(function() {
     Plotly.plot( TESTER, data, layout);
  }
 
-  function draw_dacapo(){
+  function draw_dacapo(data){
 
-    var bench_names = ["avrora", "batik", "eclipse", "fop", "h2", "jython", "luindex", "lusearch", "pmd", "sunflow", "tomcat", "tradebeans", "tradesoap", "xalan"];
-
-    var dacapo_bench = []
-    var dacapo_bench1 = []
-
-    var build_no1 = $('#build1').text()
-    var build_no2 = $('#build2').text()
-
-    //get all the benchmark values by their name
-    for(i = 0; i < bench_names.length; i++){
-        dacapo_bench.push($('#'+bench_names[i]).text());
-        dacapo_bench1.push($('#'+bench_names[i]+'1').text());
-    }
-
-    var trace1 = {
-      x: bench_names,
-      y: dacapo_bench,
-      name: 'Build '+build_no1,
-      type: 'bar'
-    };
-    var trace2 = {
-      x: bench_names,
-      y: dacapo_bench1,
-      name: 'Build '+build_no2,
-      type: 'bar'
-    };
-
-    var data = [trace1, trace2];
     var layout = {
       title: 'Dacapo benchmarks',
       xaxis: {

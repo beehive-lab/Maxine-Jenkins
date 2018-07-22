@@ -50,7 +50,8 @@ def jobDetails(request, job_name):
     context = {
         'job_name': job_name,
         'job_details': job_details,
-        'benchmarks': benchmarks
+        'benchmarks': benchmarks,
+        'no_bench': len(benchmarks)
     }
     template = loader.get_template('visualizer/jobDetails.html')
     return HttpResponse(template.render(context, request))
