@@ -68,17 +68,78 @@ def raw(request, job_name, bench_type):
     if bench_type == "specjvm":
 
         if 'startup' in request.POST:
+
+            titles = ['revision', 'details', 'build_no', 'startup', 'compiler', 'compress', 'crypto', 'derby', 'mpegaudio',
+                           'scimark', 'serial', 'spec_sunflow', 'xml']
+
+            zipped_list = zip(
+                request.POST.getlist('revision'),
+                request.POST.getlist('details'),
+                request.POST.getlist('build_no'),
+                request.POST.getlist('startup'),
+                request.POST.getlist('compiler'),
+                request.POST.getlist('compress'),
+                request.POST.getlist('crypto'),
+                request.POST.getlist('derby'),
+                request.POST.getlist('mpegaudio'),
+                request.POST.getlist('scimark'),
+                request.POST.getlist('serial'),
+                request.POST.getlist('spec_sunflow'),
+                request.POST.getlist('xml')
+            )
+
             benchs = {
-                'startup': request.POST['startup'],
-                'compiler': request.POST['compiler'],
-                'compress': request.POST['compress'],
-                'crypto': request.POST['crypto'],
-                'derby': request.POST['derby'],
-                'mpegaudio': request.POST['mpegaudio'],
-                'scimark': request.POST['scimark'],
-                'serial': request.POST['serial'],
-                'spec_sunflow': request.POST['spec_sunflow'],
-                'xml': request.POST['xml']
+
+                'titles': titles,
+                'zipped_list': zipped_list
+
+            }
+
+            rawmaker = RawDataMaker(benchs)
+
+            template = loader.get_template('visualizer/raw.html')
+            context = {
+                'job_name': job_name,
+                'bench_type': bench_type,
+                'data': rawmaker.get_raw_data()
+            }
+            return HttpResponse(template.render(context, request))
+
+        else:
+            raise Http404("Cannot call this page directly")
+
+    if bench_type == "dacapo":
+
+        if 'avrora' in request.POST:
+
+            titles = ["revision", "details", "build_no", "avrora", "batik", "eclipse", "fop", "h2", "jython", "luindex",
+                      "lusearch", "pmd", "sunflow", "tomcat", "tradebeans", "tradesoap", "xalan"]
+
+            zipped_list = zip(
+                request.POST.getlist('revision'),
+                request.POST.getlist('details'),
+                request.POST.getlist('build_no'),
+                request.POST.getlist('avrora'),
+                request.POST.getlist('batik'),
+                request.POST.getlist('eclipse'),
+                request.POST.getlist('fop'),
+                request.POST.getlist('h2'),
+                request.POST.getlist('jython'),
+                request.POST.getlist('luindex'),
+                request.POST.getlist('lusearch'),
+                request.POST.getlist('pmd'),
+                request.POST.getlist('sunflow'),
+                request.POST.getlist('tomcat'),
+                request.POST.getlist('tradebeans'),
+                request.POST.getlist('tradesoap'),
+                request.POST.getlist('xalan'),
+            )
+
+            benchs = {
+
+                'titles': titles,
+                'zipped_list': zipped_list
+
             }
 
             rawmaker = RawDataMaker(benchs)
