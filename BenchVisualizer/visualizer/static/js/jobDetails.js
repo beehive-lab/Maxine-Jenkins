@@ -1,6 +1,7 @@
 $(document).ready(function() {
     //when the page loads, do the following...
 
+    //draw the graphs
     specjvm_data = gather_data(["startup", "compiler", "compress", "crypto", "derby", "mpegaudio", "scimark", "serial", "spec_sunflow", "xml"]);
     draw_specjvm(specjvm_data);
 
@@ -9,18 +10,34 @@ $(document).ready(function() {
 
     //add-remove button handlers
     $(".add_build").click(function(){
-        var new_row = '<tr>'+
-                                    '<td>Revision 1: </td>'+
+
+        var MAX_BUILDS = 5;
+
+        var new_no_builds = parseInt($('#modal_no_bld').val()) + 1
+
+        if(new_no_builds <= MAX_BUILDS){
+           var new_row = '<tr>'+
+                                    '<td>Revision: </td>'+
                                     '<td><input type="text" name="build_rev" required/></td>'+
-                                    '<td>TAG 1: </td>'+
+                                    '<td>TAG: </td>'+
                                     '<td><input type="text" name="build_tag" value="default" required/></td>'+
                                     '<td><button type="button" class="btn delete_build">Delete</button></td>'+
                        '</tr>'
-        $("#revision_input_table").append(new_row);
+            $("#revision_input_table").append(new_row);
+            $('#modal_no_bld').val(new_no_builds)
+        }
+
     })
 
     $(document).on("click", ".delete_build", function(){
-        $(this).parents("tr").remove();
+
+        var new_no_builds = parseInt($('#modal_no_bld').val()) - 1
+
+        if(new_no_builds >= 2){
+            $(this).parents("tr").remove();
+            $('#modal_no_bld').val(new_no_builds)
+        }
+
     })
 
  });

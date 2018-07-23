@@ -14,7 +14,7 @@
 
     <body>
         <div class="page_head">
-            <h1>Details for Job: {{job_name}} -- Builds {{benchmarks.0.build_no}}, {{benchmarks.1.build_no}}</h1>
+            <h1>Details for Job: {{job_name}}</h1>
             <button id="ModalBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BuildModal">Select Builds</button>
         </div>
 
@@ -28,24 +28,26 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Specific Build selection</h4>
               </div>
+                <!--Counts the current number of builds in the modal-->
+                <input type="hidden" id="modal_no_bld" value="2"/>
                 <form action="{% url 'visualizer:jobDetails' job_name %}" method="post">
                   {% csrf_token %}
                   <div class="modal-body">
                     <p>Please specify two builds to compare.</p>
                     <button type="button" class="btn btn-info add_build">Add build</button>
-                          <table id="revision_input_table">
+                          <table class="padding_tbl" id="revision_input_table">
                               <tbody>
                                 <tr>
-                                    <td>Revision 1: </td>
+                                    <td>Revision: </td>
                                     <td><input type="text" name="build_rev" required/></td>
-                                    <td>TAG 1: </td>
+                                    <td>TAG: </td>
                                     <td><input type="text" name="build_tag" value="default" required/></td>
                                     <td><button type="button" class="btn delete_build">Delete</button></td>
                                 </tr>
                                 <tr>
-                                    <td>Revision 2: </td>
+                                    <td>Revision: </td>
                                     <td><input type="text" name="build_rev" required/></td>
-                                    <td>TAG 2: </td>
+                                    <td>TAG: </td>
                                     <td><input type="text" name="build_tag" value="default" required/></td>
                                     <td><button type="button" class="btn delete_build">Delete</button></td>
                                 </tr>
@@ -96,14 +98,24 @@
                             <div class = "benchmark-holder">
                                 {% for benchmark in benchmarks %}
                                     {% with forloop.counter as i %}
-                                        <table class="table-bordered">
+                                        <table class="table-bordered padding_tbl">
                                             <thead>
-                                                <tr><td>Benchmark</td><td>Ops/min (No.{{benchmark.specjvm.build_no}})</td></tr>
+                                                <tr>
+                                                    {% if i == 1 %}
+                                                        <td>Benchmark</td>
+                                                    {% endif %}
+                                                    <td>Ops/min (No.{{benchmark.specjvm.build_no}})</td>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                                 {% for key,value in benchmark.specjvm.items %}
                                                     {% if key != "build_no" and key != "details" and key != "revision" %}
-                                                        <tr><td>{{key}}</td><td id="{{key}}{{i}}">{{value}}</td></tr>
+                                                        <tr>
+                                                            {% if i == 1 %}
+                                                                <td>{{key}}</td>
+                                                            {% endif %}
+                                                            <td id="{{key}}{{i}}">{{value}}</td>
+                                                        </tr>
                                                         <input type="hidden" name="{{key}}{{i}}" value="{{value}}"/>
                                                     {% endif %}
                                                 {% endfor %}
@@ -125,14 +137,24 @@
                             <div class = "benchmark-holder">
                                 {% for benchmark in benchmarks %}
                                     {% with forloop.counter as i %}
-                                        <table class="table-bordered">
+                                        <table class="table-bordered padding_tbl">
                                             <thead>
-                                                <tr><td>Benchmark</td><td>Ops/min (No.{{benchmark.dacapo.build_no}})</td></tr>
+                                                <tr>
+                                                    {% if i == 1 %}
+                                                        <td>Benchmark</td>
+                                                    {% endif %}
+                                                    <td>Ops/min (No.{{benchmark.dacapo.build_no}})</td>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                                 {% for key,value in benchmark.dacapo.items %}
                                                     {% if key != "build_no" and key != "details" and key != "revision" %}
-                                                        <tr><td>{{key}}</td><td id="{{key}}{{i}}">{{value}}</td></tr>
+                                                        <tr>
+                                                            {% if i == 1 %}
+                                                                <td>{{key}}</td>
+                                                            {% endif %}
+                                                            <td id="{{key}}{{i}}">{{value}}</td>
+                                                        </tr>
                                                         <input type="hidden" name="{{key}}{{i}}" value="{{value}}"/>
                                                     {% endif %}
                                                 {% endfor %}

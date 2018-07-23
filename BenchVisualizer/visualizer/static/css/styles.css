@@ -43,6 +43,6 @@ div.page_head {
     background-color: red;
 }
 
-#revision_input_table tr{
-    margin-bottom: 10px;
+.padding_tbl> tbody > tr > td {
+    padding: 2px;
 }
