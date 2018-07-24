@@ -1,5 +1,6 @@
 from visualizer.models import Job, Specjvm, Dacapo
 from django.http import Http404
+from django.db import IntegrityError
 
 class DatabaseManager:
 
@@ -14,7 +15,7 @@ class DatabaseManager:
         try:
             stored_job = Job.objects.get(name=job_name)
         except Job.DoesNotExist:
-            raise Http404("Job <" + str(job_name) + "> does nt exist!")
+            raise Http404("Job <" + str(job_name) + "> does not exist!")
 
         job ={
             'name': stored_job.name,
@@ -88,7 +89,7 @@ class DatabaseManager:
 
         return bench
 
-    def get_last_two_benchmarks(self, job_name):
+    def get_last_benchmarks(self, job_name):
 
         stored_job = Job.objects.get(name=job_name)
 
@@ -100,10 +101,20 @@ class DatabaseManager:
         '''
         recent_builds = stored_job.dacapo_set.all().order_by('-build_no')
 
-        bench1 = self.get_benchmarks(stored_job, recent_builds[0].revision)
-        bench2 = self.get_benchmarks(stored_job, recent_builds[1].revision)
+        if len(recent_builds) >= 2:
 
-        return [bench1, bench2]
+            bench1 = self.get_benchmarks(stored_job, recent_builds[0].revision)
+            bench2 = self.get_benchmarks(stored_job, recent_builds[1].revision)
+            return [bench1, bench2]
+
+        elif len(recent_builds) == 1:
+
+            bench1 = self.get_benchmarks(stored_job, recent_builds[0].revision)
+            return [bench1]
+
+        elif len(recent_builds) == 0:
+
+            return []
 
     def get_selected_benchmarks(self, job_name, revisions, tags):
 
@@ -240,19 +251,22 @@ class DatabaseManager:
         '''
 
         :param jobs: An array of details about each Job ('details') and its builds ('builds')
-        :return: "ok" after successful operation
+        :return: "ok" after successful operation, exception value if unsuccessful
 
         This function purges the old contents of the DB and inserts the new ones
         '''
 
         self.clear_database()
 
-        for job in jobs:
-            stored_job = self.store_job(job['details'])
+        try:
+            for job in jobs:
+                stored_job = self.store_job(job['details'])
 
-            # for each job, store its build data
-            for build in job['builds']:
-                self.store_benchmarks(stored_job, build)
+                # for each job, store its build data
+                for build in job['builds']:
+                    self.store_benchmarks(stored_job, build)
+        except IntegrityError as i:
+            return "Integrity Error: " + str(i)
 
         return "ok"
 
@@ -261,16 +275,18 @@ class DatabaseManager:
         '''
 
         :param jobs: An array of details about each Job ('details') and its builds ('builds')
-        :return: "ok" after successful operation
+        :return: "ok" after successful operation, exception value if unsuccessful
 
         This function updates the DB with data for new Jobs, that previously did not exist.
         '''
+        try:
+            for job in jobs:
+                stored_job = self.store_job(job['details'])
 
-        for job in jobs:
-            stored_job = self.store_job(job['details'])
-
-            # for each job, store its build data
-            for build in job['builds']:
-                self.store_benchmarks(stored_job, build)
+                # for each job, store its build data
+                for build in job['builds']:
+                    self.store_benchmarks(stored_job, build)
+        except IntegrityError as i:
+            return "Integrity Error: " + str(i)
 
         return "ok"

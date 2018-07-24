@@ -36,7 +36,7 @@ class Dacapo(models.Model):
     xalan = models.CharField(max_length=50, default="0")
 
     class Meta:
-        unique_together = ('revision', 'details')
+        unique_together = ('job', 'revision', 'details')
 
     def __str__(self):
         return str(self.job) + str(self.build_no)
@@ -59,7 +59,7 @@ class Specjvm(models.Model):
     xml = models.CharField(max_length=50, default="0")
 
     class Meta:
-        unique_together = ('revision', 'details')
+        unique_together = ('job', 'revision', 'details')
 
     def __str__(self):
         return str(self.job) + str(self.build_no)
