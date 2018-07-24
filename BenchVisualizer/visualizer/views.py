@@ -193,29 +193,23 @@ def registerStatus(request):
             '''
             jobs = []
 
-            for job_name in job_names:
-                job_dtl = jenkins_conn.get_job_details(job_name)
-                #for each one of the job's builds, get the benchmarks
-                builds = []
-                print "Job: " + job_name + " --------> Searching for good builds"
-                for i in range(int(job_dtl["first_build_no"]), int(job_dtl["last_build_no"])+1, 1):
-                    # exclude the failed builds
-                    if jenkins_conn.is_build_good(job_name, i) == "False":
-                        continue
-                    print "Job: " + job_name + " ----> scanning build " + str(i)
-                    build = jenkins_conn.get_build_benchmarks(job_name, i)
-                    builds.append(build)
-                '''
-                For each job, some basic details are stored ('details' part), 
-                along with benchmark information for every build ('builds' part)
-                '''
-                job = {
-                    'details': job_dtl,
-                    'builds': builds
-                }
-                jobs.append(job)
+            if 'refresh' in request.POST:
 
-            result = db.refresh_database(jobs)
+                for job_name in job_names:
+                    job = jenkins_conn.get_job_and_benchmarks(job_name)
+                    jobs.append(job)
+
+                result = db.refresh_database(jobs)
+            else:
+
+                for job_name in job_names:
+                    try:
+                        db.get_job(job_name)
+                    except Http404:
+                        job = jenkins_conn.get_job_and_benchmarks(job_name)
+                        jobs.append(job)
+
+                result = db.update_database(jobs)
         except ConnectionError:
             raise Http404("Could not establish a connection to the Jenkins server")
 

@@ -76,6 +76,30 @@ class JenkinsConnector:
 
         return build_details
 
+    def get_job_and_benchmarks(self, job_name):
+
+        job_dtl = self.get_job_details(job_name)
+        # for each one of the job's builds, get the benchmarks
+        builds = []
+        print "Job: " + job_name + " --------> Searching for good builds"
+        for i in range(int(job_dtl["first_build_no"]), int(job_dtl["last_build_no"]) + 1, 1):
+            # exclude the failed builds
+            if self.is_build_good(job_name, i) == "False":
+                continue
+            print "Job: " + job_name + " ----> scanning build " + str(i)
+            build = self.get_build_benchmarks(job_name, i)
+            builds.append(build)
+        '''
+        For each job, some basic details are stored ('details' part), 
+        along with benchmark information for every build ('builds' part)
+        '''
+        job = {
+            'details': job_dtl,
+            'builds': builds
+        }
+
+        return job
+
     def is_build_good(self, jobname, build_no):
 
         job = self.server.get_job(jobname)

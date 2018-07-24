@@ -10,7 +10,11 @@ class DatabaseManager:
         return "ok"
 
     def get_job(self, job_name):
-        stored_job = Job.objects.get(name=job_name)
+
+        try:
+            stored_job = Job.objects.get(name=job_name)
+        except Job.DoesNotExist:
+            raise Http404("Job <" + str(job_name) + "> does nt exist!")
 
         job ={
             'name': stored_job.name,
@@ -232,14 +236,41 @@ class DatabaseManager:
 
 
     def refresh_database(self, jobs):
+
+        '''
+
+        :param jobs: An array of details about each Job ('details') and its builds ('builds')
+        :return: "ok" after successful operation
+
+        This function purges the old contents of the DB and inserts the new ones
+        '''
+
         self.clear_database()
 
         for job in jobs:
             stored_job = self.store_job(job['details'])
 
-            #for each job, store its build data
+            # for each job, store its build data
             for build in job['builds']:
                 self.store_benchmarks(stored_job, build)
 
+        return "ok"
+
+    def update_database(self, jobs):
+
+        '''
+
+        :param jobs: An array of details about each Job ('details') and its builds ('builds')
+        :return: "ok" after successful operation
+
+        This function updates the DB with data for new Jobs, that previously did not exist.
+        '''
+
+        for job in jobs:
+            stored_job = self.store_job(job['details'])
+
+            # for each job, store its build data
+            for build in job['builds']:
+                self.store_benchmarks(stored_job, build)
 
         return "ok"

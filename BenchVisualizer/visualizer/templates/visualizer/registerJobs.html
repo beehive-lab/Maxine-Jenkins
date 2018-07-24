@@ -37,7 +37,21 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <button type="submit" class="btn btn-info">Register selected Jobs</button>
+            <table class="table padding_tbl">
+                <tbody>
+                    <tr>
+                        <td><button type="submit" class="btn btn-info">Register selected Jobs</button></td>
+                        <td>Purge old data: <input type="checkbox" name="refresh" value="true"></td>
+                    </tr>
+                    <tr>
+                        <p style="color: orange;">
+                            Warning! Checking the option "Purge old data" all the contents of the database will be deleted,
+                            including tagged builds! Then, data about the selected Jenkins jobs will be filled.<br>
+                            If you want to add data for a new (unregistered) Jenkins Job and keep the old data, leave it unchecked.
+                        </p>
+                    </tr>
+                </tbody>
+            </table>
         </form>
 
     </body>

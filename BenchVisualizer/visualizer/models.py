@@ -6,7 +6,7 @@ from django.db import models
 # Create your models here.
 
 class Job(models.Model):
-    name = models.CharField(max_length=50, default="n/a")
+    name = models.CharField(max_length=50, default="n/a", unique=True)
     description = models.CharField(max_length=50, default="n/a")
     is_running = models.CharField(max_length=5, default="n/a")
     is_enabled = models.CharField(max_length=5, default="n/a")
