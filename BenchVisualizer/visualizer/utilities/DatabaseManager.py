@@ -4,13 +4,31 @@ from django.db import IntegrityError
 
 class DatabaseManager:
 
+    """
+    Provides an API for the access to the DB
+    """
+
     def clear_database(self):
+
+        """
+        Clears the contents of the database
+        Warning: Does not reset auto-increment fields in tables
+        :return: "ok" for successful operation, exception otherwise
+        """
 
         Job.objects.all().delete()
 
         return "ok"
 
     def get_job(self, job_name):
+
+        """
+        Fetches a row of the table 'Jobs' from the DB in a dict.
+
+        :param job_name: Name of the Job
+        :return: Dict containing the row
+        :raise: Http404 exception when job not found
+        """
 
         try:
             stored_job = Job.objects.get(name=job_name)
@@ -27,6 +45,13 @@ class DatabaseManager:
         return job
 
     def get_jobs(self):
+
+        """
+        Fetches all the rows of the table 'Jobs' from the DB
+
+        :return: a list of 'Job' dicts
+        """
+
         job_names = Job.objects.values_list('name', flat=True)
 
         jobs = []
@@ -38,6 +63,16 @@ class DatabaseManager:
 
 
     def get_benchmarks(self, stored_job, build_rev, details="default"):
+
+        """
+        Fetches the set of benchmarks (specjvm AND dacapo) of a specific build, from the DB
+
+        :param stored_job: A Django reference to a stored Job (result of store_job())
+        :param build_rev: The GIT revision of the build
+        :param details: The TAG field, when build is tagged, 'default' otherwise
+        :return: A dict that contains the set of benchmarks
+        :raise: Http404 when build is not found
+        """
 
         try:
             stored_dacapo = stored_job.dacapo_set.get(revision=build_rev, details=details)
@@ -91,6 +126,14 @@ class DatabaseManager:
 
     def get_last_benchmarks(self, job_name):
 
+        """
+        Gets data from the last builds, for a specific Job. This is the default function called when the user
+        does not specify builds to compare for the job
+
+        :param job_name: The name of the Job
+        :return: A list of build data
+        """
+
         stored_job = Job.objects.get(name=job_name)
 
         '''
@@ -118,6 +161,15 @@ class DatabaseManager:
 
     def get_selected_benchmarks(self, job_name, revisions, tags):
 
+        """
+        Fetches a list of benchmark data for the builds specified by revision and tag.
+
+        :param job_name: The name of the Job
+        :param revisions: A list of revision codes for all the specific builds
+        :param tags: A list of TAGS for all the specific builds
+        :return: A list of benchmark data for the specific builds
+        """
+
         stored_job = Job.objects.get(name=job_name)
 
         benchmarks = []
@@ -128,6 +180,13 @@ class DatabaseManager:
         return benchmarks
 
     def store_job(self, job):
+
+        """
+        Stores a new Job (row) in the DB.
+
+        :param job: A dict containing Job data
+        :return: A reference to the newly stored job in the DB
+        """
 
         #firstly, store the new job in the Job table
         stored_job = Job(
@@ -145,6 +204,15 @@ class DatabaseManager:
         return stored_job
 
     def store_benchmarks(self, job, bench, details="default"):
+
+        """
+        Stores a set of benchmarks of a specific build in the DB (to the tables Specjvm and Dacapo)
+
+        :param job: The name of the Job of the build
+        :param bench: A dict that contains the sets of benchmarks
+        :param details: The TAG if the build is tagged, "default" otherwise
+        :return: "ok" for successful operation
+        """
 
         dacapo = bench['dacapo']
         specjvm = bench['specjvm']
@@ -249,11 +317,11 @@ class DatabaseManager:
     def refresh_database(self, jobs):
 
         '''
+        This function purges the old contents of the DB and inserts the new ones
 
         :param jobs: An array of details about each Job ('details') and its builds ('builds')
         :return: "ok" after successful operation, exception value if unsuccessful
 
-        This function purges the old contents of the DB and inserts the new ones
         '''
 
         self.clear_database()
@@ -273,11 +341,10 @@ class DatabaseManager:
     def update_database(self, jobs):
 
         '''
+        This function updates the DB with data for new Jobs, that previously did not exist.
 
         :param jobs: An array of details about each Job ('details') and its builds ('builds')
         :return: "ok" after successful operation, exception value if unsuccessful
-
-        This function updates the DB with data for new Jobs, that previously did not exist.
         '''
         try:
             for job in jobs:

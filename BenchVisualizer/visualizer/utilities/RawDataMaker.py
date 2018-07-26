@@ -1,5 +1,9 @@
 class RawDataMaker:
 
+    """
+    This class serializes benchmark data (dicts) to CSV-readable format
+    """
+
     def __init__(self, benchmarks, delimiter=","):
         self.data = benchmarks
         self.delimiter = delimiter

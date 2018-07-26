@@ -2,6 +2,11 @@ import re
 
 class BenchMiner:
 
+    """
+    This class provides an API for the retrieval of benchmark data from a string.
+    The string has the contents of the console output from the Jenkins Pipeline
+    """
+
     def __init__(self, console):
         #contains the whole console output of the pipeline
         self.console_inp = console
@@ -14,16 +19,23 @@ class BenchMiner:
 
     def mine_specjvm(self, sub_bench):
 
+        """
+        Looks for the result of a specific SpecJvm benchmark in the console output.
+
+        :param sub_bench: The name of the sub-bench, for example 'startup'
+        :return:  The result of the benchmark/ "0" if missing/ "-1" if failed or interrupted
+        """
+
         search_term = r".*mx.*vm.*-jar.*SPECjvm2008.jar.*" + sub_bench
 
         search_result = re.search(search_term, self.console_specjvm)
 
-        #if the sub-benchmark was not executed, return 0
+        # if the sub-benchmark was not executed, return 0
         if search_result == None:
             return "0"
 
         sub_console = self.console_specjvm[search_result.start():]
-        #"+ true" comes after the interrupt signal
+        # "+ true" comes after the interrupt signal
         search_term = r".*\+ true.*"
         search_result = re.search(search_term, sub_console)
         '''
@@ -34,22 +46,28 @@ class BenchMiner:
             return "0"
         sub_bench_output = sub_console[0:search_result.end()]
 
-        #look for the composite result inside the output of the sub benchmark
+        # look for the composite result inside the output of the sub benchmark
         search_term = r".*Noncompliant composite result: .*"
         search_result = re.search(search_term, sub_bench_output)
 
-        #if the benchark was interrupted (no result printed), return -1
+        # if the benchark was interrupted (no result printed), return -1
         if search_result == None:
             return "-1"
 
-        #the raw benchmark value is second word from the end, in the result line
+        # the raw benchmark value is second word from the end, in the result line
         raw_benchmark = search_result.group().split(" ")[-2]
 
         return raw_benchmark
 
     def mine_all_specjvms(self):
 
-        #narrow the search by finding the execution of the first test
+        """
+        Looks for the result of all the specjvm benchmarks
+
+        :return:  A dict containing the results of the sub-benchmarks
+        """
+
+        # narrow the search by finding the execution of the first test
         search_term = r".*mx.*vm.*-jar.*SPECjvm2008.jar.*"
 
         search_result = re.search(search_term, self.console_inp)
@@ -78,6 +96,13 @@ class BenchMiner:
 
     def mine_dacapo(self, sub_bench):
 
+        """
+        Looks for the result of a specific Dacapo benchmark in the console output.
+
+        :param sub_bench: The name of the sub-bench, for example 'avrora'
+        :return:  The result of the benchmark/ "0" if missing/ "-1" if failed or interrupted
+        """
+
         search_term = r".*mx.*vm.*-jar.*dacapo-9.12-bach.jar.*" + sub_bench
         search_result = re.search(search_term, self.console_dacapo)
 
@@ -101,7 +126,13 @@ class BenchMiner:
 
     def mine_all_dacapos(self):
 
-        #firstly, we narrow the search for the dacapo results
+        """
+        Looks for the result of all the dacapo benchmarks
+
+        :return:  A dict containing the results of the sub-benchmarks
+        """
+
+        # firstly, we narrow the search for the dacapo results
         search_term = r".*mx.*vm.*-jar.*dacapo-9.12-bach.jar.*"
         search_result = re.search(search_term, self.console_inp)
 

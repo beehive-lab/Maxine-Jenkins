@@ -3,6 +3,12 @@ from BenchMiner import BenchMiner
 
 class JenkinsConnector:
 
+    """
+    Handles the connection of the web application to the Jenkins Server, as well as the the data passed.
+    It uses the JenkinsApi python module to provide this functionality
+    More on JenkinsApi: https://github.com/pycontribs/jenkinsapi/
+    """
+
     def __init__(self, jenkins_url="http://localhost:8080", name="tsarnas", key="867fc4dc252312faf00f73e08ed6876e"):
         self.server = Jenkins(jenkins_url, name, key)
 

@@ -102,6 +102,7 @@ class Command(BaseCommand):
             env = dict(os.environ)
 
             # set maxine vars  - the env vars can be also be set from the BASH
+            '''
             env['WORKSPACE'] = '/home/vasilis/.jenkins/workspace/MaxinePipeline'
             env['DACAPO'] = "/home/vasilis/Desktop/SPECjvm2008"
             env['SPECJVM2008'] = "/home/vasilis/Desktop/SPECjvm2008"
@@ -111,16 +112,17 @@ class Command(BaseCommand):
             env['PATH'] += env['GRAAL_HOME'] + "/mxtool/:" + env['MAXINE_HOME'] + "/com.oracle.max.vm.native/generated/linux/"
             env['LD_LIBRARY_PATH'] = env['MAXINE_HOME'] + "/com.oracle.max.vm.native/generated/linux/"
             env['JAVA_HOME'] = "/usr/lib/jvm/java-7-openjdk-amd64"
+            '''
+
 
             dacapo_benchs = [
+                "avrora", "batik", "eclipse", "fop", "h2", "jython", "luindex",
+                "lusearch", "pmd", "sunflow", "tomcat", "tradebeans", "tradesoap", "xalan"
             ]
 
-            '''
-                            "batik", "h2", "jython", "luindex", "lusearch", "pmd", "sunflow",
-                            "tomcat", "tradebeans", "tradesoap", "xalan"
-            '''
-
             specjvm_benchs = [
+                'startup', 'compiler', 'compress', 'crypto', 'derby', 'mpegaudio',
+                'scimark', 'serial', 'spec_sunflow', 'xml'
             ]
 
             outp = ""
