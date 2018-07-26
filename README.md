@@ -8,6 +8,7 @@ A web application that visualizes the results from the benchmarks SPECJVM2008 an
 
 Please make sure that the system supports Python 2.7.x along with `pip` before proceeding.
 Also the system should have the Jenkins server up and running.
+Internet connection is required to use BenchVisualizer.
 
  - Install the JenkinsApi Python module: `pip install jenkinsapi`
  - Install Django, version 1.11: `pip install Django==1.11`. After this, make sure that the installation is successful by typing in the Python shell: `import Django` and `print(django.get_version())`.
@@ -30,12 +31,16 @@ Also the system should have the Jenkins server up and running.
     }
 }
   ```
- - Now go to the roor of the project (BenchVisualizer/) and run:
-   `python manage.py runmigrations visualizer` and `python manage.py migrate`.
+ - Now go to the root of the project (BenchVisualizer/) and run:
+   `python manage.py makemigrations visualizer` and `python manage.py migrate`.
    If any error pops up, you can delete the BenchVisualizer/visualizer/migrations folder and try the commands again.
 
  - If you have protection enabled on the Jenkins server, you will need to go into the file BenchVisualizer/visualizer/utilities/JenkinsConnector.py and modify the user name and access token in line 12.
 
  - To start the built-in Django server, run: `python manage.py runserver` from the project root directory. This will run the server on the   port 8000. The command takes an optional argument if you want a different, specific port.
  - Open a web browser and paste the url `http://127.0.0.1:8000/visualizer/`. The application interface is displayed with no data (no Jenkins jobs registered yet). Click the button "Register Job" on the upper right corner. If the connection to Jenkins is successfull, a list of all the Jenkins Job is displayed. Select the Jobs to be registered and submit (without checking the purge box). Checking again on `http://127.0.0.1:8000/visualizer/` will have the list of registered jobs. Select one to display the benchmark details for the job's builds.
+
+# Benchmark Pipeline
+
+
 
