@@ -38,7 +38,7 @@ Internet connection is required to use BenchVisualizer.
  - If you have protection enabled on the Jenkins server, you will need to go into the file BenchVisualizer/visualizer/utilities/JenkinsConnector.py and modify the user name and access token in line 12.
 
  - To start the built-in Django server, run: `python manage.py runserver` from the project root directory. This will run the server on the   port 8000. The command takes an optional argument if you want a different, specific port.
- - Open a web browser and paste the url `http://127.0.0.1:8000/visualizer/`. The application interface is displayed with no data (no Jenkins jobs registered yet). Click the button "Register Job" on the upper right corner. If the connection to Jenkins is successfull, a list of all the Jenkins Job is displayed. Select the Jobs to be registered and submit (without checking the purge box). Checking again on `http://127.0.0.1:8000/visualizer/` will have the list of registered jobs. Select one to display the benchmark details for the job's builds.
+
 
 # Benchmark Pipeline
 
@@ -55,7 +55,7 @@ This Jenkins pipeline builds MaxineVM and then runs all the specjvm and dacapo b
 
 # Final steps
 
-Click the button "Register Job" on the upper right corner. If the connection to Jenkins is successfull, a list of all the Jenkins Job is displayed. Select the new job, created in the previous step and submit (without checking the purge box). Checking again on `http://127.0.0.1:8000/visualizer/` will have the list of registered jobs (the new job). Select one to display the benchmark details for the job's builds. If there are no builds in the DB, then wait after several days of development on the develop branch (the DB will be updated daily) or insert a new build manually through the CLI.
+ - Open a web browser and paste the url `http://127.0.0.1:8000/visualizer/`. The application interface is displayed with no data (no Jenkins jobs registered yet). Click the button "Register Job" on the upper right corner. If the connection to Jenkins is successfull, a list of all the Jenkins Job is displayed. Select the new Job to be registered and submit (without checking the purge box). Checking again on `http://127.0.0.1:8000/visualizer/` will have the list of registered jobs (the new job). Select one to display the benchmark details for the job's builds. If there are no builds in the DB, then wait after several days of development on the develop branch (the DB will be updated daily) or insert a new build manually through the CLI.
 
 
 
