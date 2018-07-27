@@ -26,7 +26,7 @@ class BenchMiner:
         :return:  The result of the benchmark/ "0" if missing/ "-1" if failed or interrupted
         """
 
-        search_term = r".*mx.*vm.*-jar.*SPECjvm2008.jar.*" + sub_bench
+        search_term = r".*-jar.*SPECjvm2008.jar.*" + sub_bench
 
         search_result = re.search(search_term, self.console_specjvm)
 
@@ -68,7 +68,7 @@ class BenchMiner:
         """
 
         # narrow the search by finding the execution of the first test
-        search_term = r".*mx.*vm.*-jar.*SPECjvm2008.jar.*"
+        search_term = r".*-jar.*SPECjvm2008.jar.*"
 
         search_result = re.search(search_term, self.console_inp)
 
@@ -103,10 +103,10 @@ class BenchMiner:
         :return:  The result of the benchmark/ "0" if missing/ "-1" if failed or interrupted
         """
 
-        search_term = r".*mx.*vm.*-jar.*dacapo-9.12-bach.jar.*" + sub_bench
+        search_term = r".*-jar.*dacapo-9.12-bach.jar.*" + sub_bench
         search_result = re.search(search_term, self.console_dacapo)
 
-        #subtest missing
+        # subtest missing
         if search_result == None:
             return "0"
 
@@ -115,7 +115,7 @@ class BenchMiner:
         search_term = r"===== DaCapo 9.12 " + sub_bench + r" PASSED in [0-9]+ msec ====="
         search_result = re.search(search_term, sub_console)
 
-        #subtest failed
+        # subtest failed
         if search_result == None:
             return "-1"
 
@@ -133,7 +133,7 @@ class BenchMiner:
         """
 
         # firstly, we narrow the search for the dacapo results
-        search_term = r".*mx.*vm.*-jar.*dacapo-9.12-bach.jar.*"
+        search_term = r".*-jar.*dacapo-9.12-bach.jar.*"
         search_result = re.search(search_term, self.console_inp)
 
         if search_result == None:

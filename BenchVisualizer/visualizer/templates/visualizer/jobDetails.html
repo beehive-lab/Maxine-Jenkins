@@ -14,8 +14,11 @@
 
     <body>
         <div class="page_head">
-            <h1>Details for Job: {{job_name}}</h1>
+            <h2>Details for Job: {{job_name}}</h2>
+            <div class="menu_but">
+            <button type="button" class="btn btn-info btn-lg" onclick="window.location.assign('{% url 'visualizer:index' %}')">Home</button>
             <button id="ModalBtn" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#BuildModal">Select Builds</button>
+            </div>
         </div>
 
         <!-- MODAL: Specific build selection window -->
@@ -39,14 +42,14 @@
                               <tbody>
                                 <tr>
                                     <td>Revision: </td>
-                                    <td><input type="text" name="build_rev" required/></td>
+                                    <td><input type="text" name="build_rev" maxlength="40" required/></td>
                                     <td>TAG: </td>
                                     <td><input type="text" name="build_tag" value="default" required/></td>
                                     <td><button type="button" class="btn delete_build">Delete</button></td>
                                 </tr>
                                 <tr>
                                     <td>Revision: </td>
-                                    <td><input type="text" name="build_rev" required/></td>
+                                    <td><input type="text" name="build_rev" maxlength="40" required/></td>
                                     <td>TAG: </td>
                                     <td><input type="text" name="build_tag" value="default" required/></td>
                                     <td><button type="button" class="btn delete_build">Delete</button></td>

@@ -18,7 +18,7 @@ $(document).ready(function() {
         if(new_no_builds <= MAX_BUILDS){
            var new_row = '<tr>'+
                                     '<td>Revision: </td>'+
-                                    '<td><input type="text" name="build_rev" required/></td>'+
+                                    '<td><input type="text" name="build_rev" maxlength="40" required/></td>'+
                                     '<td>TAG: </td>'+
                                     '<td><input type="text" name="build_tag" value="default" required/></td>'+
                                     '<td><button type="button" class="btn delete_build">Delete</button></td>'+

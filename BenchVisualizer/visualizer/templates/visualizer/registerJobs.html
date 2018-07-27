@@ -12,7 +12,10 @@
     <body>
 
         <div class="page_head">
-            <h1>BenchVisualizer: Register Jobs</h1>
+            <h2>BenchVisualizer: Register Jobs</h2>
+            <div class="menu_but">
+            <button id="ModalBtn" class="btn btn-info btn-lg" onclick="window.location.assign('{% url 'visualizer:index' %}')">Home</button>
+            </div>
         </div>
 
         <form action="{% url 'visualizer:registerStatus'%}" method="post">
