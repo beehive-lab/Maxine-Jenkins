@@ -46,7 +46,11 @@ This Jenkins pipeline builds MaxineVM and then runs all the specjvm and dacapo b
 
 ## Setup Instructions
 
+Before proceeding, make sure that SPECJVM2008 is installed on the machine and `dacapo-9.12-bach.jar` is available.
+
  - Download the file `bench_Jenkinsfile` from the repo and paste it into the root directory of MaxineVM ($MAXINE_HOME, along the existing Jenkinsfile).
+ - edit the pipeline file (`bench_Jenkinsfile`), more scpecifically the environment variables `DJANGO` (Full path to the root of BenchVisualizer), `DACAPO` (full path to the directory containing the dacapo .jar), `SPECJVM2008` (full path to the root directory of SPECJVM2008 installation). For simplicity, you can place the dacapo .jar into specjvm's directory.
+ - You may also need to modify specjvm execution steps, to specify different iteration/warmup times.
  - Open Jenkins GUI and create a new pipeline/job following the instructions at `https://jenkins.io/doc/book/pipeline/getting-started/#defining-a-pipeline-in-scm`. Name the pipeline "MaxinePipeline".
  - Under the Configurations tab of the new Job, specify the following:
  	* Under "Build Triggers" select "Poll SCM" and in the schedule field define the time when Jenkins will check the repo for changes. Checking should be done daily, so a value like `30 03 * * *` will check the repo daily at 03:30. If there are new commits until then, the pipeline will start.
