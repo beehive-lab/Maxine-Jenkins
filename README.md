@@ -42,5 +42,20 @@ Internet connection is required to use BenchVisualizer.
 
 # Benchmark Pipeline
 
+This Jenkins pipeline builds MaxineVM and then runs all the specjvm and dacapo benchmarks. In the end, it adds the benchmarks to the DB of BenchVisualizer.
+
+## Setup Instructions
+
+ - Download the file `bench_Jenkinsfile` from the repo and paste it into the root directory of MaxineVM ($MAXINE_HOME, along the existing Jenkinsfile).
+ - Open Jenkins GUI and create a new pipeline/job following the instructions at `https://jenkins.io/doc/book/pipeline/getting-started/#defining-a-pipeline-in-scm`. Name the pipeline "MaxinePipeline".
+ - Under the Configurations tab of the new Job, specify the following:
+ 	* Under "Build Triggers" select "Poll SCM" and in the schedule field define the time when Jenkins will check the repo for changes. Checking should be done daily, so a value like `30 03 * * *` will check the repo daily at 03:30. If there are new commits until then, the pipeline will start.
+ 	* Under "Advanced build options": Pipeline->Definition: "Pipeline as scm", SCM: "Git", Repository URL: "https://github.com/beehive-lab/Maxine-VM-internal/", token:(your jenkins token), branch: "*/develop", script path: "bench_Jenkinsfile".
+	* Press "Save"
+
+# Final steps
+
+Click the button "Register Job" on the upper right corner. If the connection to Jenkins is successfull, a list of all the Jenkins Job is displayed. Select the new job, created in the previous step and submit (without checking the purge box). Checking again on `http://127.0.0.1:8000/visualizer/` will have the list of registered jobs (the new job). Select one to display the benchmark details for the job's builds. If there are no builds in the DB, then wait after several days of development on the develop branch (the DB will be updated daily) or insert a new build manually through the CLI.
+
 
 
