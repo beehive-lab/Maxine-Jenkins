@@ -35,7 +35,7 @@ Internet connection is required to use BenchVisualizer.
    `python manage.py makemigrations visualizer` and `python manage.py migrate`.
    If any error pops up, you can delete the BenchVisualizer/visualizer/migrations folder and try the commands again.
 
- - If you have protection enabled on the Jenkins server, you will need to go into the file BenchVisualizer/visualizer/utilities/JenkinsConnector.py and modify the user name and access token in line 12.
+ - If you have protection enabled on the Jenkins server, you will need to go into the file BenchVisualizer/visualizer/utilities/JenkinsConnector.py and modify the user name and access token in line 12. In the case that Jenkis runs remotely, you can also specify the IP.
 
  - To start the built-in Django server, run: `python manage.py runserver` from the project root directory. This will run the server on the   port 8000. The command takes an optional argument if you want a different, specific port.
 
@@ -46,7 +46,7 @@ This Jenkins pipeline builds MaxineVM and then runs all the specjvm and dacapo b
 
 ## Setup Instructions
 
-Before proceeding, make sure that SPECJVM2008 is installed on the machine and `dacapo-9.12-bach.jar` is available.
+Before proceeding, make sure that SPECJVM2008 is installed on the machine (that runs Jenkins) and `dacapo-9.12-bach.jar` is available.
 
  - Download the file `bench_Jenkinsfile` from the repo and paste it into the root directory of MaxineVM ($MAXINE_HOME, along the existing Jenkinsfile).
  - edit the pipeline file (`bench_Jenkinsfile`), more scpecifically the environment variables `DJANGO` (Full path to the root of BenchVisualizer), `DACAPO` (full path to the directory containing the dacapo .jar), `SPECJVM2008` (full path to the root directory of SPECJVM2008 installation). For simplicity, you can place the dacapo .jar into specjvm's directory.
