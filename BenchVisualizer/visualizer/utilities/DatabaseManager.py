@@ -78,7 +78,7 @@ class DatabaseManager:
             stored_dacapo = stored_job.dacapo_set.get(revision=build_rev, details=details)
             stored_specjvm = stored_job.specjvm_set.get(revision=build_rev, details=details)
         except Dacapo.DoesNotExist:
-            raise Http404("Build for revision <" + str(build_rev) + "> of Job <" + stored_job.name + "> does not exist!")
+            raise Http404("Build for revision,tag: <" + str(build_rev) + "," + str(details) + "> of Job <" + stored_job.name + "> does not exist!")
 
         dacapo = {
             'build_no': stored_dacapo.build_no,
@@ -146,8 +146,8 @@ class DatabaseManager:
 
         if len(recent_builds) >= 2:
 
-            bench1 = self.get_benchmarks(stored_job, recent_builds[0].revision)
-            bench2 = self.get_benchmarks(stored_job, recent_builds[1].revision)
+            bench1 = self.get_benchmarks(stored_job, recent_builds[0].revision, recent_builds[0].details)
+            bench2 = self.get_benchmarks(stored_job, recent_builds[1].revision, recent_builds[1].details)
             return [bench1, bench2]
 
         elif len(recent_builds) == 1:

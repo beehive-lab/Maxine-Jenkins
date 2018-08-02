@@ -1,4 +1,5 @@
 from jenkinsapi.jenkins import Jenkins
+from jenkinsapi.custom_exceptions import NoBuildData
 from BenchMiner import BenchMiner
 
 class JenkinsConnector:
@@ -25,8 +26,11 @@ class JenkinsConnector:
             'Job1' and 'http:/0.0.0.0:8080/Job1'
             '''
             if not job_name.startswith('http:/'):
-                job_details = self.get_job_details(job_name)
-                server_jobs.append(job_details)
+                try:
+                    job_details = self.get_job_details(job_name)
+                    server_jobs.append(job_details)
+                except NoBuildData:
+                    print job_name + "has no build data"
 
         # if no jobs are found on the jenkins server...
         if server_jobs == []:
@@ -63,6 +67,8 @@ class JenkinsConnector:
         directly from the build object.
         '''
         revision = getattr(build, '_get_git_rev', lambda: None)()
+        if revision is None:
+            revision = "Not specified"
         
         spec_miner = BenchMiner(build.get_console())
 
