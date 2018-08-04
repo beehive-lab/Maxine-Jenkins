@@ -23,16 +23,16 @@ class BenchMiner:
         Looks for the result of a specific SpecJvm benchmark in the console output.
 
         :param sub_bench: The name of the sub-bench, for example 'startup'
-        :return:  The result of the benchmark/ "0" if missing/ "-1" if failed or interrupted
+        :return:  The result of the benchmark/ "missing" if missing/ "interpt/failed" if failed or interrupted
         """
 
         search_term = r".*-jar.*SPECjvm2008.jar.*" + sub_bench
 
         search_result = re.search(search_term, self.console_specjvm)
 
-        # if the sub-benchmark was not executed, return 0
+        # if the sub-benchmark was not executed, return "missing"
         if search_result == None:
-            return "0"
+            return "missing"
 
         sub_console = self.console_specjvm[search_result.start():]
         # "+ true" comes after the interrupt signal
@@ -43,16 +43,16 @@ class BenchMiner:
         For the sake of coverage, in the non - likely event that 'true is not found' treat the benchmark as missing.
         '''
         if search_result == None:
-            return "0"
+            return "missing"
         sub_bench_output = sub_console[0:search_result.end()]
 
         # look for the composite result inside the output of the sub benchmark
         search_term = r".*Noncompliant composite result: .*"
         search_result = re.search(search_term, sub_bench_output)
 
-        # if the benchark was interrupted (no result printed), return -1
+        # if the benchark was interrupted (no result printed), return "interpt/failed"
         if search_result == None:
-            return "-1"
+            return "interpt/failed"
 
         # the raw benchmark value is second word from the end, in the result line
         raw_benchmark = search_result.group().split(" ")[-2]
@@ -74,8 +74,8 @@ class BenchMiner:
 
         if search_result == None:
             return {
-                'startup': "0", 'compiler': "0", 'compress': "0", 'crypto': "0", 'derby': "0",
-                'mpegaudio': "0", 'scimark': "0", 'serial': "0", 'spec_sunflow': "0", 'xml': "0"
+                'startup': "missing", 'compiler': "missing", 'compress': "missing", 'crypto': "missing", 'derby': "missing",
+                'mpegaudio': "missing", 'scimark': "missing", 'serial': "missing", 'spec_sunflow': "missing", 'xml': "missing"
             }
 
         self.console_specjvm = self.console_inp[search_result.start():]
@@ -100,7 +100,7 @@ class BenchMiner:
         Looks for the result of a specific Dacapo benchmark in the console output.
 
         :param sub_bench: The name of the sub-bench, for example 'avrora'
-        :return:  The result of the benchmark/ "0" if missing/ "-1" if failed or interrupted
+        :return:  The result of the benchmark/ "missing" if missing/ "interpt/failed" if failed or interrupted
         """
 
         search_term = r".*-jar.*dacapo-9.12-bach.jar.*" + sub_bench
@@ -108,7 +108,7 @@ class BenchMiner:
 
         # subtest missing
         if search_result == None:
-            return "0"
+            return "missing"
 
         sub_console = self.console_dacapo[search_result.start():]
 
@@ -117,7 +117,7 @@ class BenchMiner:
 
         # subtest failed
         if search_result == None:
-            return "-1"
+            return "interpt/failed"
 
         # the raw benchmark value is second word from the end, in the result line
         raw_benchmark = search_result.group().split(" ")[-3]
@@ -138,8 +138,8 @@ class BenchMiner:
 
         if search_result == None:
             return {
-                'avrora': "0", 'batik': "0", 'eclipse': "0", 'fop': "0", 'h2': "0", 'jython': "0", 'luindex': "0",
-                'lusearch': "0", 'pmd': "0", 'sunflow': "0", 'tomcat': "0", 'tradebeans': "0", 'tradesoap': "0", 'xalan': "0"
+                'avrora': "missing", 'batik': "missing", 'eclipse': "missing", 'fop': "missing", 'h2': "missing", 'jython': "missing", 'luindex': "missing",
+                'lusearch': "missing", 'pmd': "missing", 'sunflow': "missing", 'tomcat': "missing", 'tradebeans': "missing", 'tradesoap': "missing", 'xalan': "missing"
             }
 
         self.console_dacapo = self.console_inp[search_result.start():]

@@ -24,9 +24,9 @@ class MinerTests(unittest.TestCase):
             'compiler': "25.14",
             'compress': "21",
             'crypto': "21.78",
-            'derby': "-1",
+            'derby': "interpt/failed",
             'mpegaudio': "10.76",
-            'scimark': "0",
+            'scimark': "missing",
             'serial': "6.94",
             'spec_sunflow': "21.74",
             'xml': "21.96"
@@ -44,11 +44,11 @@ class MinerTests(unittest.TestCase):
         expected = {
             'startup': "8.62",
             'compiler': "25.14",
-            'compress': "-1",
+            'compress': "interpt/failed",
             'crypto': "21.78",
-            'derby': "-1",
+            'derby': "interpt/failed",
             'mpegaudio': "10.76",
-            'scimark': "0",
+            'scimark': "missing",
             'serial': "6.94",
             'spec_sunflow': "21.74",
             'xml': "21.96"
@@ -65,7 +65,7 @@ class MinerTests(unittest.TestCase):
 
         expected = {
             'avrora': "14490",
-            'batik': "-1",
+            'batik': "interpt/failed",
             'eclipse': "119405",
             'fop': "5989",
             'h2': "39575",
@@ -75,8 +75,8 @@ class MinerTests(unittest.TestCase):
             'pmd': "35371",
             'sunflow': "16847",
             'tomcat': "24990",
-            'tradebeans': "-1",
-            'tradesoap': "-1",
+            'tradebeans': "interpt/failed",
+            'tradesoap': "interpt/failed",
             'xalan': "11545",
         }
 

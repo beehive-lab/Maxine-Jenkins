@@ -12,6 +12,7 @@ div.benchmark-holder {
 }
 
 div.page_head {
+    width: 100%;
     background-color: #4d94ff;
     margin-bottom: 30px;
     padding: 10px;

@@ -75,13 +75,14 @@
             <div>
                 <table class="table-bordered">
                     <thead>
-                    <tr><td>Build number</td><td>Git Revision</td></tr>
+                    <tr><td>Build number</td><td>Git Revision</td><td>Tag</td></tr>
                     </thead>
                     <tbody>
                         {% for benchmark in benchmarks %}
                             <tr>
                                 <td id="build{{forloop.counter}}">{{benchmark.specjvm.build_no}}</td>
-                                <td>{{benchmark.specjvm.revision}}</td>
+                                <td id="rev{{forloop.counter}}">{{benchmark.specjvm.revision}}</td>
+                                <td id="tag{{forloop.counter}}">{{benchmark.specjvm.details}}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -90,7 +91,7 @@
         </center>
 
         <!--<center>-->
-        <table style="width: 100%">
+        <table style="width: 100%;">
             <tbody>
                 <!-- SPECJVM stats -->
                 <tr>

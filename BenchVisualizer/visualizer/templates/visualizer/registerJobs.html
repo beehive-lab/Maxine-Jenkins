@@ -21,6 +21,7 @@
         <form action="{% url 'visualizer:registerStatus'%}" method="post">
             {% csrf_token %}
             <table class="table">
+                <p>List of Jobs currently on Jenkins (Note: jobs with no build data are not displayed)</p><br/>
                 <thead>
                     <tr>
                         <td>Job Name</td>
