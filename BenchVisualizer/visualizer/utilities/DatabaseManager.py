@@ -82,6 +82,7 @@ class DatabaseManager:
 
         dacapo = {
             'build_no': stored_dacapo.build_no,
+            'timestamp': stored_dacapo.timestamp,
             'revision': stored_dacapo.revision,
             'details': stored_dacapo.details,
             'avrora': stored_dacapo.avrora,
@@ -102,6 +103,7 @@ class DatabaseManager:
 
         specjvm = {
             'build_no': stored_specjvm.build_no,
+            'timestamp': stored_specjvm.timestamp,
             'revision': stored_specjvm.revision,
             'details': stored_specjvm.details,
             'startup': stored_specjvm.startup,
@@ -142,7 +144,7 @@ class DatabaseManager:
         The simplest workaround would be to take only the last_build_no from the Job and get 
         (last_build_no - 1), but this wouldn't work if build numbers are not consecutive
         '''
-        recent_builds = stored_job.dacapo_set.all().order_by('-build_no')
+        recent_builds = stored_job.dacapo_set.all().order_by('-timestamp')
 
         if len(recent_builds) >= 2:
 
@@ -219,6 +221,7 @@ class DatabaseManager:
 
         job.dacapo_set.create(
             build_no=bench['build_no'],
+            timestamp=bench['timestamp'],
             revision=bench['revision'],
             details=details,
             avrora=dacapo['avrora'],
@@ -239,6 +242,7 @@ class DatabaseManager:
 
         job.specjvm_set.create(
             build_no=bench['build_no'],
+            timestamp=bench['timestamp'],
             revision=bench['revision'],
             details=details,
             startup=specjvm['startup'],
@@ -275,6 +279,7 @@ class DatabaseManager:
         specjvm = bench['specjvm']
 
         stored_dacapo.build_no = bench['build_no']
+        stored_dacapo.timestamp = bench['timestamp']
         # revision = bench['revision']
         # details = details
         stored_dacapo.avrora = dacapo['avrora']
@@ -295,6 +300,7 @@ class DatabaseManager:
         stored_dacapo.save()
 
         stored_specjvm.build_no = bench['build_no']
+        stored_specjvm.timestamp = bench['timestamp']
         # revision = bench['revision']
         # details = details
         stored_specjvm.startup = specjvm['startup']

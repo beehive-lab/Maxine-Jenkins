@@ -51,6 +51,7 @@ def jobDetails(request, job_name):
         'job_name': job_name,
         'job_details': job_details,
         'benchmarks': benchmarks,
+        'hide_in_table': ["build_no", "details", "revision", "timestamp"],
         'no_bench': len(benchmarks)
     }
     template = loader.get_template('visualizer/jobDetails.html')

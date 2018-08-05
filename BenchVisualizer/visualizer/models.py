@@ -18,6 +18,7 @@ class Dacapo(models.Model):
     # avrora batik eclipse fop h2 jython luindex lusearch pmd sunflow tomcat tradebeans tradesoap xalan
     job = models.ForeignKey(Job, on_delete=models.CASCADE, default=1)
     build_no = models.IntegerField(default=0)
+    timestamp = models.DateTimeField()
     revision = models.CharField(max_length=50, default="0")
     details = models.CharField(max_length=50, default="default")
     avrora = models.CharField(max_length=50, default="0")
@@ -45,6 +46,7 @@ class Dacapo(models.Model):
 class Specjvm(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE, default=1)
     build_no = models.IntegerField(default=0)
+    timestamp = models.DateTimeField()
     revision = models.CharField(max_length=50, default="0")
     details = models.CharField(max_length=50, default="default")
     startup = models.CharField(max_length=50, default="0")

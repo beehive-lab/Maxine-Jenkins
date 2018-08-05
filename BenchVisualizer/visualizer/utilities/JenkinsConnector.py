@@ -1,6 +1,7 @@
 from jenkinsapi.jenkins import Jenkins
 from jenkinsapi.custom_exceptions import NoBuildData
 from BenchMiner import BenchMiner
+from datetime import datetime
 
 class JenkinsConnector:
 
@@ -82,6 +83,7 @@ class JenkinsConnector:
             'build_no': build_no,
             'is_good': str(build.is_good()),
             'revision': revision,
+            'timestamp': build.get_timestamp(),
             'specjvm': spec_result,
             'dacapo': dacapo_result
         }

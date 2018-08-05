@@ -73,9 +73,9 @@
             <!-- get the number of benchmarks to compare from the controller -->
             <input type="hidden" id="no_bench" value="{{no_bench}}"/>
             <div>
-                <table class="table-bordered">
+                <table class="table-bordered padding_tbl">
                     <thead>
-                    <tr><td>Build number</td><td>Git Revision</td><td>Tag</td></tr>
+                    <tr><td>Build number</td><td>Git Revision</td><td>Tag</td><td>Timestamp (UTC)</td></tr>
                     </thead>
                     <tbody>
                         {% for benchmark in benchmarks %}
@@ -83,6 +83,7 @@
                                 <td id="build{{forloop.counter}}">{{benchmark.specjvm.build_no}}</td>
                                 <td id="rev{{forloop.counter}}">{{benchmark.specjvm.revision}}</td>
                                 <td id="tag{{forloop.counter}}">{{benchmark.specjvm.details}}</td>
+                                <td>{{benchmark.specjvm.timestamp}}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -113,7 +114,7 @@
                                             </thead>
                                             <tbody>
                                                 {% for key,value in benchmark.specjvm.items %}
-                                                    {% if key != "build_no" and key != "details" and key != "revision" %}
+                                                    {% if key not in hide_in_table %}
                                                         <tr>
                                                             {% if i == 1 %}
                                                                 <td>{{key}}</td>
@@ -152,7 +153,7 @@
                                             </thead>
                                             <tbody>
                                                 {% for key,value in benchmark.dacapo.items %}
-                                                    {% if key != "build_no" and key != "details" and key != "revision" %}
+                                                    {% if key not in hide_in_table %}
                                                         <tr>
                                                             {% if i == 1 %}
                                                                 <td>{{key}}</td>

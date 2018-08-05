@@ -1,7 +1,9 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.db.utils import IntegrityError
 from django.http import Http404
+from django.utils import timezone
 from visualizer.models import Job
+from datetime import datetime
 from visualizer.utilities import DatabaseManager, JenkinsConnector, BenchMiner
 from requests import ConnectionError
 import os
@@ -154,6 +156,7 @@ class Command(BaseCommand):
             all_benchs = {
                 'build_no': 0,
                 'revision': options['revision'],
+                'timestamp': datetime.now(tz=timezone.utc),
                 'specjvm': specjvm_res,
                 'dacapo': dacapo_res
             }

@@ -55,7 +55,13 @@ function gather_data(bench_names){
         var specjvm_bench = [];
 
         for(i = 0; i < bench_names.length; i++){
-            specjvm_bench.push($('#'+bench_names[i]+b).text());
+            var bench_value = $('#'+bench_names[i]+b).text()
+
+            //if there was something wrong with the benchmark, push "0"
+            if (bench_value == "missing" || bench_value == "interpt/failed")
+                specjvm_bench.push("0");
+            else
+                specjvm_bench.push(bench_value);
         }
 
         var trace = {
