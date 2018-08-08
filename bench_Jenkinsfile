@@ -8,9 +8,11 @@ pipeline {
         jdk 'openJDK7u131'
     }
     environment {
+	//Change the first three variables
 	DJANGO="/home/vasilis/Desktop/BenchVisualizer"
 	DACAPO="/home/vasilis/Desktop/SPECjvm2008"
 	SPECJVM2008="/home/vasilis/Desktop/SPECjvm2008"
+
         MAXINE_HOME="$WORKSPACE/maxine"
         GRAAL_HOME="$WORKSPACE/graal"
         MX="$GRAAL_HOME/mxtool/mx"
@@ -46,7 +48,7 @@ pipeline {
                     }
             }
         }
-        stage('benchmarking') {
+        stage('DACAPO benchmarks') {
             steps {
                 dir(env.DACAPO) {
 		    sh '$MX --vm=maxine vm -jar dacapo-9.12-bach.jar avrora || true'
@@ -63,7 +65,13 @@ pipeline {
 		    sh '$MX --vm=maxine vm -jar dacapo-9.12-bach.jar tradebeans || true'
 		    sh '$MX --vm=maxine vm -jar dacapo-9.12-bach.jar tradesoap || true'
 		    sh '$MX --vm=maxine vm -jar dacapo-9.12-bach.jar xalan || true'
-		    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 startup || true'
+                }
+            }
+        }
+	stage('SPECJVM benchmarks') {
+            steps {
+                dir(env.SPECJVM2008) {
+                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 startup || true'
 		    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 compiler || true'
                     sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 compress || true'
                     sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 crypto || true'
@@ -73,15 +81,13 @@ pipeline {
                     sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 serial || true'
                     sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 sunflow || true'
                     sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 xml || true'
-		    
-                    //sh '$MX test -image-configs=java -tests=javatester'
-                }
+                    }
             }
         }
 	stage('db_update') {
             steps {
                 dir(env.DJANGO) {
-		   sh 'python manage.py addBenchToJob MaxinePipeline --get_jenkins_latest'
+		   sh 'python manage.py addBenchToJob $JOB_NAME --get_jenkins_latest'
 		}
 	    }
 	}

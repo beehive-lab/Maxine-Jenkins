@@ -49,19 +49,25 @@ class Command(BaseCommand):
 
         job_name = options['job_name']
 
+        # new_job is True when the pipeline runs for the first time, and a new Job must be added to DB.
+        new_job = False
+
         try:
             stored_job = Job.objects.get(name=job_name)
         except Job.DoesNotExist:
             self.stdout.write(self.style.ERROR('Specified Job not found in the Database'))
-            # TODO: specify a proper return code for the pipeline
-            exit()
+            if options['get_jenkins_latest']:
+                new_job = True
+            else:
+                exit()
 
         if options['get_jenkins_latest']:
 
             '''
             If --get_jenkins_latest is specified, the benchmarks are fetched from the output of the latest Jenkins build.
             Considering that this tool is integrated inside the pipeline, it will fetch the benchmarks from the
-            "current" build
+            "current" build.
+            For the first build of the Pipeline, a new Job is registered automatically in the DB.
             '''
 
             self.stdout.write(self.style.WARNING('Getting Jenkins latest build benchmarks...'))
@@ -71,6 +77,12 @@ class Command(BaseCommand):
 
                 job_details = jenkins_conn.get_job_details(job_name)
                 bench = jenkins_conn.get_build_benchmarks(job_name, int(job_details['last_build_no']))
+
+                # if the pipeline runs for the first time, create a new Job
+                if new_job:
+                    self.stdout.write(self.style.WARNING('First build. Registering new Job...'))
+                    stored_job = db.store_job(job_details)
+
                 db.store_benchmarks(stored_job, bench)
             except ConnectionError:
                 self.stdout.write(self.style.ERROR('Could not establish a connection to the Jenkins server'))

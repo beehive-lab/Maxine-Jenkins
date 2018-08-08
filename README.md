@@ -56,10 +56,11 @@ Before proceeding, make sure that SPECJVM2008 is installed on the machine (that 
  	* Under "Build Triggers" select "Poll SCM" and in the schedule field define the time when Jenkins will check the repo for changes. Checking should be done daily, so a value like `30 03 * * *` will check the repo daily at 03:30. If there are new commits until then, the pipeline will start.
  	* Under "Advanced build options": Pipeline->Definition: "Pipeline as scm", SCM: "Git", Repository URL: "https://github.com/beehive-lab/Maxine-VM-internal/", token:(your jenkins token), branch: "*/develop", script path: "bench_Jenkinsfile".
 	* Press "Save"
+ - Run the pipeline once and let it finish
 
 # Final steps
 
- - Open a web browser and paste the url `http://127.0.0.1:8000/visualizer/`. The application interface is displayed with no data (no Jenkins jobs registered yet). Click the button "Register Job" on the upper right corner. If the connection to Jenkins is successfull, a list of all the Jenkins Job is displayed. Select the new Job to be registered and submit (without checking the purge box). Checking again on `http://127.0.0.1:8000/visualizer/` will have the list of registered jobs (the new job). Select one to display the benchmark details for the job's builds. If there are no builds in the DB, then wait after several days of development on the develop branch (the DB will be updated daily) or insert a new build manually through the CLI.
+ - Open a web browser and paste the url `http://127.0.0.1:8000/visualizer/`. You should see the new job "MaxinePipeline". Click on it to view the benchmarks of the first build. Every day the DB will be updated with benchmarks from new builds, if new commits are made into the develop branch.
 
 
 
