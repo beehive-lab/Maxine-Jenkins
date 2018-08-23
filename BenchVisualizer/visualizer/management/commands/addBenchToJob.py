@@ -131,11 +131,13 @@ class Command(BaseCommand):
 
 
             dacapo_benchs = [
-                "avrora"
+
+                "avrora", "batik", "eclipse", "fop", "h2", "jython", "luindex", "lusearch", "pmd", "sunflow", "tomcat",
+                "tradebeans", "tradesoap", "xalan"
             ]
 
             specjvm_benchs = [
-                'startup', "compiler", "compress", "crypto"
+                "startup", "compiler", "compress", "crypto", "derby", "mpegaudio", "scimark", "serial", "spec_sunflow", "xml"
             ]
 
             outp = ""
