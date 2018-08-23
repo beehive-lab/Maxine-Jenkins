@@ -34,14 +34,14 @@ pipeline {
                 }
             }
         }
-        stage('checkstyle-n-build') {
+        stage('build') {
             steps {
                 dir(env.MAXINE_HOME) {
                         sh '$MX build'
                     }
             }
         }
-        stage('image-n-test-init') {
+        stage('image') {
             steps {
                 dir(env.MAXINE_HOME) {
                         sh '$MX image'
@@ -71,16 +71,16 @@ pipeline {
 	stage('SPECJVM benchmarks') {
             steps {
                 dir(env.SPECJVM2008) {
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 startup || true'
-		    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 compiler || true'
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 compress || true'
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 crypto || true'
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 derby || true'
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 mpegaudio || true'
-		    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 scimark || true'
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 serial || true'
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 sunflow || true'
-                    sh 'timeout --preserve-status -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 xml || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 startup || true'
+		    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 compiler || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 compress || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 crypto || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 derby || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 mpegaudio || true'
+		    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 scimark || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 serial || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 sunflow || true'
+                    sh 'timeout -s SIGINT 7m $MX --vm=maxine vm -jar SPECjvm2008.jar -bt 2 xml || true'
                     }
             }
         }

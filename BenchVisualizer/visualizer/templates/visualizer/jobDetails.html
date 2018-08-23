@@ -75,11 +75,18 @@
             <div>
                 <table class="table-bordered padding_tbl">
                     <thead>
-                    <tr><td>Build number</td><td>Git Revision</td><td>Tag</td><td>Timestamp (UTC)</td></tr>
+                    <tr>
+                        <td>Number</td>
+                        <td>Jenkins build</td>
+                        <td>Git Revision</td>
+                        <td>Tag</td>
+                        <td>Timestamp (UTC)</td>
+                    </tr>
                     </thead>
                     <tbody>
                         {% for benchmark in benchmarks %}
                             <tr>
+                                <td>{{forloop.counter}}</td>
                                 <td id="build{{forloop.counter}}">{{benchmark.specjvm.build_no}}</td>
                                 <td id="rev{{forloop.counter}}">{{benchmark.specjvm.revision}}</td>
                                 <td id="tag{{forloop.counter}}">{{benchmark.specjvm.details}}</td>
@@ -109,7 +116,7 @@
                                                     {% if i == 1 %}
                                                         <td>Benchmark</td>
                                                     {% endif %}
-                                                    <td>Ops/min (No.{{benchmark.specjvm.build_no}})</td>
+                                                    <td>Ops/min (No.{{i}})</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -148,7 +155,7 @@
                                                     {% if i == 1 %}
                                                         <td>Benchmark</td>
                                                     {% endif %}
-                                                    <td>Ops/min (No.{{benchmark.dacapo.build_no}})</td>
+                                                    <td>Ops/min (No.{{i}})</td>
                                                 </tr>
                                             </thead>
                                             <tbody>

@@ -11,6 +11,19 @@ import subprocess
 
 
 class Command(BaseCommand):
+
+    """
+    addBenchToJob is a CLI tool that fetches the more recent benchmarks from the Jenkins pipeline OR
+    starts executing the benchmarks locally. In both cases, the results are stored in the DB
+
+    Usage:
+     addBenchToJob <JobName> --get_jenkins_latest //gets the benchmarks results from the Jenkins pipeline and stores them with
+        the TAG "default"
+     addBenchToJob <JobName> --revision <Git revision> --tag <TAG> //starts the benchmarks and stores the results on the DB
+     addBenchToJob <JobName> --revision <Git revision> --tag <TAG> --overwrite //same as above, but overwrites the existing record
+        with the same (revision,TAG)
+    """
+
     help = 'Stores a new set of benchmarks for a specified Job in the database'
 
     def add_arguments(self, parser):
@@ -122,7 +135,7 @@ class Command(BaseCommand):
             ]
 
             specjvm_benchs = [
-                'startup'
+                'startup', "compiler", "compress", "crypto"
             ]
 
             outp = ""
@@ -139,8 +152,8 @@ class Command(BaseCommand):
             for specjvm_bench in specjvm_benchs:
                 self.stdout.write(self.style.WARNING('Initiating Specjvm ' + specjvm_bench + '...'))
 
-                shell_command = 'timeout --preserve-status -s SIGINT 7m ' + env['MX'] +\
-                        ' --vm=maxine vm -jar SPECjvm2008.jar -wt 5s -it 5s -bt 2 ' + specjvm_bench + ' || true'
+                shell_command = 'timeout -s SIGINT 7m ' + env['MX'] +\
+                        ' --vm=maxine vm -jar SPECjvm2008.jar -bt 2 ' + specjvm_bench + ' || true'
 
                 outp += "Executing: " + shell_command + '\n'
                 outp += subprocess.check_output(

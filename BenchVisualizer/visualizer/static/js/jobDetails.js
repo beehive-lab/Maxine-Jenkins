@@ -52,6 +52,10 @@ function gather_data(bench_names){
 
         var build_no = $('#build'+b).text();
 
+        var rev_short = $('#rev'+b).text().substring(0,5);
+
+        var tag = $('#tag'+b).text();
+
         var specjvm_bench = [];
 
         for(i = 0; i < bench_names.length; i++){
@@ -67,7 +71,7 @@ function gather_data(bench_names){
         var trace = {
               x: bench_names,
               y: specjvm_bench,
-              name: 'Build '+build_no,
+              name: rev_short+"_"+tag,
               type: 'bar'
         };
 

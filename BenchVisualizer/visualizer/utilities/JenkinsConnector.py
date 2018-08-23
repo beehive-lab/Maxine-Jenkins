@@ -11,7 +11,7 @@ class JenkinsConnector:
     More on JenkinsApi: https://github.com/pycontribs/jenkinsapi/
     """
 
-    def __init__(self, jenkins_url="http://localhost:8080", name="tsarnas", key="867fc4dc252312faf00f73e08ed6876e"):
+    def __init__(self, jenkins_url="http://localhost:8080", name="name", key="key"):
         self.server = Jenkins(jenkins_url, name, key)
 
     def get_jobs_summary(self):
