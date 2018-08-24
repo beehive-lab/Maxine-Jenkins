@@ -5,6 +5,16 @@ from django.db import models
 
 # Create your models here.
 
+'''
+Job table: Holds meta-data about Jenkins Jobs. Job name is unique.
+
+Dacapo table: Holds all the sets of Dacapo benchmarks, related to the Jobs. 
+The triple of (job,revisision, details) must be unique
+
+Specjvm table: Similar to Dacapo table, but holds the sets of specjvm results
+
+'''
+
 class Job(models.Model):
     name = models.CharField(max_length=50, default="n/a", unique=True)
     description = models.CharField(max_length=50, default="n/a")
@@ -15,7 +25,6 @@ class Job(models.Model):
         return self.name
 
 class Dacapo(models.Model):
-    # avrora batik eclipse fop h2 jython luindex lusearch pmd sunflow tomcat tradebeans tradesoap xalan
     job = models.ForeignKey(Job, on_delete=models.CASCADE, default=1)
     build_no = models.IntegerField(default=0)
     timestamp = models.DateTimeField()

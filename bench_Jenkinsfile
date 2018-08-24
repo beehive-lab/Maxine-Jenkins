@@ -87,6 +87,7 @@ pipeline {
 	stage('db_update') {
             steps {
                 dir(env.DJANGO) {
+		   //use ssh step if BenchVisualizer is hosted remotely
 		   sh 'python manage.py addBenchToJob $JOB_NAME --get_jenkins_latest'
 		}
 	    }

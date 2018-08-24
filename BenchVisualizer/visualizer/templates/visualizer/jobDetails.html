@@ -36,7 +36,7 @@
                 <form action="{% url 'visualizer:jobDetails' job_name %}" method="post">
                   {% csrf_token %}
                   <div class="modal-body">
-                    <p>Please specify two builds to compare.</p>
+                    <p>Please specify builds (benchmark sets) to compare.</p>
                     <button type="button" class="btn btn-info add_build">Add build</button>
                           <table class="padding_tbl" id="revision_input_table">
                               <tbody>
@@ -103,7 +103,7 @@
             <tbody>
                 <!-- SPECJVM stats -->
                 <tr>
-                    <td><div class="plot" id="tester" style="width:800px;height:500px;"></div></td>
+                    <td><div class="plot" id="tester"></div></td>
                     <td>
                         <form action="{% url 'visualizer:raw' job_name 'specjvm' %}" method="post">
                             {% csrf_token %}
@@ -142,7 +142,7 @@
                 </tr>
                 <!-- DACAPO stats -->
                 <tr>
-                    <td><div class="plot" id="testerD" style="width:800px;height:500px;"></div></td>
+                    <td><div class="plot" id="testerD"></div></td>
                     <td>
                         <form action="{% url 'visualizer:raw' job_name 'dacapo' %}" method="post">
                             {% csrf_token %}

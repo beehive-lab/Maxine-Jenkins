@@ -52,7 +52,7 @@ function gather_data(bench_names){
 
         var build_no = $('#build'+b).text();
 
-        var rev_short = $('#rev'+b).text().substring(0,5);
+        var rev_short = $('#rev'+b).text().substring(0,7);
 
         var tag = $('#tag'+b).text();
 
