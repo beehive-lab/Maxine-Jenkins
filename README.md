@@ -53,7 +53,7 @@ Before proceeding, make sure that SPECJVM2008 is installed on the machine (that 
  - Open Jenkins GUI and create a new pipeline/job following the instructions at `https://jenkins.io/doc/book/pipeline/getting-started/#defining-a-pipeline-in-scm`. Name the pipeline "MaxinePipeline".
  - Under the Configurations tab of the new Job, specify the following:
  	* Under "Build Triggers" select "Poll SCM" and in the schedule field define the time when Jenkins will check the repo for changes. Checking should be done daily, so a value like `30 03 * * *` will check the repo daily at 03:30. If there are new commits until then, the pipeline will start.
- 	* Under "Advanced build options": Pipeline->Definition: "Pipeline as scm", SCM: "Git", Repository URL: "https://github.com/beehive-lab/Maxine-VM-internal/", token:(your jenkins token), branch: "*/develop", script path: "bench_Jenkinsfile".
+ 	* Under "Advanced build options": Pipeline->Definition: "Pipeline as scm", SCM: "Git", Repository URL: "https://github.com/beehive-lab/Maxine-VM/", token:(your jenkins token), branch: "*/develop", script path: "bench_Jenkinsfile".
 	* Press "Save"
  - Run the pipeline once and let it finish
 
